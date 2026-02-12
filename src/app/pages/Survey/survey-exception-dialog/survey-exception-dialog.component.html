@@ -1,0 +1,42 @@
+<nb-card size="large">
+  <nb-card-header>
+    <div class="container">
+      <div class="row d-flex align-items-center justify-content-between">
+        <h3>التصويت على الإستبيان</h3>
+        <div class="cursor-pointer" (click)="closeCharts()" [hidden]="true">
+          <nb-icon class="close-icon" status="danger" icon="close"> </nb-icon>
+        </div>
+      </div>
+    </div>
+  </nb-card-header>
+  <nb-card-body>
+    <nb-card class="min-w-50vw" size="medium">
+      <nb-card-header>
+        <h6>
+          {{ surveyName }}
+          <!-- {{ question }} -->
+        </h6>
+        <br />
+        <h6>
+          {{ SurveyMessageFrmDate }} {{ FromDate }}
+          <!-- {{ question }} -->
+        </h6>
+        <br />
+        <h6>
+          {{ SurveyMessageToDate }} {{ ToDate }}
+          <!-- {{ question }} -->
+        </h6>
+        <br />
+      </nb-card-header>
+      <nb-card-body class="d-flex align-items-center justify-content-center">
+        <h2>{{ Message }}</h2>
+        <br />
+        <br />
+        <br />
+
+        <!-- <h3>{{WelcomeMessage}}</h3>  -->
+        <!-- <app-pie-chart [chartID]="question"></app-pie-chart> -->
+      </nb-card-body>
+    </nb-card>
+  </nb-card-body>
+</nb-card>

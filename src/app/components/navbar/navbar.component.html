@@ -1,0 +1,127 @@
+<div class="flex-center">
+  <div class="row w-100 flex-center">
+    <div
+      class="col-sm-12 d-flex align-items-center justify-content-between p-0"
+    >
+      <div
+        class="d-flex align-items-center justify-content-start flex-row flex-1"
+      >
+        <div class="menu-container" [ngClass]="{ active: menu.length > 0 }">
+          <!-- <img
+            src="../../../assets/Hamburger_icon.svg.png"
+            alt="menu"
+            class="menu-icon"
+          /> -->
+          <div (click)="toggleMenu()">
+            <div class="first-bar"></div>
+            <div class="second-bar"></div>
+            <div class="third-bar"></div>
+          </div>
+          <div class="caret" *ngIf="menu.length > 0"></div>
+          <div class="menu-div" *ngIf="menu.length > 0">
+            <nb-menu [items]="menu"> </nb-menu>
+          </div>
+        </div>
+        <!-- <img
+          [src]="
+            currentTheme === 'default'
+              ? '../../../assets/Night_Mode_Moon_Dark_Effect-5121.png'
+              : '../../../assets/light.png'
+          "
+          alt="Theme"
+          class="img-responsive theme-image"
+          (click)="setTheme()"
+        /> -->
+        <i
+          (click)="setTheme()"
+          [class]="
+            currentTheme === 'default'
+              ? 'bi bi-moon-fill'
+              : 'bi bi-brightness-high-fill'
+          "
+        ></i>
+        <div class="dropdown">
+          <span
+            appToggleDropdown
+            class="btn btn-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="bi bi-globe"></i>
+          </span>
+
+          <div class="dropdown-menu">
+            <img
+              src="../../../assets/images/saudi-arabia-icon-2048x1365-tq5diktm.png"
+              alt="ar"
+              class="dropdown-item"
+              (click)="setLanguage('ar')"
+            />
+            <img
+              src="../../../assets/images/555526.png"
+              alt="en"
+              class="dropdown-item usa"
+              (click)="setLanguage('en')"
+            />
+          </div>
+        </div>
+        <button type="button" style="background-color:transparent; border: none;"  (click)="logout()">
+          {{ "logout" | translate }}      
+          </button>
+      </div>
+      <div
+        class="d-flex align-items-center justify-content-center flex-row-reverse flex-3"
+      >
+        <h3>{{ "integratedSurveySystem" | translate }}</h3>
+      </div>
+
+      
+      <!--       <h1>نظام التقييم المتكامل</h1>
+        <div class="d-flex align-items-center justify-content-center">
+        <input
+          type="text"
+          [placeholder]="'search-placeholder' | translate"
+          nbInput                ? '../../../assets/WhatsApp_Image_2024-05-08_at_5.35.37_PM__1_-removebg-preview.png'
+
+          class="w-30 text-center"
+        />
+      </div>
+              src="../../../assets/ENBLogoPro.png"
+
+    -->
+      <div
+        class="d-flex align-items-center justify-content-start flex-row-reverse flex-1"
+      >
+        <!-- ENBLogoPro -->
+        <!-- src="../../../assets/Tabouk.png"
+                src="../../../assets/ENBLogoPro.png"
+                          src="../../../assets/images/WhatsApp_Image_2024-11-24_at_6.47.15_PM-removebg-preview.png"
+ style="background-color:white ;"
+
+                          src="../../../assets/images/Logo.png"
+
+
+      
+
+        <img
+        src="../../../assets/White-EmaraLogo.png"
+
+          ENB
+          alt=""
+          class="img-fluid logo"
+        />
+        -->
+        <img
+        src="../../../assets/images/asaar.png" 
+
+          ENB
+          alt=""
+          class="img-fluid logo"
+        />
+        
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+.table-container {
+    border-radius: 2rem;
+    overflow-x: scroll;
+   // overflow-y:visible;
+   
+    overflow-y: auto;
+    //overflow: auto;
+//display: block;
+  }
+  
+  table {
+    width: 20rem;
+  }
+
+  
+  .search-container {
+    margin: 1rem auto;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .col-md-4,
+  .col-md-6,
+  .col-md-12 {
+    padding: 5px !important;
+  }
+  
+  .users-table {
+    width: 100%;
+    margin-bottom: 1rem;
+    border-collapse: collapse;
+   // overflow-y: scroll;
+    //display: block;
+  }
+  
+  tr {
+    height: 3.2rem;
+  }
+  
+  th,
+  td {
+    text-align: center !important;
+    padding: 10px;
+  //  display: block;
+  }
+  
+  th {
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.3rem;
+    }
+  }
+  
+  ::ng-deep .mat-sort-header-container {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    letter-spacing: normal;
+    outline: 0;
+    justify-content: center;
+  }
+  

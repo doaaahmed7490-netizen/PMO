@@ -1,0 +1,171 @@
+<div class="content-container mt-3">
+  <h5>              {{ "إضافة مرفقات المشروع"  }}
+
+  </h5>
+  <hr/>
+  <form [formGroup]="MileStoneForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-sm-6">
+        <!--Law number -->
+        <div class="form-group">
+          <label for="StrategicGoal" class="label">
+            <h6>
+              {{ "المشروع"  }}
+            </h6>
+          </label>
+           <nb-select
+            shape="round"
+            fullWidth
+            formControlName="strategicGoalId"
+          
+          
+          >
+            <nb-option *ngFor="let e of this.projects" [value]="e.id">
+              {{ e.label }}</nb-option
+            >
+          </nb-select>
+      
+        </div>
+         <div class="form-group">
+          <label for="StrategicGoal" class="label">
+            <h6>
+              {{ "المهام"}}
+            </h6>
+          </label>
+          <nb-select
+            shape="round"
+            fullWidth
+            formControlName="taskId"
+          
+          
+          >
+            <nb-option *ngFor="let e of this.tasks" [value]="e.id">
+              {{ e.label }}</nb-option
+            >
+          </nb-select>
+
+        </div>
+          <div class="form-group">
+          <label for="StrategicGoal" class="label">
+            <h6>
+              {{ "نوع المرفق"}}
+            </h6>
+          </label>
+          <nb-select
+            shape="round"
+            fullWidth
+            formControlName="DocType"
+          
+          
+          >
+            <nb-option *ngFor="let e of this.DocTypes" [value]="e.id">
+              {{ e.label }}</nb-option
+            >
+          </nb-select>
+
+        </div>
+           <div class="form-group">
+          <label for="StrategicGoal" class="label">
+            <h6>
+              {{ "رقم النسخة" }}
+            </h6>
+          </label>
+            <nb-select
+            shape="round"
+            fullWidth
+            formControlName="DocVersion"
+          
+          
+          >
+            <nb-option *ngFor="let e of this.DocVersion" [value]="e.id">
+              {{ e.label }}</nb-option
+            >
+          </nb-select>
+       
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <!--Message arabic -->
+          <div class="form-group">
+          <label for="FromDate" class="label">
+            <h6>
+              {{ "تاريخ المرفق" | translate }}
+            </h6>
+          </label>
+          <input
+            type="date"
+            formControlName="fromDate"
+            nbInput
+            shape="round"
+            fullWidth
+            id="fromDate"
+          />
+          <!-- <mat-error
+            *ngIf="fc.fromDate.touched && fc.fromDate.hasError('required')"
+          >
+            {{ "Start Date is Required" | translate }}
+          </mat-error> -->
+        </div>
+      
+        <!--categoryName -->
+          <div class="form-group">
+          <label for="ToDate" class="label">
+            <h6>
+              {{ "المرفق"  }}
+            </h6>
+          </label>
+          <input
+            type="file"
+            formControlName="toDate"
+            nbInput
+            shape="round"
+            fullWidth
+            id="toDate"
+          />
+          <!-- <mat-error
+            *ngIf="fc.toDate.touched && fc.toDate.hasError('required')"
+          >
+            {{ "End Date is Required" | translate }}
+          </mat-error> -->
+        </div>
+      
+        <div class="form-group">
+          <label for="GoalDesc" class="label">
+            <h6>
+              {{ "ملاحظات"  }}
+            </h6>
+          </label>
+          <textarea
+            type="text"
+            formControlName="goalDesc"
+            nbInput
+            shape="round"
+            fullWidth
+            id="goalDesc"
+          >
+          </textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-2" >
+      <div class="col-md-2">
+        <button
+          class="special-button m-2 mt-4 w-100"
+   type="submit"
+       >
+          {{ "Save" | translate }}
+        </button>
+      </div>
+       <div class="col-md-2">
+        <button
+          class="special-button m-2 mt-4 w-100"
+   type="button"    (click)="Close()"
+
+       >
+          {{ "إلغاء"}}
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,385 @@
+<div class="content-container mt-5">
+    <h5>{{'Add' |translate}} {{'User' |translate}}
+    </h5>
+    <hr/>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="Employee" class="label">
+              <h6>
+                {{ "Employee" | translate }}
+              </h6>
+            </label>
+            <nb-select
+            shape="round"
+            fullWidth
+            formControlName="empId"
+            id="empId"
+            (selectedChange)="selectChangeHandlerEmp($event)"
+          >
+            <!-- <nb-option value="">{{ "No data selected" | translate }}</nb-option> -->
+            <nb-option *ngFor="let e of this.Employees" [value]="e.id">
+              {{ e.name }}</nb-option
+            >
+          </nb-select>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <!--categoryName -->
+          <div class="form-group">
+            <label for="Name" class="label">
+              <h6>
+                {{ "Name" | translate }}
+              </h6>
+            </label>
+            <input [readonly]="this.IsEmp"
+              type="text"
+              formControlName="name"
+              nbInput
+              shape="round"
+              fullWidth
+              id="name"
+            />
+            <mat-error *ngIf="fc.name.touched && fc.name.hasError('required')">
+              {{ "Name is required" | translate }}
+            </mat-error>
+            <mat-error *ngIf="fc.name.touched && fc.name.hasError('pattern')">
+              {{ "Name pattern" | translate }}
+            </mat-error>
+            <mat-error
+              *ngIf="
+                fc.name.touched &&
+                fc.name.hasError('minlength') &&
+                !fc.name.hasError('required') &&
+                !fc.name.hasError('pattern')
+              "
+            >
+              {{ "min length 3 Letters" | translate }}
+            </mat-error>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group mt-2">
+            <label for="username" class="label">
+              <h6>
+                {{ "username" | translate }}
+              </h6>
+            </label>
+            <input
+              type="text"
+              [status]="
+                fc.userName.touched && fc.userName.errors ? 'danger' : 'basic'
+              "
+              formControlName="userName"
+              nbInput
+              shape="round"
+              fullWidth
+              id="userName"
+            />
+  
+            <mat-error
+              *ngIf="fc.userName.touched && fc.userName.hasError('required')"
+            >
+              {{ "User Name is required" | translate }}
+            </mat-error>
+  
+            <!--  <mat-error
+                                  *ngIf="fc.userName.touched && fc.fullName.hasError('minlength') && !fc.fullName.hasError('required')">
+                                  {{'min length 3 Letters' | translate}}
+                              </mat-error> -->
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group mt-2">
+            <label for="Password" class="label">
+              <h6>
+                {{ "password" | translate }}
+              </h6>
+            </label>
+            <nb-form-field>
+              <input
+                autocomplete="new-password"
+                type="password"
+                [status]="
+                  fc.password.touched && fc.password.errors ? 'danger' : 'basic'
+                "
+                formControlName="password"
+                nbInput
+                shape="round"
+                fullWidth
+                id="password"
+              />
+              <button
+                title="hide password"
+                type="button"
+                class="p_btn"
+                nbSuffix
+                nbButton
+                *ngIf="!showPass"
+                (click)="TogglePassword()"
+              >
+                <nb-icon pack="eva" icon="eye-outline"></nb-icon>
+              </button>
+              <button
+                title="show password"
+                type="button"
+                class="p_btn"
+                nbSuffix
+                nbButton
+                *ngIf="showPass"
+                (click)="TogglePassword()"
+              >
+                <nb-icon pack="eva" icon="eye-off-outline"></nb-icon>
+              </button>
+            </nb-form-field>
+            <mat-error
+              *ngIf="
+                fc.password.touched &&
+                fc.password.hasError('minlength') &&
+                !fc.password.hasError('required')
+              "
+            >
+              {{ "Password must be at least 8 characters" | translate }}
+            </mat-error>
+            <mat-error
+              *ngIf="
+                fc.password.touched &&
+                fc.password.hasError('pattern') &&
+                !fc.password.hasError('required')
+              "
+            >
+              {{
+                "Password must contain at least 1 Upper case, 1 lower case and a number"
+                  | translate
+              }}
+            </mat-error>
+            <mat-error
+              *ngIf="fc.password.touched && fc.password.hasError('required')"
+            >
+              {{ "Password is Required" | translate }}
+            </mat-error>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group mt-2">
+            <label for="NationalId" class="label">
+              <h6>
+                {{ "NationalId" | translate }}
+              </h6>
+            </label>
+            <input [readonly]="this.IsEmp"
+              type="text"
+              placeholder="Ex:1570572194"
+              formControlName="nationalId"
+              nbInput
+              shape="round"
+              fullWidth
+              id="nationalId"
+              minlength="10"
+              maxlength="10"
+            />
+            <mat-error *ngIf="fc.nationalId.touched && fc.nationalId.hasError('pattern')">
+                {{ "NationalId pattern" | translate }}
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  fc.nationalId.touched &&
+                  fc.nationalId.hasError('minlength') &&
+                  !fc.nationalId.hasError('pattern')
+                "
+              >
+                {{ "NationalId min length" | translate }}
+              </mat-error>
+              <mat-error
+              *ngIf="
+                fc.nationalId.touched &&
+                fc.nationalId.hasError('maxlength') &&
+                !fc.nationalId.hasError('pattern')
+              "
+            >
+              {{ "NationalId max length" | translate }}
+            </mat-error>
+              <mat-error *ngIf="fc.nationalId.touched && fc.nationalId.hasError('min')">
+                {{ "NationalId not contain negative number" | translate }}
+              </mat-error>
+            
+          </div>
+        </div>
+  
+        <div class="col-sm-6">
+          <div class="form-group mt-2">
+            <label for="Mobil" class="label">
+              <h6>
+                {{ "Mobil" | translate }}
+              </h6>
+            </label>
+            <input [readonly]="this.IsEmp" 
+              type="text"
+              inputmode="numeric"
+              pattern="[-+]?[0-9]*[.,]?[0-9]+"
+              [status]="fc.mobil.touched && fc.mobil.errors ? 'danger' : 'basic'"
+              formControlName="mobil"
+              nbInput
+              shape="round"
+              fullWidth
+              id="mobil"
+              minlength="10"
+              maxlength="12"
+              placeholder="Ex: 966564801391"
+            />
+            <mat-error *ngIf="fc.mobil.touched && fc.mobil.hasError('pattern')">
+                {{ "Mobil pattern" | translate }}
+              </mat-error>
+              <mat-error *ngIf="fc.mobil.touched && fc.mobil.hasError('min')">
+                {{ "Mobil not contain negative number" | translate }}
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  fc.mobil.touched &&
+                  fc.mobil.hasError('minlength') &&
+                  !fc.mobil.hasError('pattern')
+                "
+              >
+                {{ "Mobil min length" | translate }}
+              </mat-error> 
+              <mat-error
+              *ngIf="
+                fc.mobil.touched &&
+                fc.mobil.hasError('maxlength') &&
+                !fc.mobil.hasError('pattern')
+              "
+            >
+              {{ "Mobil max length" | translate }}
+            </mat-error>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group mt-2">
+            <label for="PhoneNumber" class="label">
+              <h6>
+                {{ "Phone" | translate }}
+              </h6>
+            </label>
+            <input
+              type="text" [readonly]="this.IsEmp"
+              inputmode="numeric"
+              pattern="[-+]?[0-9]*[.,]?[0-9]+"
+              placeholder="Ex: 0125985301"
+              formControlName="phoneNumber"
+              nbInput
+              shape="round"
+              fullWidth
+              id="phoneNumber"
+              minlength="10"
+              maxlength="10"
+            />
+  
+        <!--     <mat-error *ngIf="fc.phoneNumber.touched && fc.phoneNumber.hasError('required')">
+              {{ "Mobil is required" | translate }}
+            </mat-error> -->
+      
+            <mat-error *ngIf="fc.phoneNumber.touched && fc.phoneNumber.hasError('pattern')">
+                {{ "Phone pattern" | translate }}
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  fc.phoneNumber.touched &&
+                  fc.phoneNumber.hasError('minlength') &&
+                  !fc.phoneNumber.hasError('pattern')
+                "
+              >
+                {{ "Phone min length" | translate }}
+              </mat-error>
+              <mat-error
+              *ngIf="
+                fc.phoneNumber.touched &&
+                fc.phoneNumber.hasError('maxlength') &&
+                !fc.phoneNumber.hasError('pattern')
+              "
+            >
+              {{ "Phone max length" | translate }}
+            </mat-error>
+              <mat-error *ngIf="fc.phoneNumber.touched && fc.phoneNumber.hasError('min')">
+                {{ "Phone not contain negative number" | translate }}
+              </mat-error>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group mt-2">
+            <label for="Email" class="label">
+              <h6>
+                {{ "Email" | translate }}
+              </h6>
+            </label>
+            <input [readonly]="this.IsEmp"
+              type="text"            placeholder="Ex: dmostafa@jeddah.gov.sa"
+              formControlName="email"
+              nbInput
+              shape="round"
+              fullWidth
+              id="email"
+            />
+            <mat-error *ngIf="fc.email.touched && fc.email.hasError('email')">
+              {{ "Email pattern" | translate }}
+            </mat-error>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group mt-2">
+            <label for="Gender" class="label"
+              ><h6>{{ "Gender" | translate }}</h6>
+            </label>
+  
+            <select
+              class="form-control"
+              id="gender"
+              formControlName="gender"
+              (change)="selectChangeHandlerGender($event)"
+            >
+              <option value="1">ذكر</option>
+              <option value="2">انثى</option>
+            </select>
+          </div>
+        </div>
+  
+        <div class="col-sm-6">
+          <!--Parent Category -->
+          <div class="form-group mt-2">
+            <label for="Role" class="label">
+              <h6>
+                {{ "Role" | translate }}
+              </h6>
+            </label>
+            <nb-select
+              formControlName="roleId"
+              id="roleId"
+              shape="round"
+              fullWidth
+            >
+              <nb-option value="">{{ "No data selected" | translate }}</nb-option>
+              <nb-option *ngFor="let role of this.roleModel" [value]="role.id">
+                {{ role.roleName }}</nb-option
+              >
+            </nb-select>
+          </div>
+        </div>
+        <!--Event Image
+                  [disabled]="userForm.invalid || isSubmitted"
+  
+        -->
+      </div>
+  
+      <div class="row mt-2">
+        <div class="col-md-2">
+          <button
+            class="special-button m-2 mt-4 w-100"
+            type="submit"
+          >
+            {{ "Save" | translate }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  

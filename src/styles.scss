@@ -1,0 +1,676 @@
+/* @use "themes" as *;
+@use "@nebular/theme/styles/globals" as *;
+@include nb-install() {
+  @include nb-theme-global();
+}
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+@import "bootstrap/scss/bootstrap";
+
+@font-face {
+  font-family: "Helvetica Neue LT Arabic";
+  src: url("./assets/fonts/fonnts.com-Helvetica_Neue_LT_Arabic_75_Bold.ttf")
+    format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Helvetica Neue LT Arabic";
+  src: url("./assets/fonts/alfont_com_هلفيتيكا-عربي-.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+
+@font-face {
+  font-family: "Maven Pro Regular";
+  src: url("./assets/fonts/MavenPro-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Maven Pro Bold";
+  src: url("./assets/fonts/MavenPro-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Helvetica Neue Light";
+  src: url("./assets/fonts/HelveticaNeue\ Light.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Helvetica Neue Bold";
+  src: url("./assets/fonts/HelveticaNeue\ Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+h3,
+h4,
+h5,
+span,
+label,
+input,
+textarea,
+a,
+button,
+th,
+td {
+  font-family: "Maven Pro Bold", "Helvetica Neue LT Arabic", sans-serif !important;
+  font-optical-sizing: auto !important;
+  font-style: normal !important;
+}
+
+p {
+  font-family: "Helvetica Neue Light", "Helvetica Neue LT Arabic", sans-serif !important;
+  font-optical-sizing: auto !important;
+  font-style: normal !important;
+}
+
+li {
+  font-family: "Helvetica Neue Bold", "Helvetica Neue LT Arabic", sans-serif !important;
+  font-optical-sizing: auto !important;
+  font-style: normal !important;
+}
+
+h1,
+h2 {
+  font-family: "Maven Pro Regular", "Helvetica Neue LT Arabic", sans-serif !important;
+  font-optical-sizing: auto !important;
+  font-style: normal !important;
+}
+
+nb-layout .layout .layout-container .content nb-layout-footer nav {
+  padding: 0px !important;
+}
+
+.compacted {
+  div {
+    display: none;
+  }
+}
+
+.nb-theme-dark {
+  .mat-mdc-table {
+    background-color: #222b45 !important;
+    color: #ffffff;
+  }
+
+  .mat-mdc-header-cell {
+    background-color: #2b2b2b;
+    color: #ffffff;
+  }
+
+  .mat-mdc-cell {
+    background-color: #222b45;
+    color: #ffffff;
+  }
+
+  .mat-mdc-row:hover {
+    background-color: #333333;
+  }
+
+  .mat-sort-header-container {
+    color: #ffffff;
+  }
+
+  .mat-mdc-header-cell .mat-sort-header-button {
+    color: #ffffff;
+  }
+
+  .mat-sort-header-arrow {
+    color: #ffffff;
+  }
+
+  .mat-paginator {
+    background-color: #2b2b2b;
+    color: #ffffff;
+  }
+
+  .mat-paginator .mat-icon-button {
+    color: #ffffff;
+  }
+
+  .mat-form-field-underline {
+    background-color: #ffffff;
+  }
+
+  .mat-form-field-label {
+    color: #ffffff;
+  }
+}
+ */
+/*  @use "themes" as *;
+ @use "@nebular/theme/styles/globals" as *;
+ @include nb-install() {
+     @include nb-theme-global();
+ }
+
+ @font-face {
+     font-family: "Helvetica Neue LT Arabic";
+     src: url("./assets/fonts/fonnts.com-Helvetica_Neue_LT_Arabic_75_Bold.ttf") format("truetype");
+     font-weight: bold;
+     font-style: normal;
+ }
+
+ @font-face {
+     font-family: "Helvetica Neue LT Arabic";
+     src: url("./assets/fonts/alfont_com_هلفيتيكا-عربي-.ttf") format("truetype");
+     font-weight: normal;
+     font-style: normal;
+ }
+
+ @font-face {
+     font-family: "Maven Pro Regular";
+     src: url("./assets/fonts/MavenPro-Regular.ttf") format("truetype");
+     font-weight: normal;
+     font-style: normal;
+ }
+
+ @font-face {
+     font-family: "Maven Pro Bold";
+     src: url("./assets/fonts/MavenPro-Bold.ttf") format("truetype");
+     font-weight: bold;
+     font-style: normal;
+ }
+
+ @font-face {
+     font-family: "Helvetica Neue Light";
+     src: url("./assets/fonts/HelveticaNeue\ Light.ttf") format("truetype");
+     font-weight: normal;
+     font-style: normal;
+ }
+
+ @font-face {
+     font-family: "Helvetica Neue Bold";
+     src: url("./assets/fonts/HelveticaNeue\ Bold.ttf") format("truetype");
+     font-weight: bold;
+     font-style: normal;
+ }
+
+ h3,
+ h4,
+ h5,
+ span,
+ label,
+ input,
+ textarea,
+ a,
+ button,
+ th{
+  font-family: "Helvetica Neue Bold";
+  font-weight: bold;
+
+}
+
+ td {
+     font-family: "Maven Pro Bold", "Helvetica Neue LT Arabic", sans-serif !important;
+     font-optical-sizing: auto !important;
+     font-style: normal !important;
+ }
+
+ p {
+     font-family: "Helvetica Neue Light", "Helvetica Neue LT Arabic", sans-serif !important;
+     font-optical-sizing: auto !important;
+     font-style: normal !important;
+ }
+
+ li {
+     font-family: "Helvetica Neue Bold", "Helvetica Neue LT Arabic", sans-serif !important;
+     font-optical-sizing: auto !important;
+     font-style: normal !important;
+ }
+
+ h1,
+ h2 {
+     font-family: "Maven Pro Regular", "Helvetica Neue LT Arabic", sans-serif !important;
+     font-optical-sizing: auto !important;
+     font-style: normal !important;
+ }
+
+ nb-layout .layout .layout-container .content nb-layout-footer nav {
+     padding: 0px !important;
+ }
+
+ .compacted {
+  div {
+    display: none;
+  }
+}
+
+.nb-theme-dark {
+  .mat-mdc-table {
+    background-color: #222b45 !important;
+    color: #ffffff;
+  }
+
+  .mat-mdc-header-cell {
+    background-color: #2b2b2b;
+    color: #ffffff;
+  }
+
+  .mat-mdc-cell {
+    background-color: #222b45;
+    color: #ffffff;
+  }
+
+  .mat-mdc-row:hover {
+    background-color: #333333;
+  }
+
+  .mat-sort-header-container {
+    color: #ffffff;
+  }
+
+  .mat-mdc-header-cell .mat-sort-header-button {
+    color: #ffffff;
+  }
+
+  .mat-sort-header-arrow {
+    color: #ffffff;
+  }
+
+  .mat-paginator {
+    background-color: #2b2b2b;
+    color: #ffffff;
+  }
+
+  .mat-paginator .mat-icon-button {
+    color: #ffffff;
+  }
+
+  .mat-form-field-underline {
+    background-color: #ffffff;
+  }
+
+  .mat-form-field-label {
+    color: #ffffff;
+  }
+} */
+
+@use "themes" as *;
+
+@use "@nebular/theme/styles/globals" as *;
+
+@include nb-install() {
+  @include nb-theme-global();
+}
+
+@font-face {
+  font-family: "Helvetica Neue LT Arabic";
+  src: url("./assets/fonts/fonnts.com-Helvetica_Neue_LT_Arabic_75_Bold.ttf")
+    format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Noto Kufi Arabic";
+  src: url("./assets/fonts/NotoKufiArabic-VariableFont_wght.ttf")
+    format("truetype");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Helvetica Neue LT Arabic";
+  src: url("./assets/fonts/alfont_com_هلفيتيكا-عربي-.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Maven Pro Regular";
+  src: url("./assets/fonts/MavenPro-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Maven Pro Bold";
+  src: url("./assets/fonts/MavenPro-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Helvetica Neue Light";
+  src: url("./assets/fonts/HelveticaNeue\ Light.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Helvetica Neue Bold";
+  src: url("./assets/fonts/HelveticaNeue\ Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+body {
+  position: relative;
+  app-root {
+    position: absolute;
+    width: 100%;
+  }
+}
+
+nb-select button,
+input[type="date"],
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="email"],
+select,
+textarea {
+  border: none !important;
+  border-radius: 0 !important;
+  border-bottom: solid 2px rgb(173, 143, 76) !important;
+  text-align: center !important;
+}
+
+.nb-theme-default {
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+    border: 3px solid #f1f1f1;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+  }
+  nb-layout-column {
+    background-color: #fff;
+
+    nb-card {
+      background-color: #f5f5f5;
+      border-radius: 0 !important;
+
+      nb-card-header {
+        border-bottom: 1px solid gray;
+      }
+    }
+  }
+}
+
+h3,
+h4,
+h5,
+h6,
+span,
+label,
+input,
+textarea,
+a,
+div,
+button,
+//th,
+td,
+ngx-gauge .reading-label {
+  font-family: "Noto Kufi Arabic", "Helvetica Neue LT Arabic", sans-serif !important;
+  font-optical-sizing: auto !important;
+  font-style: normal !important;
+}
+th {
+  /*font-family: "Maven Pro Bold", "Helvetica Neue LT Arabic", sans-serif !important;
+  font-optical-sizing: auto !important;
+  font-style:normal !important;*/
+
+  font-family: "Noto Kufi Arabic", "Helvetica Neue LT Arabic";
+
+  font-weight: bold;
+}
+
+p {
+  font-family: "Noto Kufi Arabic", "Helvetica Neue Light",
+    "Helvetica Neue LT Arabic", sans-serif !important;
+  font-optical-sizing: auto !important;
+  font-style: normal !important;
+}
+
+li {
+  font-family: "Noto Kufi Arabic", "Helvetica Neue Bold",
+    "Helvetica Neue LT Arabic", sans-serif !important;
+  font-optical-sizing: auto !important;
+  font-style: normal !important;
+}
+
+h1,
+h2 {
+  font-family: "Noto Kufi Arabic", "Helvetica Neue LT Arabic", sans-serif !important;
+  font-optical-sizing: auto !important;
+  font-style: normal !important;
+}
+nb-layout .layout .layout-container .content nb-layout-footer nav {
+  padding: 0px !important;
+}
+
+.reading-block,
+.reading-label {
+  overflow: visible !important;
+}
+
+.compacted {
+  div {
+    display: none;
+  }
+}
+
+.nb-theme-dark {
+  ::-webkit-scrollbar-track {
+    background: #2c2c2c;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 10px;
+    border: 3px solid #2c2c2c;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #777;
+  }
+
+  .mat-mdc-table {
+    background-color: #222b45 !important;
+    color: #ffffff;
+  }
+
+  .mat-mdc-header-cell {
+    background-color: #2b2b2b;
+    color: #ffffff;
+  }
+
+  .mat-mdc-cell {
+    background-color: #222b45;
+    color: #ffffff;
+  }
+
+  .mat-mdc-row:hover {
+    background-color: #333333;
+  }
+
+  .mat-sort-header-container {
+    color: #ffffff;
+  }
+
+  .mat-mdc-header-cell .mat-sort-header-button {
+    color: #ffffff;
+  }
+
+  .mat-sort-header-arrow {
+    color: #ffffff;
+  }
+
+  .mat-paginator {
+    background-color: #2b2b2b;
+    color: #ffffff;
+  }
+
+  .mat-paginator .mat-icon-button {
+    color: #ffffff;
+  }
+
+  .mat-form-field-underline {
+    background-color: #ffffff;
+  }
+
+  .mat-form-field-label {
+    color: #ffffff;
+  }
+}
+
+html[dir="rtl"] nav.fixed {
+  padding-left: 0;
+  .caret {
+    left: 10%;
+  }
+  .menu-div {
+    right: -23%;
+  }
+}
+
+html[dir="ltr"] nav.fixed {
+  padding-right: 0;
+  .caret {
+    right: -5%;
+  }
+  .menu-div {
+    left: -40%;
+  }
+}
+
+nb-menu {
+  ul {
+    li {
+      transition: background-color 0.5s ease;
+      border-bottom: 2px solid #fff;
+
+      a {
+        transition: color 0.5s ease;
+        color: #fff !important;
+      }
+
+      a:hover {
+        background-color: #fff !important;
+        color: #000 !important;
+      }
+
+      ul {
+        padding: 0 !important;
+        li {
+          a {
+            padding-left: 1.8rem !important;
+            padding-right: 1.8rem !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+nb-layout-header nav {
+  padding: 0.5rem 0 !important;
+}
+
+nb-layout-footer {
+  border-top: 2px solid rgb(204, 164, 61);
+  nav {
+   // background: linear-gradient(to right, rgb(0, 184, 106), rgb(0, 105, 58));
+     //background: linear-gradient(180deg, #8c6a2b 0%, #826026 50%, #72511f 100%);
+background: linear-gradient(
+  180deg,
+  #b79355 0%,   /* lighter than #8c6a2b */
+  #a9833d 80%,  /* lighter than #826026 50%*/
+  #94723a 140%  /* lighter than #72511f 100%*/
+);
+    p {
+      color: #fff;
+      font-size: 16px;
+    }
+  }
+}
+
+nav {
+  height: max-content !important;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+.layout-container,
+nb-layout-column {
+  padding: 0 !important;
+}
+
+nb-layout-column {
+  > * > *:not(app-auth):not(router-outlet):first-child {
+    padding-top: 6.5rem !important;
+  }
+}
+
+.content-container {
+  width: 93%;
+  margin: 0 auto;
+}
+
+.special-button {
+  background: linear-gradient(135deg, #7d7e7e, #4b4c4c);
+  /*background: linear-gradient(
+  135deg,
+  rgba(125, 126, 126, 0.6),
+  rgba(75, 76, 76, 0.6)
+);*/
+  //border: solid 3px rgb(173, 143, 76);
+  font-size: 20px;
+
+  //background: linear-gradient(to bottom, rgb(42, 184, 77), rgb(18, 121, 90));
+  //border: solid 2px rgb(29, 109, 78);
+  color: #fff;
+  padding: 0.4rem 1rem;
+  border-radius: 3px;
+}
+
+.special-button:hover {
+  //background: rgb(18, 121, 90);
+  //  background-color:#826026 ;
+  background: linear-gradient(180deg, #8c6a2b 0%, #826026 50%, #72511f 100%);
+  color:#fff
+
+}
+
+.danger-button {
+  background: linear-gradient(to bottom, rgb(184, 42, 42), rgb(121, 18, 18));
+  border: solid 2px rgb(109, 29, 29);
+}
+
+.danger-button:hover {
+  background: rgb(184, 42, 42);
+}
+
+h2 {
+  font-size: 20pt;
+}
+
+hr {
+  opacity: 1 !important;
+  margin: 1.3rem 0 2rem;
+}
+
+/* You can add global styles to this file, and also import other style files */
+
+/* You can add global styles to this file, and also import other style files */

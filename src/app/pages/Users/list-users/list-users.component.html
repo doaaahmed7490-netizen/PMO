@@ -1,0 +1,269 @@
+<div class="content-container">
+  <h2>  {{'Users' |translate}}
+  
+  </h2>
+  <hr />
+  <button
+    class="special-button mb-3"
+    [hidden]="!this.canAdd"
+    type="button"
+    (click)="ShowAdd()"
+  >
+    {{ "Add" | translate }}
+  </button>
+  <!-- <br/>
+            <br/>
+            <button class="btn btn-success" nbButton status="primary" type="button" (click)="ShowMap()">
+              {{ "Show" | translate }}
+          </button> -->
+  <!--    <br/>
+          <br/>
+          <button class="btn btn-success" nbButton status="primary" type="button" (click)="ShowMap1()">
+            {{ "show" | translate }}
+        </button> -->
+
+  <!--  <div class="search-container container w-75">
+            <div class="row row-cols-4 w-100">
+                <div class="col">
+                    <input type="text" autocomplete="on" [placeholder]="'firstName' | translate" nbInput class="w-100 mw-100" />
+                </div>
+                <div class="col">
+                    <input type="text" [placeholder]="'lastName' | translate" nbInput class="w-100 mw-100" />
+                </div>
+                <div class="col p-0">
+                    <input type="text" [placeholder]="'email' | translate" nbInput class="w-100 mw-100" />
+                </div>
+                <div class="col d-flex">
+                    <select placeholder="Select Showcase" class="mw-100 w-100" name="selectedOption" ngModel>
+                        <option value=1 >ممتاز</option>
+                        <option value=2>اولى </option>
+                        <option value=3>تانيه</option>
+                        <option value=4>تالته</option>
+                        <option value=5>رابعه</option>
+                    </select>
+                </div>
+            </div>
+        </div>  -->
+  <!--    <div class="container d-flex justify-content-center w-75">
+            <div class="row w-100 d-flex justify-content-center">
+                <div class="col-md-4 ">
+                    <button class="btn mx-2" nbButton status="primary" type="button" style="background-color: #3f2985; color: white;">
+            {{ "search" | translate }}
+          </button>
+                    <button type="submit" class="btn btn-primary">
+
+                {{ "reset" | translate }}
+              </button>
+                </div>
+            </div>
+        </div> -->
+  <!--   <nb-card class="table-container">
+        <table mat-table [dataSource]="this.parcel" matSort> -->
+  <nb-card class="table-container">
+    <table
+      class="users-table table-striped"
+      mat-table
+      [dataSource]="dataSource"
+      matSort
+      (matSortChange)="sortData($event)"
+      matSortDisableClear
+      matSortDirection="asc"
+    >
+      <!-- lawNumber Column -->
+      <ng-container matColumnDef="Name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "Name" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <!-- {{element.name}} -->
+          <span *ngIf="element.name == ''; else data">
+            <input
+              type="text"
+              #nameFilter
+              nbInput
+              class="w-30 mw-30"
+              matInput
+              (keyup)="applyFilter($event)"
+              [placeholder]="'User' |translate" 
+              class="text-center"
+            />
+          </span>
+          <ng-template #data>
+            <span>{{ element.name }}</span>
+          </ng-template>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="Role">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "Role" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <!-- {{element.name}} -->
+          <span *ngIf="element.roleName == ''; else data">
+            <input
+              type="text"
+              #roleFilter
+              nbInput
+              class="w-30 mw-30"
+              matInput
+              (keyup)="applyFilter($event)"
+              [placeholder]="'Role' |translate" 
+              class="text-center"
+            />
+          </span>
+          <ng-template #data>
+            <span>{{ element.roleName }}</span>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="NationalId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "NationalId" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <!-- {{element.nationalId}}  -->
+          <span *ngIf="element.name == ''; else data"> </span>
+          <ng-template #data>
+            <span>{{ element.nationalId }}</span>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Phone">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "Phone" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <!-- {{element.phoneNumber}}  -->
+          <span *ngIf="element.name == ''; else data"> </span>
+          <ng-template #data>
+            <span>{{ element.phoneNo }}</span>
+          </ng-template>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="Mobil">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "Mobil" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <!-- {{element.mobil}} -->
+          <span *ngIf="element.name == ''; else data"> </span>
+          <ng-template #data>
+            <span>{{ element.mobil }}</span>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "Email" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <!-- {{element.email}} -->
+          <span *ngIf="element.email == ''; else data"> </span>
+          <ng-template #data>
+            <span>{{ element.email }}</span>
+          </ng-template>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="Activate">
+        <th mat-header-cell *matHeaderCellDef>{{ "Activate" | translate }}</th>
+        <td mat-cell *matCellDef="let element">
+          <span *ngIf="element.name == ''; else data"> </span>
+          <ng-template #data>
+            <nb-toggle
+              [(ngModel)]="element.isActive"
+              (change)="onToggleChange(element, dialog)"
+            >
+            </nb-toggle>
+          </ng-template>
+          <nb-card>
+            <!-- <nb-card-body class="example-items-col"> -->
+
+            <!-- </nb-card-body> -->
+
+            <!-- (change)="changeStatus(element,dialog)"  -->
+          </nb-card>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="DeActivate">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "DeActivate" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <button
+            class="submitBtn"
+            nbButton
+            type="button"
+            (click)="deacivate(ref)"
+            status="primary"
+            nbButton
+          >
+            {{ "Deactivate" | translate }}
+          </button>
+        </td>
+      </ng-container>
+      <!-- <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef> {{'Actions' |translate}} </th>
+                <td mat-cell *matCellDef="let element">
+                     <button mat-mini-fab color="primary" (click)="ShowEdit(element.id)"
+                        class="mr-1">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                   <button mat-mini-fab color="warn" type="button" (click)="delete(element.id,element.name)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+
+                </td>
+            </ng-container> -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <span *ngIf="element.sortable == false; else data"> </span>
+          <ng-template #data>
+            <span>
+              <button
+                mat-mini-fab
+                color="primary"
+                [hidden]="!this.canEdit"
+                (click)="ShowEdit(element.id)"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+            </span>
+          </ng-template>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="actions1">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <span *ngIf="element.sortable == false; else data"> </span>
+          <ng-template #data>
+            <span>
+              <button
+                mat-mini-fab
+                color="warn"
+                [hidden]="!this.canDelete"
+                (click)="delete(element.id, element.name)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </span>
+          </ng-template>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </nb-card>
+  <mat-paginator
+    [dir]="dir"
+    [length]="totalRecords"
+    [pageIndex]="searchModel.PageNumber - 1"
+    [pageSize]="searchModel.PageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="search($event)"
+    showFirstLastButtons
+  ></mat-paginator>
+</div>

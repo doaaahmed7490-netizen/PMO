@@ -1,0 +1,493 @@
+<!-- -------------------------------------------------------------------------------------- -->
+<!-- ENBLogoPro -->
+<!-- <img src="../../../assets/Tabouk.png"/> -->
+
+<div class="surv-container">
+
+  <div class="header-surv">
+    
+    <div class="colHeaderSurv">
+      <div class="survLogo">
+        <img src="../../../assets/ENBLogoPro.png"/>
+      </div> 
+      <h1 id="title">{{this.surveyName}}</h1>
+      <p id="description">{{this.surveyDesc}}</p>
+      <h1 id="title">{{Message}}</h1>
+
+      </div>
+
+      <div class="colImgSurv">
+        <div id="image-surv">
+          <img src="../../../assets/survey_icon.svg" width="400" height="400" alt="Survey form icon">
+        </div>
+    </div>
+  </div>
+  <div style="clear: both;"></div>
+  <form  [formGroup]="SurveyForm" (ngSubmit)="onSubmit()" [hidden]="isSubmitted">
+
+      <ol>
+          <li *ngFor="let hero of this.QstModel;let i = index" >
+    <!-- <h5>Overall, how would you rate the Survey?</h5> -->
+    <!-- <span class="badge">hero.questText</span> -->
+    <div class="survey-group">
+
+    <h5>{{hero.questText}}</h5>
+    <div class="rating" *ngIf="hero.ansTypeEnum==2">
+      <input type="radio" name="rating_{{i+1}}" id="rating-1_{{i+1}}" value="1" (change)="onItemChange(hero.id,$event.target.value)">
+      <input type="radio" name="rating_{{i+1}}" id="rating-2_{{i+1}}" value="2" (change)="onItemChange(hero.id,$event.target.value)">
+      <input type="radio" name="rating_{{i+1}}" id="rating-3_{{i+1}}" value="3" (change)="onItemChange(hero.id,$event.target.value)">
+      <input type="radio" name="rating_{{i+1}}" id="rating-4_{{i+1}}" value="4" (change)="onItemChange(hero.id,$event.target.value)">
+      <input type="radio" name="rating_{{i+1}}" id="rating-5_{{i+1}}" value="5" (change)="onItemChange(hero.id,$event.target.value)">
+
+      <div class="rating_star">
+        <label for="rating-1_{{i+1}}" class="rating__star">&starf;</label>
+        <label for="rating-2_{{i+1}}" class="rating__star">&starf;</label>
+        <label for="rating-3_{{i+1}}" class="rating__star">&starf;</label>
+        <label for="rating-4_{{i+1}}" class="rating__star">&starf;</label>
+        <label for="rating-5_{{i+1}}" class="rating__star">&starf;</label>
+
+      </div>
+    </div>
+    
+      <div class="butRadio"*ngIf="hero.ansTypeEnum==1">
+
+          <input class="hidden radio-label yes-button" type="radio" name="rating_{{i+1}}"
+           id="yes-button_{{i+1}}"
+          value="100" (change)="onItemChangeYesNo(hero.id,$event.target.value)"/>
+          <label class="button-label" for="yes-button_{{i+1}}">
+            Yes
+          </label>
+          <input class="hidden radio-label no-button" type="radio" name="rating_{{i+1}}" id="no-button_{{i+1}}"
+          value="0" (change)="onItemChangeYesNo(hero.id,$event.target.value)"/>
+          <label class="button-label" for="no-button_{{i+1}}">
+            No
+          </label>
+        </div>
+      </div>
+      <div class="butRadio"*ngIf="hero.ansTypeEnum==5">
+       <input class="hidden radio-label no-button" value="10" type="radio" name="provNu_{{i+1}}" id="1_{{i+1}}" 
+       (change)="onItemChangeRating(hero.id,$event.target.value)"/>
+        <label class="button-label" for="1_{{i+1}}">
+          1/10
+        </label>
+        <input class="hidden radio-label no-button" value="20" type="radio" name="provNu_{{i+1}}" id="2_{{i+1}}"
+        (change)="onItemChangeRating(hero.id,$event.target.value)"/>
+        <label class="button-label" for="2_{{i+1}}">
+          2/10
+        </label>
+        <input class="hidden radio-label no-button" value="30"  type="radio" name="provNu_{{i+1}}" id="3_{{i+1}}"
+        (change)="onItemChangeRating(hero.id,$event.target.value)"/>
+        <label class="button-label" for="3_{{i+1}}">
+          3/10
+        </label>
+        <input class="hidden radio-label no-button" value="40" type="radio" name="provNu_{{i+1}}" id="4_{{i+1}}"
+        (change)="onItemChangeRating(hero.id,$event.target.value)"/>
+        <label class="button-label" for="4_{{i+1}}">
+          4/10
+        </label>
+        <input class="hidden radio-label maybe-button" value="50" type="radio" name="provNu_{{i+1}}" id="5_{{i+1}}"
+        (change)="onItemChangeRating(hero.id,$event.target.value)"/>
+        <label class="button-label" for="5_{{i+1}}">
+          5/10
+        </label>
+        <input class="hidden radio-label maybe-button" value="60" type="radio" name="provNu_{{i+1}}" id="6_{{i+1}}"
+        (change)="onItemChangeRating(hero.id,$event.target.value)"/>
+        <label class="button-label" for="6_{{i+1}}">
+          6/10
+        </label>
+        <input class="hidden radio-label maybe-button" value="70" type="radio" name="provNu_{{i+1}}" id="7_{{i+1}}"
+        (change)="onItemChangeRating(hero.id,$event.target.value)"/>
+        <label class="button-label" for="7_{{i+1}}">
+          7/10
+        </label>
+        <input class="hidden radio-label maybe-button" value="80" type="radio" name="provNu_{{i+1}}" id="8_{{i+1}}"
+        (change)="onItemChangeRating(hero.id,$event.target.value)"/>
+        <label class="button-label" for="8_{{i+1}}">
+          8/10
+        </label>
+        <input class="hidden radio-label yes-button" value="90" type="radio" name="provNu_{{i+1}}" id="9_{{i+1}}"
+        (change)="onItemChangeRating(hero.id,$event.target.value)"/>
+        <label class="button-label" for="9_{{i+1}}">
+          9/10
+        </label>
+        <input class="hidden radio-label yes-button" value="100" type="radio" name="provNu_{{i+1}}" id="10_{{i+1}}"
+        (change)="onItemChangeRating(hero.id,$event.target.value)"/>
+        <label class="button-label" for="10_{{i+1}}">
+          10/10
+        </label>
+      </div>
+
+      <div id="smileys" *ngIf="hero.ansTypeEnum==4">
+        <input type="radio" name="smiley_{{i+1}}" value="sad" class="sad" (change)="onItemChangeFaces(hero.id,$event.target.value)">
+        <input type="radio" name="smiley_{{i+1}}" value="sad1" class="sadB" (change)="onItemChangeFaces(hero.id,$event.target.value)">
+        <input type="radio" name="smiley_{{i+1}}" value="neutral" class="neutral" (change)="onItemChangeFaces(hero.id,$event.target.value)">
+        <input type="radio" name="smiley_{{i+1}}" value="happy" class="happy" (change)="onItemChangeFaces(hero.id,$event.target.value)">
+        <input type="radio" name="smiley_{{i+1}}" value="happy1" class="happyB" (change)="onItemChangeFaces(hero.id,$event.target.value)">
+        </div>
+
+    
+        <div id="likeac" *ngIf="hero.ansTypeEnum==3">
+          <input type="radio" name="like_{{i+1}}" value="like" class="like"
+          (change)="onItemChangeLikeDisLike(hero.id,$event.target.value)">
+          <input type="radio" name="like_{{i+1}}" value="dislike" class="dislike"
+          (change)="onItemChangeLikeDisLike(hero.id,$event.target.value)">
+        </div>
+        <div class="Percent"  *ngIf="hero.ansTypeEnum==6">
+          <input type="radio" class="radio five" name="progress_{{i+1}}" value="five" id="five_{{i+1}}"
+          (change)="onItemChangeRatingPrecentage(hero.id,$event.target.value)">
+          <label for="five_{{i+1}}" class="label">5%</label>
+        
+          <input type="radio" class="radio twentyfive" name="progress_{{i+1}}" value="twentyfive" id="twentyfive_{{i+1}}" 
+          (change)="onItemChangeRatingPrecentage(hero.id,$event.target.value)">
+          
+          <label for="twentyfive_{{i+1}}" class="label">25%</label>
+        
+          <input type="radio" class="radio fifty" name="progress_{{i+1}}" value="fifty" id="fifty_{{i+1}}"
+          (change)="onItemChangeRatingPrecentage(hero.id,$event.target.value)">
+          
+          <label for="fifty_{{i+1}}" class="label">50%</label>
+        
+          <input type="radio" class="radio seventyfive" name="progress_{{i+1}}" value="seventyfive" id="seventyfive_{{i+1}}"
+          (change)="onItemChangeRatingPrecentage(hero.id,$event.target.value)">
+          
+          <label for="seventyfive_{{i+1}}" class="label">75%</label>
+        
+          <input type="radio" class="radio onehundred" name="progress_{{i+1}}" value="onehundred" id="onehundred_{{i+1}}"
+          (change)="onItemChangeRatingPrecentage(hero.id,$event.target.value)">
+          
+          <label for="onehundred_{{i+1}}" class="label">100%</label>
+        
+          <div class="progress">
+            <div class="progress-bar"></div>
+          </div>
+        </div>
+   
+        <!-- <div class="butRadio"*ngIf="hero.ansTypeEnum==5">
+
+          <input class="hidden radio-label no-button" type="radio" name="1"+hero.questText  id="1"+hero.questText
+          value="10" (change)="onItemChangeRating(hero.id,$event.target.value)"/>
+          <label class="button-label" for="1"+hero.questText>
+            1/10
+          </label>
+          <input class="hidden radio-label no-button" type="radio" name="2"+hero.questText   id="2"+hero.questText
+          value="20" (change)="onItemChangeRating(hero.id,$event.target.value)"/>
+          <label class="button-label" for="2"+hero.questText>
+            2/10
+          </label>
+          <input class="hidden radio-label no-button" type="radio" name="3"+hero.questText   id="3"+hero.questText
+          value="30" (change)="onItemChangeRating(hero.id,$event.target.value)"/>
+          <label class="button-label" for="3"+hero.questText >
+            3/10
+          </label>
+          <input class="hidden radio-label no-button" type="radio" name="3"+hero.questText  id="4"+hero.questText
+          value="40" (change)="onItemChangeRating(hero.id,$event.target.value)"/>
+          <label class="button-label" for="4"+hero.questText>
+            4/10
+          </label>
+          <input class="hidden radio-label maybe-button" type="radio" name="4"+hero.questText  id="5"+hero.questText
+          value="50" (change)="onItemChangeRating(hero.id,$event.target.value)"/>
+          <label class="button-label" for="5"+hero.questText>
+            5/10
+          </label>
+          <input class="hidden radio-label maybe-button" type="radio" [attr.name]  id="6"+hero.questText 
+          value="60" (change)="onItemChangeRating(hero.id,$event.target.value)"/>
+          <label class="button-label" for="6"+hero.questText>
+            6/10
+          </label>
+          <input class="hidden radio-label maybe-button" type="radio" name="8"+hero.questText id="7"+hero.questText
+          value="70" (change)="onItemChangeRating(hero.id,$event.target.value)"/>
+          <label class="button-label" for="7"+hero.questText>
+            7/10
+          </label>
+          <input class="hidden radio-label maybe-button" type="radio" name="7"+hero.questText  id="8"+hero.questText
+          value="80" (change)="onItemChangeRating(hero.id,$event.target.value)"/>
+          <label class="button-label" for="8"+hero.questText>
+            8/10
+          </label>
+          <input class="hidden radio-label yes-button" type="radio" name="22"+hero.questText  id="9"+hero.questText
+          value="90" (change)="onItemChangeRating(hero.id,$event.target.value)"/>
+          <label class="button-label" for="9"+hero.questText>
+            9/10
+          </label>
+          <input class="hidden radio-label yes-button" type="radio" name=hero.questText id="10"+hero.questText
+          value="100" (change)="onItemChangeRating(hero.id,$event.target.value)"/>
+          <label class="button-label" for="10"+hero.questText>
+            10/10
+          </label>
+        </div> -->
+          </li>
+      </ol>
+<!--       <div class="survey-group">
+        <h5>1- Rate the service 5/100%?</h5>
+        <div class="Percent">
+          <input type="radio" class="radio five" name="progress" value="five" id="five">
+          <label for="five" class="label">5%</label>
+        
+          <input type="radio" class="radio twentyfive" name="progress" value="twentyfive" id="twentyfive" checked>
+          <label for="twentyfive" class="label">25%</label>
+        
+          <input type="radio" class="radio fifty" name="progress" value="fifty" id="fifty">
+          <label for="fifty" class="label">50%</label>
+        
+          <input type="radio" class="radio seventyfive" name="progress" value="seventyfive" id="seventyfive">
+          <label for="seventyfive" class="label">75%</label>
+        
+          <input type="radio" class="radio onehundred" name="progress" value="onehundred" id="onehundred">
+          <label for="onehundred" class="label">100%</label>
+        
+          <div class="progress">
+            <div class="progress-bar"></div>
+          </div>
+        </div>
+      </div> -->
+    
+<!--       <div class="survey-group">
+      <h5>2- Overall, how would you rate the Survey UserSurvey?</h5>
+      <div class="rating">
+        <input type="radio" name="ratingstar" id="rating-6" value="1">
+        <input type="radio" name="ratingstar" id="rating-7" value="2">
+        <input type="radio" name="ratingstar" id="rating-8" value="3">
+        <input type="radio" name="ratingstar" id="rating-9" value="4">
+        <input type="radio" name="ratingstar" id="rating-10" value="5">
+  
+        <div class="rating_star">
+          <label for="rating-6" class="rating__star">&starf;</label>
+          <label for="rating-7" class="rating__star">&starf;</label>
+          <label for="rating-8" class="rating__star">&starf;</label>
+          <label for="rating-9" class="rating__star">&starf;</label>
+          <label for="rating-10" class="rating__star">&starf;</label>
+  
+        </div>
+      </div>
+    </div>
+
+    <div class="survey-group">
+      <h5>1- How satisfied are you with the service provided?</h5>
+        <div id="smileys">
+        <input type="radio" name="smiley" value="sad" class="sad">
+        <input type="radio" name="smiley" value="sad" class="sadB">
+        <input type="radio" name="smiley" value="neutral" class="neutral">
+        <input type="radio" name="smiley" value="happy" class="happy" checked="checked">
+        <input type="radio" name="smiley" value="happy" class="happyB">
+        </div>
+    </div>
+
+    <div class="survey-group">
+      <h5>2- How satisfied are you with the service provided?</h5>
+        <div id="smileys">
+        <input type="radio" name="smiley-2" value="sad" class="sad">
+        <input type="radio" name="smiley-2" value="sad" class="sadB" checked="checked">
+        <input type="radio" name="smiley-2" value="neutral" class="neutral">
+        <input type="radio" name="smiley-2" value="happy" class="happy">
+        <input type="radio" name="smiley-2" value="happy" class="happyB">
+        </div>
+    </div>
+    
+    <div class="survey-group">
+      <h5>1- How satisfied are you with the service provided?</h5>
+        <div id="likeac">
+          <input type="radio" name="like" value="like" class="like">
+          <input type="radio" name="like" value="dislike" class="dislike" checked="checked">
+        </div>
+    </div>
+
+    <div class="survey-group">
+      <h5>2- How satisfied are you with the service provided?</h5>
+        <div id="likeac">
+          <input type="radio" name="like-2" value="like" class="like" checked="checked">
+          <input type="radio" name="like-2" value="dislike" class="dislike">
+        </div>
+    </div>
+
+    <div class="survey-group">
+      <h5>1- Are you satisfied with the service? 
+      </h5>
+        <div class="butRadio">
+          <input class="hidden radio-label yes-button" type="radio" name="yas-no" id="yes-button" checked="checked"/>
+          <label class="button-label" for="yes-button">
+            Yes
+          </label>
+          <input class="hidden radio-label no-button" type="radio" name="yas-no" id="no-button"/>
+          <label class="button-label" for="no-button">
+            No
+          </label>
+        </div>
+    </div>
+
+    <div class="survey-group">
+      <h5>2- Are you satisfied with the service? 
+      </h5>
+        <div class="butRadio">
+          <input class="hidden radio-label yes-button" type="radio" name="yas-no-2" id="yes-button-2" />
+          <label class="button-label" for="yes-button-2">
+            Yes
+          </label>
+          <input class="hidden radio-label no-button" type="radio" name="yas-no-2" id="no-button-2" checked="checked"/>
+          <label class="button-label" for="no-button-2">
+            No
+          </label>
+        </div>
+    </div>
+
+    <div class="survey-group">
+      <h5>1- Rate the service 5/100%?</h5>
+      <div class="Percent">
+        <input type="radio" class="radio five" name="progress" value="five" id="five">
+        <label for="five" class="label">5%</label>
+      
+        <input type="radio" class="radio twentyfive" name="progress" value="twentyfive" id="twentyfive" checked>
+        <label for="twentyfive" class="label">25%</label>
+      
+        <input type="radio" class="radio fifty" name="progress" value="fifty" id="fifty">
+        <label for="fifty" class="label">50%</label>
+      
+        <input type="radio" class="radio seventyfive" name="progress" value="seventyfive" id="seventyfive">
+        <label for="seventyfive" class="label">75%</label>
+      
+        <input type="radio" class="radio onehundred" name="progress" value="onehundred" id="onehundred">
+        <label for="onehundred" class="label">100%</label>
+      
+        <div class="progress">
+          <div class="progress-bar"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="survey-group">
+      <h5>2- Rate the service 5/100%?</h5>
+      <div class="Percent">
+        <input type="radio" class="radio five" name="progress-2" value="five-2" id="five-2">
+        <label for="five-2" class="label">5%</label>
+      
+        <input type="radio" class="radio twentyfive" name="progress-2" value="twentyfive-2" id="twentyfive-2" >
+        <label for="twentyfive-2" class="label">25%</label>
+      
+        <input type="radio" class="radio fifty" name="progress-2" value="fifty-2" id="fifty-2">
+        <label for="fifty-2" class="label">50%</label>
+      
+        <input type="radio" class="radio seventyfive" name="progress-2" value="seventyfive-2" id="seventyfive-2" checked>
+        <label for="seventyfive-2" class="label">75%</label>
+      
+        <input type="radio" class="radio onehundred" name="progress-2" value="onehundred-2" id="onehundred-2">
+        <label for="onehundred-2" class="label">100%</label>
+      
+        <div class="progress">
+          <div class="progress-bar"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="survey-group">
+      <h5>1- Rate the service 0 - 10/10?</h5>
+        <div class="butRadio">
+          <input class="hidden radio-label no-button" type="radio" name="provNu" id="1" checked="checked"/>
+          <label class="button-label" for="1">
+            1/10
+          </label>
+          <input class="hidden radio-label no-button" type="radio" name="provNu" id="2"/>
+          <label class="button-label" for="2">
+            2/10
+          </label>
+          <input class="hidden radio-label no-button" type="radio" name="provNu" id="3"/>
+          <label class="button-label" for="3">
+            3/10
+          </label>
+          <input class="hidden radio-label no-button" type="radio" name="provNu" id="4"/>
+          <label class="button-label" for="4">
+            4/10
+          </label>
+          <input class="hidden radio-label maybe-button" type="radio" name="provNu" id="5"/>
+          <label class="button-label" for="5">
+            5/10
+          </label>
+          <input class="hidden radio-label maybe-button" type="radio" name="provNu" id="6"/>
+          <label class="button-label" for="6">
+            6/10
+          </label>
+          <input class="hidden radio-label maybe-button" type="radio" name="provNu" id="7"/>
+          <label class="button-label" for="7">
+            7/10
+          </label>
+          <input class="hidden radio-label maybe-button" type="radio" name="provNu" id="8"/>
+          <label class="button-label" for="8">
+            8/10
+          </label>
+          <input class="hidden radio-label yes-button" type="radio" name="provNu" id="9"/>
+          <label class="button-label" for="9">
+            9/10
+          </label>
+          <input class="hidden radio-label yes-button" type="radio" name="provNu" id="10"/>
+          <label class="button-label" for="10">
+            10/10
+          </label>
+        </div>
+    </div>
+
+    <div class="survey-group">
+      <h5>2- Rate the service 0 - 10/10?</h5>
+        <div class="butRadio">
+          <input class="hidden radio-label no-button" type="radio" name="provNu-2" id="11" />
+          <label class="button-label" for="11">
+            1/10
+          </label>
+          <input class="hidden radio-label no-button" type="radio" name="provNu-2" id="12"/>
+          <label class="button-label" for="12">
+            2/10
+          </label>
+          <input class="hidden radio-label no-button" type="radio" name="provNu-2" id="13"/>
+          <label class="button-label" for="13">
+            3/10
+          </label>
+          <input class="hidden radio-label no-button" type="radio" name="provNu-2" id="14"/>
+          <label class="button-label" for="14">
+            4/10
+          </label>
+          <input class="hidden radio-label maybe-button" type="radio" name="provNu-2" id="15" checked="checked"/>
+          <label class="button-label" for="15">
+            5/10
+          </label>
+          <input class="hidden radio-label maybe-button" type="radio" name="provNu-2" id="16"/>
+          <label class="button-label" for="16">
+            6/10
+          </label>
+          <input class="hidden radio-label maybe-button" type="radio" name="provNu-2" id="17"/>
+          <label class="button-label" for="17">
+            7/10
+          </label>
+          <input class="hidden radio-label maybe-button" type="radio" name="provNu-2" id="18"/>
+          <label class="button-label" for="18">
+            8/10
+          </label>
+          <input class="hidden radio-label yes-button" type="radio" name="provNu-2" id="19"/>
+          <label class="button-label" for="19">
+            9/10
+          </label>
+          <input class="hidden radio-label yes-button" type="radio" name="provNu-2" id="20"/>
+          <label class="button-label" for="20">
+            10/10
+          </label>
+        </div>
+    </div>
+
+    <div class="survey-group">
+      <h5>Any comments or suggestions?</h5>
+      <textarea
+        id="comments"
+        class="input-textarea"
+        name="comment"
+        placeholder="Enter your comment here..."></textarea>
+    </div>
+
+    <div class="survey-group">
+      <button type="submit" id="submit" class="submit-button">
+        Submit
+      </button>
+    </div> -->
+
+    <div class="survey-group">
+      <button type="submit" [hidden]="isSubmitted" id="submit" class="submit-button">
+        {{'submit' |translate}}      </button>
+    </div> 
+  </form>
+</div>
+

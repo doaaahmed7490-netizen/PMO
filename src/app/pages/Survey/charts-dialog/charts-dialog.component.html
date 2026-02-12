@@ -1,0 +1,337 @@
+<nb-card size="large">
+  <nb-card-header>
+    <div class="container">
+      <div class="row d-flex align-items-center justify-content-between">
+        <h3>{{ "ChartsTitle" | translate }}</h3>
+        <div class="cursor-pointer" (click)="closeCharts()">
+          <nb-icon class="close-icon" status="danger" icon="close"> </nb-icon>
+        </div>
+      </div>
+    </div>
+  </nb-card-header>
+  <nb-card-body>
+     <div class="col-md-6"[hidden]="this.length<1">
+      <nb-card   class="min-w-50vw"
+      size="medium">
+          <nb-card-header>
+              <h5>{{ Qst1 }}</h5>
+
+          </nb-card-header>
+          <nb-card-body class="d-flex align-items-center justify-content-center">
+              <h4>{{NoOfVotes}} {{total1}} </h4>
+              <br/>
+              <canvas id="pieChart1"></canvas>
+          </nb-card-body>
+      </nb-card>
+  </div>  
+
+  <div class="col-md-6"[hidden]="this.length<2">
+    <nb-card   class="min-w-50vw"
+    size="medium">
+        <nb-card-header>
+            <h5>{{ Qst2 }}</h5>
+
+        </nb-card-header>
+        <nb-card-body class="d-flex align-items-center justify-content-center">
+            <h4>{{NoOfVotes}} {{total2}} </h4>
+            <br/>
+            <canvas id="pieChart2"></canvas>
+        </nb-card-body>
+    </nb-card>
+</div> 
+
+<div class="col-md-6"[hidden]="this.length<3">
+  <nb-card   class="min-w-50vw"
+  size="medium">
+      <nb-card-header>
+          <h5>{{ Qst3 }}</h5>
+
+      </nb-card-header>
+      <nb-card-body class="d-flex align-items-center justify-content-center">
+        <h4>{{NoOfVotes}} {{total3}} </h4>
+        <br/>
+          <canvas id="pieChart3"></canvas>
+      </nb-card-body>
+  </nb-card>
+</div> 
+
+<div class="col-md-6"[hidden]="this.length<4">
+  <nb-card   class="min-w-50vw"
+  size="medium">
+      <nb-card-header>
+          <h5>{{ Qst4 }}</h5>
+
+      </nb-card-header>
+      <nb-card-body class="d-flex align-items-center justify-content-center">
+        <h4>{{NoOfVotes}} {{total4}} </h4>
+        <br/>
+          <canvas id="pieChart4"></canvas>
+      </nb-card-body>
+  </nb-card>
+</div> 
+
+<div class="col-md-6"[hidden]="this.length<5">
+  <nb-card   class="min-w-50vw"
+  size="medium">
+      <nb-card-header>
+          <h5>{{ Qst5 }}</h5>
+
+      </nb-card-header>
+      <nb-card-body class="d-flex align-items-center justify-content-center">
+        <h4>{{NoOfVotes}} {{total5}} </h4>
+        <br/>
+          <canvas id="pieChart5"></canvas>
+      </nb-card-body>
+  </nb-card>
+</div> 
+
+<div class="col-md-6"[hidden]="this.length<6">
+  <nb-card   class="min-w-50vw"
+  size="medium">
+      <nb-card-header>
+          <h5>{{ Qst6 }}</h5>
+
+      </nb-card-header>
+      <nb-card-body class="d-flex align-items-center justify-content-center">
+        <h4>{{NoOfVotes}} {{total6}} </h4>
+        <br/>
+          <canvas id="pieChart6"></canvas>
+      </nb-card-body>
+  </nb-card>
+</div> 
+
+<div class="col-md-6"[hidden]="this.length<7">
+  <nb-card   class="min-w-50vw"
+  size="medium">
+      <nb-card-header>
+          <h5>{{ Qst7 }}</h5>
+
+      </nb-card-header>
+      <nb-card-body class="d-flex align-items-center justify-content-center">
+        <h4>{{NoOfVotes}} {{total7}} </h4>
+        <br/>
+          <canvas id="pieChart7"></canvas>
+      </nb-card-body>
+  </nb-card>
+</div> 
+
+<div class="col-md-6"[hidden]="this.length<8">
+  <nb-card   class="min-w-50vw"
+  size="medium">
+      <nb-card-header>
+          <h5>{{ Qst8 }}</h5>
+
+      </nb-card-header>
+      <nb-card-body class="d-flex align-items-center justify-content-center">
+        <h4>{{NoOfVotes}} {{total8}} </h4>
+        <br/>
+          <canvas id="pieChart8"></canvas>
+      </nb-card-body>
+  </nb-card>
+</div> 
+<div class="col-md-6"[hidden]="this.length<9">
+  <nb-card   class="min-w-50vw"
+  size="medium">
+      <nb-card-header>
+          <h5>{{ Qst9 }}</h5>
+
+      </nb-card-header>
+      <nb-card-body class="d-flex align-items-center justify-content-center">
+        <h4>{{NoOfVotes}} {{total9}} </h4>
+        <br/>
+          <canvas id="pieChart9"></canvas>
+      </nb-card-body>
+  </nb-card>
+</div> 
+
+<div class="col-md-6"[hidden]="this.length<10">
+  <nb-card   class="min-w-50vw"
+  size="medium">
+      <nb-card-header>
+          <h5>{{ Qst10 }}</h5>
+
+      </nb-card-header>
+      <nb-card-body class="d-flex align-items-center justify-content-center">
+        <h4>{{NoOfVotes}} {{total10}} </h4>
+        <br/>
+          <canvas id="pieChart10"></canvas>
+      </nb-card-body>
+  </nb-card>
+</div>
+
+<div class="col-md-6"[hidden]="this.length<11">
+  <nb-card   class="min-w-50vw"
+  size="medium">
+      <nb-card-header>
+          <h5>{{ Qst11 }}</h5>
+
+      </nb-card-header>
+      <nb-card-body class="d-flex align-items-center justify-content-center">
+        <h4>{{NoOfVotes}} {{total11}} </h4>
+        <br/>
+          <canvas id="pieChart11"></canvas>
+      </nb-card-body>
+  </nb-card>
+</div>
+
+
+<div class="col-md-6"[hidden]="this.length<12">
+  <nb-card   class="min-w-50vw"
+  size="medium">
+      <nb-card-header>
+          <h5>{{ Qst12 }}</h5>
+
+      </nb-card-header>
+      <nb-card-body class="d-flex align-items-center justify-content-center">
+        <h4>{{NoOfVotes}} {{total12}} </h4>
+        <br/>
+          <canvas id="pieChart12"></canvas>
+      </nb-card-body>
+  </nb-card>
+</div>
+<div class="col-md-6"[hidden]="this.length<13">
+  <nb-card   class="min-w-50vw"
+  size="medium">
+      <nb-card-header>
+          <h5>{{ Qst13 }}</h5>
+
+      </nb-card-header>
+      <nb-card-body class="d-flex align-items-center justify-content-center">
+        <h4>{{NoOfVotes}} {{total13}} </h4>
+        <br/>
+          <canvas id="pieChart13"></canvas>
+      </nb-card-body>
+  </nb-card>
+</div>
+
+<div class="col-md-6"[hidden]="this.length<14">
+  <nb-card   class="min-w-50vw"
+  size="medium">
+      <nb-card-header>
+          <h5>{{ Qst14 }}</h5>
+
+      </nb-card-header>
+      <nb-card-body class="d-flex align-items-center justify-content-center">
+        <h4>{{NoOfVotes}} {{total14}} </h4>
+        <br/>
+          <canvas id="pieChart14"></canvas>
+      </nb-card-body>
+  </nb-card>
+</div>
+
+<div class="col-md-6"[hidden]="this.length<15">
+  <nb-card   class="min-w-50vw"
+  size="medium">
+      <nb-card-header>
+          <h5>{{ Qst15 }}</h5>
+
+      </nb-card-header>
+      <nb-card-body class="d-flex align-items-center justify-content-center">
+        <h4>{{NoOfVotes}} {{total15}} </h4>
+        <br/>
+          <canvas id="pieChart15"></canvas>
+      </nb-card-body>
+  </nb-card>
+</div>
+
+<div class="col-md-6"[hidden]="this.length<16">
+  <nb-card   class="min-w-50vw"
+  size="medium">
+      <nb-card-header>
+          <h5>{{ Qst16 }}</h5>
+
+      </nb-card-header>
+      <nb-card-body class="d-flex align-items-center justify-content-center">
+        <h4>{{NoOfVotes}} {{total16}} </h4>
+        <br/>
+          <canvas id="pieChart16"></canvas>
+      </nb-card-body>
+  </nb-card>
+</div>
+
+<div class="col-md-6"[hidden]="this.length<17">
+  <nb-card   class="min-w-50vw"
+  size="medium">
+      <nb-card-header>
+          <h5>{{ Qst17 }}</h5>
+
+      </nb-card-header>
+      <nb-card-body class="d-flex align-items-center justify-content-center">
+        <h4>{{NoOfVotes}} {{total17}} </h4>
+        <br/>
+          <canvas id="pieChart17"></canvas>
+      </nb-card-body>
+  </nb-card>
+</div>
+
+<div class="col-md-6"[hidden]="this.length<18">
+  <nb-card   class="min-w-50vw"
+  size="medium">
+      <nb-card-header>
+          <h5>{{ Qst18 }}</h5>
+
+      </nb-card-header>
+      <nb-card-body class="d-flex align-items-center justify-content-center">
+        <h4>{{NoOfVotes}} {{total18}} </h4>
+        <br/>
+          <canvas id="pieChart18"></canvas>
+      </nb-card-body>
+  </nb-card>
+</div>
+<div class="col-md-6"[hidden]="this.length<19">
+  <nb-card   class="min-w-50vw"
+  size="medium">
+      <nb-card-header>
+          <h5>{{ Qst19 }}</h5>
+
+      </nb-card-header>
+      <nb-card-body class="d-flex align-items-center justify-content-center">
+        <h4>{{NoOfVotes}} {{total19}} </h4>
+        <br/>
+          <canvas id="pieChart19"></canvas>
+      </nb-card-body>
+  </nb-card>
+</div>
+<div class="col-md-6"[hidden]="this.length<20">
+  <nb-card   class="min-w-50vw"
+  size="medium">
+      <nb-card-header>
+          <h5>{{ Qst20 }}</h5>
+
+      </nb-card-header>
+      <nb-card-body class="d-flex align-items-center justify-content-center">
+        <h4>{{NoOfVotes}} {{total20}} </h4>
+        <br/>
+          <canvas id="pieChart20"></canvas>
+      </nb-card-body>
+  </nb-card>
+</div>
+    <!-- <nb-card
+      class="min-w-50vw"
+      *ngFor="let question of surveyQstAnalysis;let i = index;"
+      size="medium"
+    >
+      <nb-card-header>
+        <h6>{{question.id}}</h6>
+        <h6>
+          {{ question.questText }}
+        </h6>
+      </nb-card-header>
+      <nb-card-body class="d-flex align-items-center justify-content-center">
+        <canvas id="pieChart{{i+1}}"></canvas>
+    </nb-card-body> 
+   
+
+    </nb-card> -->
+  <!--   <div class="col-md-6">
+      <nb-card class="rounding-card" size="medium">
+          <nb-card-header>
+              <h5>{{ "income-per-month" | translate }}</h5>
+          </nb-card-header>
+          <nb-card-body class="d-flex align-items-center justify-content-center">
+              <canvas id="pieChart"></canvas>
+          </nb-card-body>
+      </nb-card>
+  </div> -->
+  </nb-card-body>
+</nb-card>

@@ -1,0 +1,107 @@
+<nb-layout start>
+  <nb-layout-header fixed class="green-backgorund">
+    <app-navbar class="w-100 px-0" *ngIf="!hideNavBar"></app-navbar>
+  </nb-layout-header>
+  <br />
+  <br />
+  <!-- <nb-sidebar
+    *ngIf="showSidebar"
+    [right]="sidebarRight"
+    [state]="sidebarCollapse ? 'collapsed' : ''"
+    class="sidebar"
+  > -->
+  <!-- <ul>
+      <li routerLink="/map">{{ "map" | translate }}</li>
+      <li routerLink="/dashboard">{{ "dashboard" | translate }}</li>
+
+      <li routerLink="/LetterType">{{ "LetterType" | translate }}</li>
+      <li routerLink="/GrantSteps">{{ "Grant Steps" | translate }}</li>
+      <li routerLink="/LandCasesTypes">{{ "Land Cases Types" | translate }}</li>
+
+      <li routerLink="/GrantLandStatus">
+        {{ "Grant Land Status" | translate }}
+      </li>
+      <li routerLink="/District">{{ "Districts" | translate }}</li>
+
+      <li routerLink="/Plans">{{ "Plans" | translate }}</li>
+      <li routerLink="/Parts">{{ "Parts" | translate }}</li>
+      <li routerLink="/Blocks">{{ "Blocks" | translate }}</li>
+      <li routerLink="/Parcels">{{ "Parcel" | translate }}</li>
+
+      <li routerLink="/Owners">{{ "Owner" | translate }}</li>
+      <li routerLink="/Users">{{ "Users" | translate }}</li>
+      <li routerLink="/EngineeringOffice">
+        {{ "Engineering Office" | translate }}
+      </li>
+
+      <li routerLink="/table">{{ "table" | translate }}</li>
+      <li routerLink="/newTable">{{ "new-table" | translate }}</li>
+      <li routerLink="/RoyalGrant">{{ "Royal Grant" | translate }}</li>
+      <li routerLink="/Grant">{{ "Grants" | translate }}</li>
+    </ul> -->
+  <!-- <nb-menu *ngIf="menu.length > 0" [items]="menu"></nb-menu>
+  </nb-sidebar> -->
+  <nb-layout-column>
+    <div *ngIf="blur" class="blur" (click)="closeMenu()"></div>
+    <router-outlet></router-outlet>
+  </nb-layout-column>
+
+  <nb-layout-footer fixed>
+    <div class="d-flex align-items-center justify-content-center p-0 w-75">
+      <!-- <img
+        src="../assets/WhatsApp_Image_2024-05-08_at_5.36.17_PM-removebg-preview.png"
+        alt="Business Schema Trading Co."
+        class="img-responsive footer-image"
+        width="130px"
+      /> 
+        src="../assets/images/WhatsApp_Image_2024-11-24_at_6.47.44_PM-removebg-preview.png"
+            alt="consolcit"
+      -->
+
+      <p class="footer-copyright mt-3">
+        {{ "copyright" | translate }}
+        <a rel="noopener" href="https://consolcit.com.sa/" target="_blank"
+          ><img
+            src="../assets/images/asaar.png"
+            alt="asser"
+                      class="img-fluid logo"
+
+        /></a>
+      </p>
+    </div>
+  </nb-layout-footer>
+  <!--  <nb-layout-column>
+    <nb-sidebar
+      class="menu-sidebar start fixed expanded"
+      tag="menu-sidebar"
+      [ngClass]="{ compacted: sidebarCollapse }"
+    >
+      <nb-menu [items]="menuItems"></nb-menu>
+    </nb-sidebar>
+    <router-outlet></router-outlet>
+  </nb-layout-column>
+
+  <nb-layout-footer fixed>
+    <div class="d-flex align-items-center justify-content-center p-0 w-75">
+      <img
+        src="../assets/WhatsApp_Image_2024-05-08_at_5.36.17_PM-removebg-preview.png"
+        alt="Business Schema Trading Co."
+        class="img-responsive footer-image"
+        width="130px"
+      />
+
+      <p class="footer-copyright mt-3">
+        {{ "copyright" | translate }}
+        <a href="https://www.bst.com.sa/"> https://www.bst.com.sa/</a>
+      </p>
+    </div>
+  </nb-layout-footer>  -->
+</nb-layout>
+
+<!-- <li routerLink="/auth">{{ "authentication" | translate }}</li>
+            <li routerLink="/table">{{ "table" | translate }}</li>
+            <li routerLink="/newTable">{{ "new-table" | translate }}</li> -->
+<!-- <li routerLink="/form">{{ "form" | translate }}</li> -->
+
+<!--       <li routerLink="/PlanParts">{{ "PlanPart" | translate }}</li>
+              <li routerLink="/PartBlocks">{{ "PartBlock" | translate }}</li> -->

@@ -1,0 +1,91 @@
+<div class="d-flex align-items-center justify-content-center flex-row-reverse">
+  <div class="w-100 h-100 d-flex">
+    <img
+      src="../../../../assets/images/auth-image.png"
+      alt=""
+      class="auth-left-image position-fixed"
+    />
+  </div>
+  <div class="d-flex align-items-center justify-content-center flex-column">
+    <!-- <h4>{{ "login" | translate }}</h4> -->
+    <!-- <div class="image-container d-flex justify-content-center align-items-center mb-5"> -->
+    <!-- <img
+      src="../../../../assets/Tabouk.png"
+      alt=""
+      class="img-responsive"
+    />-->
+     <img
+      src="../../../../assets/images/asaarLogo.png"
+      alt=""
+      class="img-responsive"
+    />
+    <!-- </div> -->
+    <!-- src="../../../../assets/Tabouk.png" -->
+
+    <!--   src="../../../../assets/ENBLogoPro.png"
+ -->
+    <!--   src="../../../../assets/WhatsApp_Image_2024-05-08_at_5.35.37_PM__1_-removebg-preview.png"
+ -->
+    <br/>
+    <form
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+      class="d-flex align-items-center justify-content-center flex-column w-100"
+    >
+      <div
+        class="form-group w-100 d-flex align-items-center justify-content-center"
+      >
+        <!-- <label for="username">{{ "username" | translate }}</label> -->
+        <input
+          type="text"
+          id="username"
+          class="shadow-none"
+          formControlName="username"
+          placeholder="اسم المستخدم"
+        />
+        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+          <div *ngIf="f.username.errors.required">Username is required</div>
+        </div>
+      </div>
+      <div
+        class="form-group mt-3 w-100 d-flex align-items-center justify-content-center"
+      >
+        <!-- <label for="password">{{ "password" | translate }}</label> -->
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          class="shadow-none password-input"
+          placeholder="كلمة المرور"
+        />
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">Password is required</div>
+        </div>
+      </div>
+      <div class="submitButton-container">
+        <br />
+        <br />
+        <!--   <div
+            class="form-group d-flex align-items-center justify-content-between mt-2"
+          >
+
+              <label for="rememberMe">{{ "remember-me" | translate }}</label>
+              <input id="rememberMe" class="mb-2" type="checkbox" />
+
+            <a href="#">{{ "forgot-password" | translate }}</a>
+          </div> -->
+
+        <button class="w-100" [disabled]="loading" type="submit">
+          <span
+            *ngIf="loading"
+            class="spinner-border spinner-border-sm me-1"
+          ></span>
+          {{ "login" | translate }}
+        </button>
+
+        <!--               <a routerLink="../signup" class="btn btn-link">{{ "sign-up" | translate }}</a>
+ -->
+      </div>
+    </form>
+  </div>
+</div>

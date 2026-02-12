@@ -1,0 +1,364 @@
+<div class="content-container">
+   
+    <div class="row">
+      <div class="col-sm-12">
+        <h2>
+          {{ "statistics" | translate }}
+        </h2>
+        <div class="col-md-6 pb-3">
+            <form>
+              <div class="form-group">
+                <label class="ml-1 form-label font-weight-bold"
+                  >        {{ "Select-Search-Key" | translate }}    </label
+                ><br />
+          
+                <div class="row ml-1">
+                  <div>
+                    <input
+                      [hidden]="!this.StrategicView"
+                      class="form-check-input"
+                      type="radio"
+                      name="filter"
+                      [(ngModel)]="selectedFilter"
+                      value="أهداف الإمارة"
+                      checked
+                      id="إمارة"
+                      (change)="GetValueOfChecked(1)"
+                    />
+                    <label
+                      class="form-check-label"
+                      for="إمارة"
+                      [hidden]="!this.StrategicView"
+                    >
+                    {{'StrategicGoal' |translate}}
+                    </label>
+                  </div>
+      
+                  <div [hidden]="!this.StrategicView && !this.MileStoneView">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="filter"
+                      [(ngModel)]="selectedFilter"
+                      value="أهداف الإدارة"
+                      id="الإدارة"
+                      (change)="GetValueOfChecked(2)"
+                    />
+                    <label class="form-check-label" for="الإدارة">
+                      {{'Milestone' |translate}}
+                    </label>
+                  </div>
+      
+                  <div [hidden]="!this.DirectiveView">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="filter"
+                      [(ngModel)]="selectedFilter"
+                      value="أهداف القسم"
+                      id="القسم"
+                      (change)="GetValueOfChecked(3)"
+                    />
+      
+                    <label class="form-check-label" for="القسم">
+                      {{'DirectiveGoal' |translate}}
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="filter"
+                      [(ngModel)]="selectedFilter"
+                      value="الخدمات"
+                      id="الخدمات"
+                      (change)="GetValueOfChecked(4)"
+                    />
+                    <label class="form-check-label" for="الخدمات"> {{'Services' |translate}} </label>
+                  </div>
+                  <div>
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="filter"
+                      [(ngModel)]="selectedFilter"
+                      value="الإستبيانات"
+                      id="الإستبيانات"
+                      (change)="GetValueOfChecked(5)"
+                    />
+                    <label class="form-check-label" for="الإستبيانات">
+                      {{'Surveys' |translate}}
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="filter"
+                      [(ngModel)]="selectedFilter"
+                      value="الإدارات"
+                      id="الإدارات"
+                      (change)="GetValueOfChecked(6)"
+                    />
+                    <label class="form-check-label" for="الإدارات"> {{'Departments' |translate}} </label>
+                  </div>
+                  <div>
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="filter"
+                      [(ngModel)]="selectedFilter"
+                      value="الموظفيين"
+                      id="الموظفيين"
+                      
+      
+                      (change)="GetValueOfChecked(7)"
+                    />
+                    <label class="form-check-label" for="الموظفيين">
+                      {{'Employees' |translate}}
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <form #form="ngForm">
+              <div
+                class="pt-3 form-group row row-cols-1 px-3 d-flex align-items-center justify-content-start flex-row"
+              >
+                <div class="col d-flex">
+           
+      
+                  <nb-select  
+                  [(ngModel)]="this.Select"
+      
+                    class="mb-3"
+                    shape="round"
+                    fullWidth
+                    [placeholder]="'Select' |translate" 
+                    (selectedChange)="selectChangeHandler($event)"
+                  >
+              
+                    <nb-option *ngFor="let e of DashboardDto" [value]="e.id">
+                      {{ e.name }}</nb-option
+                    >
+                  </nb-select>
+                </div>
+              </div>
+              <div
+                class="form-group row row-cols-2 px-3 d-flex align-items-center justify-content-center flex-row"
+              >
+                <div class="col d-flex">
+                  <input
+                  [(ngModel)]="this.StartDate"
+      
+                    type="date"
+                    name="fromDate"
+                    placeholder="{{ 'from' | translate }}"
+                    (change)="getStartDate($event)"
+                    nbInput
+                    shape="round"
+                    fullWidth
+                  />
+       
+                </div>
+      
+                <div class="col d-flex">
+                  <input
+                  [(ngModel)]="this.EndDate"
+      
+                    type="date"
+                    name="fromDate"
+                    placeholder="{{ 'to' | translate }}"
+                    (change)="getEndDate($event)"
+                    nbInput
+                    shape="round"
+                    fullWidth
+                  />
+             
+                </div>
+              </div>
+              <div class="mt-3 d-flex align-items-center justify-content-center mt-3"
+              >
+                
+                <button type="submit" class="special-button" (click)="onSubmit()"
+                [hidden]="this.hiddenForPrint"
+                >
+                  {{ "search" | translate }}
+                </button>
+                &nbsp;  &nbsp;
+      
+                <button type="submit" class="special-button" (click)="onReset()"
+                [hidden]="this.hiddenForPrint"
+      
+                >
+                  {{ "reset" | translate }}
+                </button>
+                &nbsp;  &nbsp;
+                <button   
+                nbButton
+                type="button"
+                (click)="printDiv()"  
+                style="border:none ;"
+                >
+                <img src="../../../assets/pdf.png" >
+              
+              </button> 
+        
+            </div>
+      
+            </form>
+          </div>
+        <hr />
+      </div>
+    </div>
+       <div id="printTable"> 
+         <br/>
+           <h5 [hidden]="this.SearchVal==null">{{this.TypeStr}}: {{this.SearchVal}}</h5>
+           <h5 [hidden]="this.fromDate==null||this.toDate==null">{{this.fromDate}}: {{this.toDate}}</h5>
+
+      <div class="col-md-5" >
+        <div class="row">
+          <div class="col-sm-12">
+            <p>{{ "Votes participating in surveys" | translate }}: {{ this.surveyCount }}</p>
+          </div>
+          <div class="col-sm-12">
+            <p>{{ "Votes participating in services" | translate }}: {{ this.serviceCount }}</p>
+          </div>
+          <div class="col-sm-12" [hidden]="!this.DirectiveView">
+            <p>{{ "Votes participating in directive goals" | translate }}: {{ this.directiveCount }}</p>
+          </div>
+          <div
+            class="col-sm-12"
+            [hidden]="!this.StrategicView && !this.MileStoneView"
+          >
+            <p>{{ "Votes participating in milestons" | translate }}:{{ this.milestoneCount }}</p>
+          </div>
+          <div class="col-sm-12">
+            <p>{{ "Votes participating in strategic goals" | translate }}: {{ this.strategicCount }}</p>
+          </div>
+        </div>
+      </div>
+  
+
+    <div class="row">
+      <div class="col-md-6">
+        <nb-card class="rounding-card" size="medium">
+          <nb-card-body
+            class="d-flex align-items-center justify-content-evenly flex-column"
+          >
+            <h5 class="text-center"> {{ "Surveys Scale" | translate }}</h5>
+            <div *ngIf="renderGauge">
+              <ngx-gauge
+                [min]="0"
+                [max]="100"
+                [value]="surveyPrec"
+                [type]="'arch'"
+                [size]="300"
+                [label]="'Satisfaction level' |translate" 
+                [markers]="gaugeMarkers"
+                [thresholds]="thresholdConfig"
+                [thick]="10"
+              >
+              </ngx-gauge>
+            </div>
+          </nb-card-body>
+        </nb-card>
+      </div>
+      <div class="col-md-6">
+        <nb-card class="rounding-card" size="medium">
+          <nb-card-body
+            class="d-flex align-items-center justify-content-evenly flex-column"
+          >
+            <h5 class="text-center"> {{ "Services Scale" | translate }}</h5>
+            <div *ngIf="renderGauge">
+              <ngx-gauge
+                [min]="0"
+                [max]="100"
+                [value]="servicePrec"
+                [type]="'arch'"
+                [size]="300"
+                [label]="'Satisfaction level' |translate" 
+                [markers]="gaugeMarkers"
+                [thresholds]="thresholdConfig"
+                [thick]="10"
+              >
+              </ngx-gauge>
+            </div>
+          </nb-card-body>
+        </nb-card>
+      </div>
+      <div class="col-md-6" [hidden]="!this.DirectiveView">
+        <nb-card class="rounding-card" size="medium">
+          <nb-card-body
+            class="d-flex align-items-center justify-content-evenly flex-column"
+          >
+            <h5 class="text-center">{{ "Directive Goals Scale" | translate }}</h5>
+            <div *ngIf="renderGauge">
+              <ngx-gauge
+                [min]="0"
+                [max]="100"
+                [value]="directivePrec"
+                [type]="'arch'"
+                [size]="300"
+                [label]="'Satisfaction level' |translate" 
+                [markers]="gaugeMarkers"
+                [thresholds]="thresholdConfig"
+                [thick]="10"
+              >
+              </ngx-gauge>
+            </div>
+          </nb-card-body>
+        </nb-card>
+      </div>
+  
+      <div class="col-md-6" [hidden]="!this.StrategicView && !this.MileStoneView">
+        <nb-card class="rounding-card" size="medium">
+          <nb-card-body
+            class="d-flex align-items-center justify-content-evenly flex-column"
+          >
+            <h5 class="text-center">  {{ "Milestone Scale" | translate }}</h5>
+            <div *ngIf="renderGauge">
+              <ngx-gauge
+                [min]="0"
+                [max]="100"
+                [value]="milestonePrec"
+                [type]="'arch'"
+                [size]="300"
+                [label]="'Satisfaction level' |translate" 
+                [markers]="gaugeMarkers"
+                [thresholds]="thresholdConfig"
+                [thick]="10"
+              >
+              </ngx-gauge>
+            </div>
+          </nb-card-body>
+        </nb-card>
+      </div>
+      <div class="col-md-6" [hidden]="!this.StrategicView">
+        <nb-card class="rounding-card" size="medium">
+          <nb-card-body
+            class="d-flex align-items-center justify-content-evenly flex-column"
+          >
+            <h5 class="text-center"> {{ "Strategic Goals Scale" | translate }}</h5>
+            <div *ngIf="renderGauge">
+              <ngx-gauge
+                [min]="0"
+                [max]="100"
+                [value]="strategicPrec"
+                [type]="'arch'"
+                [size]="300"
+                [label]="'Satisfaction level' |translate" 
+                [markers]="gaugeMarkers"
+                [thresholds]="thresholdConfig"
+                [thick]="10"
+              >
+              </ngx-gauge>
+            </div>
+          </nb-card-body>
+        </nb-card>
+      </div>
+  
+    </div>
+       </div>
+  </div>
+  

@@ -1,0 +1,184 @@
+<div class="content-container">
+  <h5> {{'Questions' |translate}}
+  </h5>
+  <hr/>  
+  <button
+    class="special-button mb-3"
+    type="button"
+    [hidden]="!this.canAdd"
+    (click)="ShowAdd()"
+  >
+    {{ "Add" | translate }}
+  </button>
+
+  <nb-card class="table-container">
+    <table
+      class="users-table table-striped"
+      mat-table
+      [dataSource]="dataSource"
+      matSort
+      (matSortChange)="sortData($event)"
+      matSortDisableClear
+      matSortDirection="asc"
+    >
+      <!-- lawNumber Column -->
+      <ng-container matColumnDef="Question">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "Question" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <!-- {{element.planName}} -->
+
+          <span *ngIf="element.questText == ''; else data">
+            <input
+              type="text"
+              #questFilter
+              nbInput
+              class="w-30 mw-30"
+              matInput
+              (keyup)="applyFilter($event)"
+                  [placeholder]="'Question' |translate" 
+
+              class="text-center"
+            />
+          </span>
+          <ng-template #data>
+            <span>{{ element.questText | sliceWords:0:10}}{{"..."}}</span>
+          </ng-template>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="QuestionWeight">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "QstWeight" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <span *ngIf="element.questText == ''; else data"> </span>
+          <ng-template #data>
+            <span>{{ element.qstWeight }}</span>
+          </ng-template>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="AnswerType">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "AnswerType" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <!-- {{element.planCode}} -->
+
+          <span *ngIf="element.questText == ''; else data">
+            <!--   <input type="text"
+          <span *ngIf="element.questText == ''; else data">
+           <input type="text"
+                        #departmentFilter
+                        nbInput
+                        class="w-30 mw-30"
+                        matInput
+                        (keyup)="applyFilter($event)"
+                        placeholder="الادارة"
+                        class="text-center"
+                      /> -->
+          </span>
+          <ng-template #data>
+            <span>{{ element.answerType }}</span>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="QuestDesc">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "QuestDesc" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <!-- {{element.planCode}} -->
+
+          <span *ngIf="element.questText == ''; else data">
+            <!-- <input type="text"
+                      #empFilter
+                      nbInput
+                      class="w-30 mw-30"
+                      matInput
+                      (keyup)="applyFilter($event)"
+                      placeholder="الموظف"
+                      class="text-center"
+                    /> -->
+          </span>
+          <ng-template #data>
+            <span>{{ element.questDesc | sliceWords:0:10}}{{"..."}}</span>
+          </ng-template>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="Service">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "Service" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <!-- {{element.planCode}} -->
+
+          <span *ngIf="element.questText == ''; else data">
+            <!-- <input type="text"
+                    #empFilter
+                    nbInput
+                    class="w-30 mw-30"
+                    matInput
+                    (keyup)="applyFilter($event)"
+                    placeholder="الموظف"
+                    class="text-center"
+                  /> -->
+          </span>
+          <ng-template #data>
+            <span>{{ element.serviceNames }}</span>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions2">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <span *ngIf="element.sortable == false; else data"> </span>
+          <ng-template #data>
+            <span>
+              <button
+                [hidden]="!this.canEdit"
+                mat-mini-fab
+                color="primary"
+                (click)="ShowEdit(element.id)"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+            </span>
+          </ng-template>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="actions1">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <span *ngIf="element.sortable == false; else data"> </span>
+          <ng-template #data>
+            <span>
+              <button
+                mat-mini-fab
+                color="warn"
+                [hidden]="!this.canDelete"
+                (click)="delete(element.id, element.questText)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </span>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </nb-card>
+  <mat-paginator
+    [dir]="dir"
+    [length]="totalRecords"
+    [pageIndex]="searchModel.PageNumber - 1"
+    [pageSize]="searchModel.PageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="search($event)"
+    showFirstLastButtons
+  ></mat-paginator>
+</div>

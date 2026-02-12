@@ -1,0 +1,62 @@
+<nb-card>
+    <nb-card-header><h5>{{'Add' |translate}} {{'انواع المرفقات'}}</h5></nb-card-header>
+    <nb-card-body>
+        <form  [formGroup]="districtForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="DistrictName" class="label">
+                            <h6>    {{'نوع المرفق'}}</h6>
+                        </label>
+                        <input  type="text" [status]="fc.name.touched && fc.name.errors? 'danger': 'basic'"
+                            formControlName="name" nbInput shape="round" fullWidth id="name">
+                            <!-- <mat-error *ngIf="fc.name.touched && fc.name.hasError('required')">
+                            
+                                {{'District is required' | translate}}
+                            </mat-error> -->
+                    </div>
+                </div>
+          
+              
+                <div class="col-sm-6"> 
+                    <div class="form-group">
+                        <label for="notes" class="label">
+                            <h6>    {{'Notes' |translate}}</h6>
+                        </label>
+                        <textarea   type="text"
+                            formControlName="notes" nbInput shape="round" fullWidth id="notes"></textarea>
+                    
+                    </div>
+                </div>   
+                <!--Event Image -->
+            </div>
+            <!-- <div class="mt-2 d-flex align-items-center justify-content-center mt-3"> -->
+                <div class="row mt-2">
+     <div class="col-md-2">
+        <button
+          class="special-button m-2 mt-4 w-100"
+   type="submit"
+       >
+          {{ "Save" | translate }}
+        </button>
+      </div>
+       <div class="col-md-2">
+        <button
+          class="special-button m-2 mt-4 w-100"
+   type="button"    (click)="Close()"
+
+       >
+          {{ "إلغاء"}}
+        </button>
+      </div>
+            <!--     <button class="btn" [disabled]="districtForm.invalid ||isSubmitted"   type="submit"  status="primary"
+                 nbButton>{{'Save' |translate}}</button> -->
+       
+            </div>
+        </form>
+    </nb-card-body>
+</nb-card>
+
+
+
+

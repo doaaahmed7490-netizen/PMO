@@ -1,0 +1,38 @@
+<section>
+  <nb-card>
+    <nb-card-header>
+      <h5>{{ "user-info" | translate }}</h5>
+    </nb-card-header>
+    <form>
+      <nb-card-body class="form-card-container">
+        <input [placeholder]="'firstName' | translate" nbInput fullWidth />
+        <input [placeholder]="'lastName' | translate" nbInput fullWidth />
+        <input [placeholder]="'address' | translate" nbInput fullWidth />
+        <input [placeholder]="'phone-number' | translate" nbInput fullWidth />
+        <textarea
+          [placeholder]="'contact-info' | translate"
+          id="textarea"
+          cols="30"
+          rows="10"
+          nbInput
+          fullWidth
+        ></textarea>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3">
+              <button
+                nbButton
+                status="success"
+                type="button"
+                size="medium"
+                id="submit-button"
+              >
+                {{ "save" | translate }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </nb-card-body>
+    </form>
+  </nb-card>
+</section>

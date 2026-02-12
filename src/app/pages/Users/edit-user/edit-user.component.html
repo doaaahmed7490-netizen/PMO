@@ -1,0 +1,226 @@
+<div class="content-container mt-5">
+  <h5>{{'Edit' |translate}} {{'User' |translate}}
+  </h5>
+  <hr/>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-sm-6">
+        <!--categoryName -->
+        <div class="form-group">
+          <label for="Name" class="label">
+            <h6>
+              {{ "Name" | translate }}
+            </h6>
+          </label>
+          <input [readonly]="this.IsEmp"
+            [status]="fc.name.touched && fc.name.errors ? 'danger' : 'basic'"
+            type="text"
+            formControlName="name"
+            nbInput
+            shape="round"
+            fullWidth
+            id="name"
+            placeholder="Ex: John"
+          />
+          <mat-error *ngIf="fc.name.touched && fc.name.hasError('required')">
+            {{ "Name is required" | translate }}
+          </mat-error>
+          <mat-error *ngIf="fc.name.touched && fc.name.hasError('pattern')">
+            {{ "Name pattern" | translate }}
+          </mat-error>
+          <mat-error
+            *ngIf="
+              fc.name.touched &&
+              fc.name.hasError('minlength') &&
+              !fc.name.hasError('required') &&
+              !fc.name.hasError('pattern')
+            "
+          >
+            {{ "min length 3 Letters" | translate }}
+          </mat-error>
+          <!-- <div *ngIf="fc.fullName.touched && fc.fullName.errors?.noWhiteSpace">{{'White and empty spaces are not allowed' | translate}}</div> -->
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <!--categoryName -->
+        <div class="form-group">
+          <label for="NationalId" class="label">
+            <h6>
+              {{ "NationalId" | translate }}
+            </h6>
+          </label>
+          <input [readonly]="this.IsEmp"
+            type="number"
+            inputmode="numeric"
+            pattern="[-+]?[0-9]*[.,]?[0-9]+"
+            maxlength="10"
+            placeholder="Ex:1570572194"
+            formControlName="nationalId"
+            nbInput
+            shape="round"
+            fullWidth
+            id="nationalId"
+          />
+        </div>
+      </div>
+      <!--  <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="NoOfParts" class="label">{{'NoOfParts' |translate}}</label>
+                        <input  type="text"
+                            formControlName="noOfParts" nbInput shape="round" fullWidth id="noOfParts">
+
+                    </div>
+                </div> -->
+      <div class="col-sm-6">
+        <!--categoryName -->
+        <div class="form-group mt-2">
+          <label for="Mobil" class="label">
+            <h6>
+              {{ "Mobil" | translate }}
+            </h6>
+          </label>
+          <input [readonly]="this.IsEmp" 
+            type="text"
+            inputmode="numeric"
+            pattern="[-+]?[0-9]*[.,]?[0-9]+"
+            [status]="fc.mobil.touched && fc.mobil.errors ? 'danger' : 'basic'"
+            formControlName="mobil"
+            nbInput
+            shape="round"
+            fullWidth
+            id="mobil"
+            placeholder="Ex:966564801391"
+          />
+          <mat-error *ngIf="fc.mobil.touched && fc.mobil.hasError('required')">
+            {{ "Mobil is required" | translate }}
+          </mat-error>
+          <mat-error *ngIf="fc.mobil.touched && fc.mobil.hasError('pattern')">
+            {{ "Mobil pattern" | translate }}
+          </mat-error>
+          <mat-error
+            *ngIf="
+              fc.mobil.touched &&
+              fc.mobil.hasError('minlength') &&
+              !fc.mobil.hasError('pattern')
+            "
+          >
+            {{ "Mobil min length" | translate }}
+          </mat-error>
+          <mat-error *ngIf="fc.mobil.touched && fc.mobil.hasError('min')">
+            {{ "Mobil not contain negative number" | translate }}
+          </mat-error>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <!--categoryName -->
+        <div class="form-group mt-2">
+          <label for="PhoneNumber" class="label">
+            <h6>
+              {{ "Phone" | translate }}
+            </h6>
+          </label>
+          <input [readonly]="this.IsEmp"
+            type="text"
+            placeholder="Ex:0125985301"
+            formControlName="phoneNumber"
+            nbInput
+            shape="round"
+            fullWidth
+            id="phoneNumber"
+          />
+          <mat-error *ngIf="fc.phoneNumber.touched && fc.phoneNumber.hasError('pattern')">
+            {{ "Phone pattern" | translate }}
+          </mat-error>
+          <mat-error
+            *ngIf="
+              fc.phoneNumber.touched &&
+              fc.phoneNumber.hasError('minlength') &&
+              !fc.phoneNumber.hasError('pattern')
+            "
+          >
+            {{ "Phone min length" | translate }}
+          </mat-error>
+          <mat-error *ngIf="fc.phoneNumber.touched && fc.phoneNumber.hasError('min')">
+            {{ "Phone not contain negative number" | translate }}
+          </mat-error>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <!--categoryName -->
+        <div class="form-group mt-2">
+          <label for="Email" class="label">
+            <h6>
+              {{ "Email" | translate }}
+            </h6>
+          </label>
+          <input
+            type="text"
+            placeholder="Ex:dmostafa@jeddah.gov.sa"
+            formControlName="email"
+            nbInput
+            shape="round"
+            fullWidth
+            id="email"
+          />
+          <mat-error *ngIf="fc.email.touched && fc.email.hasError('email')">
+            {{ "Email pattern" | translate }}
+          </mat-error>
+        </div>
+      </div>
+
+      <div class="col-sm-6" [hidden]="true">
+        <!--categoryName -->
+        <div class="form-group mt-2">
+          <label for="Gender" class="label"
+            ><h6>{{ "Gender" | translate }}</h6>
+          </label>
+
+          <select
+            class="form-control"
+            [(ngModel)]="this.gender"
+            id="gender"
+            formControlName="gender"
+          >
+            <option value="1">ذكر</option>
+            <option value="2">انثى</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <!--Parent Category -->
+        <div class="form-group mt-2">
+          <label for="Role" class="label">
+            <h6>
+              {{ "Role" | translate }}
+            </h6>
+          </label>
+          <nb-select
+            formControlName="roleId"
+            id="roleId"
+            shape="round"
+            fullWidth
+          >
+            <nb-option *ngFor="let role of this.roleModel" [value]="role.id">
+              {{ role.roleName }}</nb-option
+            >
+          </nb-select>
+        </div>
+      </div>
+      <!--Event Image -->
+    </div>
+    <div class="row mt-2">
+      <div class="col-md-2">
+        <button
+          class="special-button m-2 mt-4 w-100"
+          [disabled]=" isSubmitted"
+          type="submit"
+        >
+          {{ "Save" | translate }}
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,30 @@
+/* fixed-table.component.css */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  
+}
+
+th, td {
+  padding: 10px;
+    border: 2px solid #826026; /* border color */
+      text-align: center;
+
+
+}
+
+
+thead {
+  background-color: #826026; /* your theme color */
+  color: white;
+      border: 2px solid #826026; /* border color */
+
+}
+.actions {
+  text-align: center;
+}
+
+.actions button {
+  margin: 0 4px;
+}

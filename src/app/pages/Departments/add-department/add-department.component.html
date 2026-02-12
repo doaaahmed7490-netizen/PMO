@@ -1,0 +1,86 @@
+<div class="content-container mt-5">
+  <h5>{{'Add' |translate}} {{'Department' |translate}}
+  </h5>
+  <hr/>
+  <form [formGroup]="DepartmentForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-sm-6">
+        <!--Law number -->
+        <div class="form-group">
+          <label for="Deparment" class="label">
+            <h6>
+              {{ "Department" | translate }}
+            </h6>
+          </label>
+          <input
+            type="text"
+            [status]="
+              fc.deparment.touched && fc.deparment.errors ? 'danger' : 'basic'
+            "
+            formControlName="deparment"
+            nbInput
+            shape="round"
+            fullWidth
+            id="deparment"
+          />
+          <mat-error
+            *ngIf="fc.deparment.touched && fc.deparment.hasError('required')"
+          >
+            {{ "Department is Required" | translate }}
+          </mat-error>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <!--Parent Category -->
+        <div class="form-group">
+          <label for="MainDepartment" class="label">
+            <h6>
+              {{ "MainDepartment" | translate }}
+            </h6>
+          </label>
+          <nb-select
+            formControlName="parentId"
+            id="parentId"
+            shape="round"
+            fullWidth
+          >
+            <!-- <nb-option value="">{{ "No data selected" | translate }}</nb-option> -->
+            <nb-option *ngFor="let depart of departmet" [value]="depart.id">
+              {{ depart.departmentName }}</nb-option
+            >
+          </nb-select>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <!--Message arabic -->
+        <div class="form-group mt-2">
+          <label for="Notes" class="label">
+            <h6>
+              {{ "Notes" | translate }}
+            </h6>
+          </label>
+          <textarea
+            type="text"
+            formControlName="notes"
+            nbInput
+            shape="round"
+            fullWidth
+            id="notes"
+          >
+          </textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-md-2">
+        <button
+          class="special-button m-2 mt-4 w-100"
+          [disabled]="DepartmentForm.invalid || isSubmitted"
+          type="submit"
+        >
+          {{ "Save" | translate }}
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

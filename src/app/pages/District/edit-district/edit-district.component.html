@@ -1,0 +1,57 @@
+<nb-card>
+    <nb-card-header><h5>{{'Edit' |translate}} {{'District' |translate}}</h5></nb-card-header>
+    <nb-card-body>
+        <form  [formGroup]="districtForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-sm-6"> <!--categoryName -->
+                    <div class="form-group">
+                        <label for="DistrictName" class="label">
+                       <h6>     {{'District Name' |translate}}</h6>
+                        </label>
+                        <input  type="text" [status]="fc.name.touched && fc.name.errors? 'danger': 'basic'"
+                            formControlName="name" nbInput shape="round" fullWidth id="name">
+                            <mat-error *ngIf="fc.name.touched && fc.name.hasError('required')">
+                            
+                                {{'District is required' | translate}}
+                            </mat-error>
+                    </div>
+                </div>
+                <div class="col-sm-6"> <!--Parent Category -->
+                    <div class="form-group">
+                        <label for="MainDistrict" class="label">
+                        <h6>  {{'Main District' |translate}}</h6>
+                        </label>
+                        <nb-select      [(ngModel)]="this.currentDistrict.parentId"
+
+                            formControlName="parentId" id="parentId" shape="round" fullWidth>
+                            <nb-option  value="">{{'No data selected' |translate}}</nb-option>
+                            <nb-option *ngFor="let district of districts"  [value]="district.id">
+                                {{district.name}}</nb-option>
+                        </nb-select>
+                    </div>
+                </div>
+              
+                <div class="col-sm-6"> <!--description -->
+                    <div class="form-group">
+                        <label for="notes" class="label">
+                        <h6>   {{'Notes' |translate}}</h6>
+                        </label>
+                        <textarea   type="text"
+                            formControlName="notes" nbInput shape="round" fullWidth id="notes"></textarea>
+                    
+                    </div>
+                </div>   
+                <!--Event Image -->
+            </div>
+            <div class="row mt-2">
+                <button class="offset-md-11" [disabled]="districtForm.invalid ||isSubmitted"   type="submit"  status="primary"
+                    nbButton>{{'Save' |translate}}</button>
+       
+            </div>
+        </form>
+    </nb-card-body>
+</nb-card>
+
+
+
+

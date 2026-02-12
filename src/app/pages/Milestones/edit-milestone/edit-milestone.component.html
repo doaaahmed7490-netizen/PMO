@@ -1,0 +1,88 @@
+<div class="content-container mt-5">
+  <h5>{{'Edit' |translate}} {{'Milestone' |translate}}
+  </h5>
+  <hr/>
+  <form [formGroup]="MileStoneForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-sm-6">
+        <!--Law number -->
+        <div class="form-group">
+          <label for="Milestone" class="label">
+            <h6>
+              {{ "Milestone" | translate }}
+            </h6>
+          </label>
+          <input
+            type="text"
+            [status]="
+              fc.milestone.touched && fc.milestone.errors ? 'danger' : 'basic'
+            "
+            formControlName="milestone"
+            nbInput
+            shape="round"
+            fullWidth
+            id="milestone"
+          />
+          <mat-error
+            *ngIf="fc.milestone.touched && fc.milestone.hasError('required')"
+          >
+            {{ "Milestone is Required" | translate }}
+          </mat-error>
+        </div>
+
+        <div class="form-group mt-2">
+          <label for="StrategicGoal" class="label">
+            <h6>
+              {{ "StrategicGoal" | translate }}
+            </h6>
+          </label>
+          <nb-select
+            [(selected)]="this.milestoneMode.goalIds"
+            formControlName="strategicGoalId"
+            id="strategicGoalId"
+            shape="round"
+            fullWidth
+            multiple
+            (selectedChange)="selectChangeHandlerGoals($event)"
+          >
+            <!-- <nb-option value="">{{ "No data selected" | translate }}</nb-option> -->
+            <nb-option *ngFor="let c of strategiGoals" value="{{ c.id }}">
+              {{ c.strategicGoalName }}</nb-option
+            >
+          </nb-select>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <!--Message arabic -->
+        <div class="form-group">
+          <label for="GoalDesc" class="label">
+            <h6>
+              {{ "GoalDesc" | translate }}
+            </h6>
+          </label>
+          <textarea
+            type="text"
+            formControlName="goalDesc"
+            nbInput
+            shape="round"
+            fullWidth
+            id="goalDesc"
+          >
+          </textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-md-2">
+        <button
+          class="special-button m-2 mt-4 w-100"
+          [disabled]="MileStoneForm.invalid || isSubmitted"
+          type="submit"
+        >
+          {{ "Save" | translate }}
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

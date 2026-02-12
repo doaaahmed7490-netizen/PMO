@@ -1,0 +1,88 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <nb-card class="rounding-card pb-2">
+                <nb-card-header>
+                    <h5>
+                        {{ "search" | translate }}
+                    </h5>
+                </nb-card-header>
+                <form #form="ngForm">
+                
+                </form>
+            </nb-card>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <nb-card class="rounding-card">
+                <nb-card-header>
+                    <!-- <h5>{{ "students-number" | translate }}</h5> -->
+                    <h5>عدد القطع الممنوحة</h5>
+
+                </nb-card-header>
+                <nb-card-body>
+                    <h5 class="text-center pt-3">58</h5>
+                </nb-card-body>
+            </nb-card>
+        </div>
+        <div class="col-md-4">
+            <nb-card class="rounding-card">
+                <nb-card-header>
+                    <!-- <h5>{{ "courses-number" | translate }}</h5> -->
+                    <h5>عدد القطع الغير ممنوحة</h5>
+
+                </nb-card-header>
+                <nb-card-body>
+                    <h5 class="text-center pt-3">17</h5>
+                </nb-card-body>
+            </nb-card>
+        </div>
+        <div class="col-md-4">
+            <nb-card class="rounding-card">
+                <nb-card-header>
+                    <!-- <h5>{{ "years-number" | translate }}</h5> -->
+                    <h5>عدد قطع تحت الاجراء </h5>
+
+                </nb-card-header>
+                <nb-card-body>
+                    <h5 class="text-center pt-3">3</h5>
+                </nb-card-body>
+            </nb-card>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <nb-card class="rounding-card" size="medium">
+                <nb-card-header>
+                    <h5>{{ "income-per-month" | translate }}</h5>
+                </nb-card-header>
+                <nb-card-body class="d-flex align-items-center justify-content-center">
+                    <canvas id="pieChart"></canvas>
+                </nb-card-body>
+            </nb-card>
+        </div>
+        <div class="col-md-6">
+            <nb-card class="rounding-card" size="medium">
+                <nb-card-header>
+                    <h5>{{ "income-per-month" | translate }}</h5>
+                </nb-card-header>
+                <nb-card-body class="d-flex align-items-center justify-content-center">
+                    <canvas id="lineChart"></canvas>
+                </nb-card-body>
+            </nb-card>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <nb-card class="rounding-card" size="large">
+                <nb-card-header>
+                    <h5>{{ "income-per-month" | translate }}</h5>
+                </nb-card-header>
+                <nb-card-body class="d-flex align-items-center justify-content-center">
+                    <canvas id="barChart"></canvas>
+                </nb-card-body>
+            </nb-card>
+        </div>
+    </div>

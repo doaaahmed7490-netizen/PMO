@@ -1,0 +1,74 @@
+<div class="content-container">
+  <h2> {{' مرفقات المشاريع' }}
+  </h2>
+   <hr />
+  <button
+    class="special-button mb-3"
+    type="button"
+    (click)="ShowAdd()"
+  >
+    {{ "Add" | translate }}
+  </button>
+  <nb-card class="table-container">
+    <table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>اسم المشروع</th>
+      <th>العميل</th>
+      <th>المهمة</th>
+      <th>نوع المرفق</th>
+      <th>رقم النسخة</th>
+      <th>تاريخ المرفق</th>
+      <th>المرفقات</th>
+
+      <th>التعديل</th>
+
+      <th>الحذف</th>
+    </tr>
+    
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of this.tableData1">
+      <td>{{ row.name }}</td>
+      <td>{{ row.customer }}</td>
+      <td>{{ row.task }}</td>
+      <td>{{ row.DocType }}</td>
+       <td>{{ row.Version }}</td>
+      <td>{{ row.Date }}</td>
+
+          <td class="actions">
+        <button mat-icon-button color="primary" (click)="view(row)">
+          <mat-icon>folder</mat-icon>
+          
+        </button>
+           <button mat-icon-button color="primary" (click)="edit(row)">
+          <mat-icon>download </mat-icon>
+          
+        </button>
+</td> 
+        <td class="actions">
+        <button mat-icon-button color="primary" (click)="edit(row)">
+          <mat-icon>edit</mat-icon>
+        </button>
+</td>
+        <td class="actions">
+
+        <button mat-icon-button color="warn" (click)="delete1(row)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        </td>
+    </tr>
+  </tbody>
+</table>
+    
+  </nb-card>
+<!--   <mat-paginator
+    [dir]="dir"
+    [length]="totalRecords"
+    [pageIndex]="searchModel.PageNumber - 1"
+    [pageSize]="searchModel.PageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="search($event)"
+    showFirstLastButtons
+  ></mat-paginator> -->
+</div>

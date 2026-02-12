@@ -1,0 +1,72 @@
+<div class="content-container">
+  <h2> {{'StrategicGoals' |translate}}
+  </h2>
+   <hr />
+  <button
+    class="special-button mb-3"
+    type="button"
+    (click)="ShowAdd()"
+  >
+    {{ "Add" | translate }}
+  </button>
+  <nb-card class="table-container">
+    <table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>اسم المشروع</th>
+      <th>العميل</th>
+      <th>مدير المشروع</th>
+      <th>حالة المشروع</th>
+      <th>نسبة الانجاز</th>
+      <th>نسبة الانجاز طبقاً للوقت</th>
+      <th>تاريخ البدء</th>
+      <th>تاريخ الانتهاء</th>
+      <th>عدد المهام</th>
+      <th>المهام المنجزة</th>
+
+      <th> المهام المتأخرة عن الموعد</th>
+      <th>التعديل</th>
+
+      <th>الحذف</th>
+    </tr>
+    
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of this.tableData1">
+      <td>{{ row.name }}</td>
+      <td>{{ row.customer }}</td>
+      <td>{{ row.manager }}</td>
+      <td>{{ row.status }}</td>
+       <td>{{ row.progress }}</td>
+      <td>{{ row.progressToTime }}</td>
+      <td>{{ row.startDate }}</td>
+      <td>{{ row.endDate }}</td>
+      <td>{{ row.total }}</td>
+      <td>{{ row.complete }}</td>
+      <td>{{ row.delaytasks }}</td>
+        <td class="actions">
+        <button mat-icon-button color="primary" (click)="edit(row)">
+          <mat-icon>edit</mat-icon>
+        </button>
+</td>
+        <td class="actions">
+
+        <button mat-icon-button color="warn" (click)="delete1(row)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        </td>
+    </tr>
+  </tbody>
+</table>
+    
+  </nb-card>
+<!--   <mat-paginator
+    [dir]="dir"
+    [length]="totalRecords"
+    [pageIndex]="searchModel.PageNumber - 1"
+    [pageSize]="searchModel.PageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="search($event)"
+    showFirstLastButtons
+  ></mat-paginator> -->
+</div>

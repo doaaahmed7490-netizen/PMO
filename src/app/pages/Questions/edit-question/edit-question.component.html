@@ -1,0 +1,145 @@
+<div class="content-container mt-5">
+  <h5>{{'Edit' |translate}} {{'Questions' |translate}}
+  </h5>
+  <hr/>
+  <form [formGroup]="QuestForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-sm-6">
+        <!--categoryName -->
+        <div class="form-group">
+          <label for="Question" class="label">
+            <h6>
+              {{ "Question" | translate }}
+            </h6>
+          </label>
+          <input
+            type="text"
+            formControlName="quest"
+            nbInput
+            shape="round"
+            fullWidth
+            id="quest"
+          />
+          <mat-error *ngIf="fc.quest.touched && fc.quest.hasError('required')">
+            {{ "Question is required" | translate }}
+          </mat-error>
+          <mat-error
+            *ngIf="
+              fc.quest.touched &&
+              fc.quest.hasError('minlength') &&
+              !fc.quest.hasError('required')
+            "
+          >
+            {{ "min length 3 Letters" | translate }}
+          </mat-error>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <!--categoryName -->
+        <div class="form-group">
+          <label for="Weight" class="label">
+            <h6>
+              {{ "QstWeight" | translate }}
+            </h6>
+          </label>
+          <input
+            type="text"
+            formControlName="qstWeight"
+            nbInput
+            shape="round"
+            fullWidth
+            id="qstWeight"
+          />
+          <mat-error
+            *ngIf="fc.qstWeight.touched && fc.qstWeight.hasError('required')"
+          >
+            {{ "QstWeight is required" | translate }}
+          </mat-error>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group mt-2">
+          <label for="QuestDesc" class="label">
+            <h6>
+              {{ "QuestDesc" | translate }}
+            </h6>
+          </label>
+          <input
+            type="text"
+            formControlName="questDesc"
+            nbInput
+            shape="round"
+            fullWidth
+            id="questDesc"
+          />
+
+          <!--  <mat-error
+                                *ngIf="fc.userName.touched && fc.fullName.hasError('minlength') && !fc.fullName.hasError('required')">
+                                {{'min length 3 Letters' | translate}}
+                            </mat-error> -->
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group mt-2">
+          <label for="AnswerType" class="label">
+            <h6>
+              {{ "AnswerType" | translate }}
+            </h6>
+          </label>
+          <nb-select
+            [(ngModel)]="this.currentQst.answerTypeId"
+            shape="round"
+            fullWidth
+            formControlName="answerTypeId"
+            id="answerTypeId"
+            (selectedChange)="selectChangeHandlerAnserType($event)"
+          >
+<!--             <nb-option value="">{{ "No data selected" | translate }}</nb-option>
+ -->            <nb-option *ngFor="let e of answerType" [value]="e.id">
+              {{ e.ansType }}</nb-option
+            >
+          </nb-select>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group mt-2">
+          <label for="Services" class="label">
+            <h6>
+              {{ "Services" | translate }}
+            </h6>
+          </label>
+
+          <nb-select
+            shape="round"
+            fullWidth
+            multiple
+            formControlName="serviceId"
+            id="serviceId"
+            (selectedChange)="selectChangeHandlerServices($event)"
+          >
+<!--             <nb-option value="">{{ "No data selected" | translate }}</nb-option>
+ -->            <nb-option *ngFor="let s of Service" [value]="s.id">
+              {{ s.serviceName }}</nb-option
+            >
+          </nb-select>
+        </div>
+      </div>
+
+      <!--Event Image -->
+    </div>
+    <div class="row mt-2">
+      <div class="col-md-2">
+        <button
+          class="special-button m-2 mt-4 w-100"
+          [disabled]="QuestForm.invalid || isSubmitted"
+          type="submit"
+        >
+          {{ "Save" | translate }}
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

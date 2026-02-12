@@ -1,0 +1,292 @@
+<nb-card>
+    <nb-card-header><h5>{{'Add' |translate}} {{'Roles' |translate}}
+
+    </h5>
+    </nb-card-header>
+    <nb-card-body>
+        <form  [formGroup]="roleForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-sm-6"> <!--categoryName -->
+                    <div class="form-group">
+                        <label for="Role" class="label">
+                            <h6>
+                            {{'Role' |translate}}
+                        </h6>
+                        </label>
+                        <input type="text" 
+                            formControlName="roleName" nbInput shape="round" 
+                            fullWidth id="roleName">
+                            <mat-error *ngIf="fc.roleName.touched && fc.roleName.hasError('required')">
+                            
+                                {{'roleName is Required' | translate}}
+                            </mat-error>
+                    </div>
+                </div>
+
+               <!--  <div class="col-sm-6"> 
+                    <div class="form-group">
+                        <label for="NoOfParts" class="label">{{'NoOfParts' |translate}}</label>
+                        <input  type="text"
+                            formControlName="noOfParts" nbInput shape="round" fullWidth id="noOfParts">
+            
+                    </div>
+                </div> -->
+              
+              
+                 
+           
+                <div class="col-sm-6"> 
+                    <div class="form-group">
+                        <label for="noOfOwners" class="label">
+                        <h6> 
+                            {{'No-Of-Privilages' |translate}}
+                            {{this.index}}
+                           <!-- {{this.ownersFilteredLst}} -->
+
+                        </h6> 
+                        </label>
+
+
+
+                    
+                    
+                    </div>
+                </div>  
+      
+                <!-- <div class="col-sm-6"> 
+                    <div class="form-group">
+                        <label for="noOfOwners" class="label">
+                        <h6> 
+                            {{'NoOfOwners' |translate}}
+
+
+                        </h6> 
+                        </label>
+                        
+                        <a [href]="showOwners()"></a>
+                    </div>
+                    
+             
+                </div>  -->
+                <!-- <a [href]="ShowFile1(element.everId)" 
+                download="fileName.pdf" >
+                <mat-icon>download</mat-icon> -->
+                <!--Event Image -->
+            </div>
+            <nb-card class="table-container">
+                <table class="users-table table-striped" 
+                mat-table [dataSource]="dataSource" 
+                
+                matSort
+                (matSortChange)="sortData($event)"
+                matSortDisableClear
+                matSortDirection="asc">
+                
+           
+            <ng-container matColumnDef="Name">
+                <th mat-header-cell *matHeaderCellDef  mat-sort-header> {{'Permissions'|translate}} </th>
+                <td mat-cell *matCellDef="let element"> 
+                    <!-- {{element.name}}   -->
+   
+                     <span *ngIf="element.name =='';else data">
+                        <input type="text"
+                          #nameFilter
+                          nbInput
+                          class="w-30 mw-30"
+                          matInput
+                          (keyup)="applyFilter($event)"
+                          placeholder="name"
+                          class="text-center"
+                        />
+                      </span>
+                      <ng-template #data>
+                        <span>{{ element.name }}</span>
+                      </ng-template> 
+    
+    
+                </td> 
+            </ng-container>
+     
+            <ng-container matColumnDef="ischecked">
+                <th mat-header-cell *matHeaderCellDef>{{'ListAndSearch'|translate}} </th>
+                <td mat-cell *matCellDef="let element"> 
+                    <!-- {{element.name}}   
+                        [(ngModel)]="this.checkedrows"
+                         [disables]="this.disableRow"
+                        [(ngModel)]="this.checkedrow" value="this.checkedrow"
+                     [checked]="returnValueByelementid(element.id)"
+                        se
+                        (change)="check($event,element.id,element.hafezaId,element.nationalId,element.name)"
+                    -->
+   
+                     <span *ngIf="element.name !='';">
+                        <input type="checkbox"  
+                        [checked]="returnValueByelementid(element.id)"
+                        (change)="check($event,element.id,element.name)"
+                       />
+                      </span>
+
+                      
+<!--     
+                      <ng-template #data>
+                        <input type="checkbox"   [(ngModel)]="this.checkedrow"
+                        (change)="check($event,element.id,element.hafezaId,element.nationalId,element.name)"/>
+                     
+                                          </ng-template>  -->
+                </td> 
+            </ng-container>
+            <ng-container matColumnDef="CanAdd">
+                <th mat-header-cell *matHeaderCellDef> الاضافة</th>
+                <td mat-cell *matCellDef="let element"> 
+                    <!-- {{element.name}}   
+                        [(ngModel)]="this.checkedrows"
+                         [disables]="this.disableRow"
+                        [(ngModel)]="this.checkedrow" value="this.checkedrow"
+                     [checked]="returnValueByelementid(element.id)"
+                        
+                        (change)="check($event,element.id,element.hafezaId,element.nationalId,element.name)"
+                    -->
+                    <span *ngIf="element.viewActionOnly ==true;else data">
+                  
+                    </span>
+                    <ng-template #data>
+                     <span *ngIf="element.name !='';">
+                        <input type="checkbox"  
+                        [checked]="returnValueByelementid1(element.id)"
+                        (change)="check1($event,element.id,element.name)"
+                       />
+                      </span>
+                    </ng-template>
+
+                      
+<!--     
+                      <ng-template #data>
+                        <input type="checkbox"   [(ngModel)]="this.checkedrow"
+                        (change)="check($event,element.id,element.hafezaId,element.nationalId,element.name)"/>
+                     
+                                          </ng-template>  -->
+                </td> 
+            </ng-container>
+            <ng-container matColumnDef="CanUpdate">
+                <th mat-header-cell *matHeaderCellDef> التعديل</th>
+                <td mat-cell *matCellDef="let element"> 
+                    <!-- {{element.name}}   
+                        [(ngModel)]="this.checkedrows"
+                         [disables]="this.disableRow"
+                        [(ngModel)]="this.checkedrow" value="this.checkedrow"
+                     [checked]="returnValueByelementid(element.id)"
+                        
+                        (change)="check($event,element.id,element.hafezaId,element.nationalId,element.name)"
+                    -->
+          
+                      <span *ngIf="element.viewActionOnly ==true;else data">
+                  
+                    </span>
+                    <ng-template #data>
+
+                     <span *ngIf="element.name !='';">
+                        <input type="checkbox"  
+                        [checked]="returnValueByelementid2(element.id)"
+                        (change)="check2($event,element.id,element.name)"
+                       />
+                      </span>
+
+                    </ng-template>
+<!--     
+                      <ng-template #data>
+                        <input type="checkbox"   [(ngModel)]="this.checkedrow"
+                        (change)="check($event,element.id,element.hafezaId,element.nationalId,element.name)"/>
+                     
+                                          </ng-template>  -->
+                </td> 
+            </ng-container>
+            <ng-container matColumnDef="CanDelete">
+                <th mat-header-cell *matHeaderCellDef> الحذف</th>
+                <td mat-cell *matCellDef="let element"> 
+                    <!-- {{element.name}}   
+                        [(ngModel)]="this.checkedrows"
+                         [disables]="this.disableRow"
+                        [(ngModel)]="this.checkedrow" value="this.checkedrow"
+                     [checked]="returnValueByelementid(element.id)"
+                        
+                        (change)="check($event,element.id,element.hafezaId,element.nationalId,element.name)"
+                    -->
+                    <span *ngIf="element.viewActionOnly ==true;else data">
+                  
+                    </span>
+                    <ng-template #data>
+   
+                     <span *ngIf="element.name !='';">
+                        <input type="checkbox"  
+                        [checked]="returnValueByelementid3(element.id)"
+                        (change)="check3($event,element.id,element.name)"
+                       />
+                      </span>
+
+                    </ng-template>
+<!--     
+                      <ng-template #data>
+                        <input type="checkbox"   [(ngModel)]="this.checkedrow"
+                        (change)="check($event,element.id,element.hafezaId,element.nationalId,element.name)"/>
+                     
+                                          </ng-template>  -->
+                </td> 
+            </ng-container>
+                <!-- <th mat-header-cell *matHeaderCellDef >  </th>
+                <td >
+                  <input type="checkbok"/> 
+         
+                </td> 
+          -->
+          
+            <!-- <ng-container matColumnDef="actions"> 
+                <th mat-header-cell *matHeaderCellDef>  </th>
+                <td mat-cell *matCellDef="let element">
+                    
+                        <button mat-mini-fab color="primary" (click)="addToGrant(element.id,element.name
+                      ,element.nationalId,element.hafezaId)">
+                        <mat-icon>add</mat-icon>
+                    </button>  
+                
+                      
+                </td>
+            </ng-container> 
+        -->
+    
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> 
+        </table>
+
+    </nb-card>
+    <mat-paginator  [dir]='dir' [length]="totalRecords" [pageIndex]="(searchModel.PageNumber)-1" [pageSize]="searchModel.PageSize"
+    [pageSizeOptions]="pageSizeOptions" (page)="search($event)" showFirstLastButtons></mat-paginator>
+ 
+            <div class="row mt-2">
+                <button class="offset-md-11"  [disabled]="roleForm.invalid ||isSubmitted"   type="submit"  status="primary"
+                    nbButton>{{'Save' |translate}}</button>
+       
+            </div>
+
+            <!-- <div class="row mt-3">
+        
+                <button
+                class="btn btn-success"
+                nbButton
+                status="primary"
+                type="button" 
+                (click)="ShowAdd()"
+              >
+       
+        {{'Add' |translate}} {{'RoyalGrants' |translate}}
+        </button>
+
+        
+            </div> -->
+        </form>
+     
+    </nb-card-body>
+</nb-card>
+
+
+
+

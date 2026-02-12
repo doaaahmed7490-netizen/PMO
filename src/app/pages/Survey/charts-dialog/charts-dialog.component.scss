@@ -1,0 +1,21 @@
+.min-w-50vw {
+  min-width: 50vw;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  background-color: transparent;
+  border-radius: 50%;
+  transition-duration: 500ms;
+  .close-icon {
+    font-size: 30px;
+  }
+}
+
+.cursor-pointer:hover {
+  background-color: rgba($color: #ddd, $alpha: 0.3);
+}

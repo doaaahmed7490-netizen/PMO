@@ -1,0 +1,94 @@
+<div class="content-container mt-5">
+  <h5>{{'Edit' |translate}} {{'DirectiveGoals' |translate}}
+  </h5>
+  <hr/>
+  <form [formGroup]="DirectiveGoalForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-sm-6">
+        <!--Law number -->
+        <div class="form-group">
+          <label for="DirectiveGoal" class="label">
+            <h6>
+              {{ "DirectiveGoal" | translate }}
+            </h6>
+          </label>
+          <input
+            type="text"
+            [status]="
+              fc.directiveGoal.touched && fc.directiveGoal.errors
+                ? 'danger'
+                : 'basic'
+            "
+            formControlName="directiveGoal"
+            nbInput
+            shape="round"
+            fullWidth
+            id="directiveGoal"
+          />
+          <mat-error
+            *ngIf="
+              fc.directiveGoal.touched && fc.directiveGoal.hasError('required')
+            "
+          >
+            {{ "Directive Goal is Required" | translate }}
+          </mat-error>
+        </div>
+
+        <div class="form-group mt-2">
+          <label for="Milestone" class="label">
+            <h6>
+              {{ "Milestone" | translate }}
+            </h6>
+          </label>
+
+          <nb-select
+            [(selected)]="this.directivegoal.goalIds"
+            (selectedChange)="selectChangeHandlerGoals($event)"
+            formControlName="milestoneId"
+            id="milestoneId"
+            shape="round"
+            fullWidth
+            multiple
+            (change)="selectChangeHandlerGrant($event)"
+          >
+            <!-- <nb-option value="">{{ "No data selected" | translate }}</nb-option> -->
+            <nb-option *ngFor="let c of milestone" value="{{ c.id }}">
+              {{ c.milestoneName }}</nb-option
+            >
+          </nb-select>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <!--Message arabic -->
+        <div class="form-group">
+          <label for="GoalDesc" class="label">
+            <h6>
+              {{ "GoalDesc" | translate }}
+            </h6>
+          </label>
+          <textarea
+            type="text"
+            formControlName="goalDesc"
+            nbInput
+            shape="round"
+            fullWidth
+            id="goalDesc"
+          >
+          </textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-md-2">
+        <button
+          class="special-button m-2 mt-4 w-100"
+          [disabled]="DirectiveGoalForm.invalid || isSubmitted"
+          type="submit"
+        >
+          {{ "Save" | translate }}
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

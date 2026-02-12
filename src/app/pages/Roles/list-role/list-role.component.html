@@ -1,0 +1,144 @@
+<div class="container">
+    <nb-card class="table-container pb-3">
+      <nb-card-header>
+   <!--       <button
+          class="btn btn-success"
+          nbButton
+          status="primary"
+          type="button" [hidden]="!this.canAdd"
+          (click)="ShowAdd()"
+        >
+          {{ "Add" | translate }}
+        </button>  -->
+
+        <h4>   {{ "Roles" | translate }}</h4>
+
+      </nb-card-header>
+     
+    </nb-card>
+    <nb-card class="table-container">
+
+      <div class="col d-flex">
+             
+        <br/>
+       <br/>
+       
+       <button
+       class="special-button mb-3"
+       [hidden]="!this.canAdd"
+       type="button"
+       (click)="ShowAdd()"
+     >
+       {{ "Add" | translate }}
+     </button>
+           </div>
+        <table class="users-table table-striped"
+        mat-table
+        [dataSource]="dataSource"
+        matSort
+        (matSortChange)="sortData($event)"
+        matSortDisableClear
+        matSortDirection="asc"
+        >
+    
+            <!-- lawNumber Column [hidden]="this.hide"-->
+            <ng-container matColumnDef="Role">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'Roles'|translate}} </th>
+                <td mat-cell *matCellDef="let element"> 
+                    
+                    <!-- {{element.planName}} -->
+
+                    <span *ngIf="element.roleName ==''; else data">
+                        <input type="text"
+                          #roleNameFilter
+                          nbInput
+                          class="w-30 mw-30"
+                          matInput
+                          (keyup)="applyFilter($event)"
+                          [placeholder]="'Role' |translate" 
+                          class="text-center"
+                        />
+                      </span>
+                      <ng-template #data>
+                        <span>{{ element.roleName }}</span>
+                      </ng-template>
+                    
+                </td> 
+            </ng-container>
+
+          
+           
+            <!-- messageAr Column -->
+       <!--      <ng-container matColumnDef="Notes">
+                <th mat-header-cell *matHeaderCellDef> {{'Notes' |translate}} </th>
+                <td mat-cell *matCellDef="let element"> {{element.notes}} </td> 
+            </ng-container> -->
+      
+        
+      
+            <ng-container matColumnDef="actions2"> 
+                <th mat-header-cell *matHeaderCellDef>  </th>
+                <td mat-cell *matCellDef="let element">
+                 
+                  <span *ngIf="element.sortable ==false;else data">
+                  
+                  </span>
+                  <ng-template #data>
+                    <span>
+                      <button mat-mini-fab color="primary" [hidden]="!this.canEdit" (click)="ShowEdit(element.id)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+    
+                  </span>
+                  </ng-template>
+              
+
+                </td>
+            </ng-container> 
+   <!--          <ng-container matColumnDef="actions1"> 
+                <th mat-header-cell *matHeaderCellDef>  </th>
+                <td mat-cell *matCellDef="let element">
+                 
+                  <span *ngIf="element.sortable ==false;else data">
+                  
+                  </span>
+                  <ng-template #data>
+                    <span>
+                 
+                        <button mat-mini-fab color="warn" (click)="delete(element.id,element.roleName)">
+                            <mat-icon>delete</mat-icon>
+                    </button>
+                  </span>
+                  </ng-template>
+              
+  
+                </td>
+            </ng-container>   -->
+            <!-- <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef> {{'Actions' |translate}} </th>
+                <td mat-cell *matCellDef="let element">
+                     <button mat-mini-fab color="primary" (click)="ShowEdit(element.id)"
+                        class="mr-1">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                   <button mat-mini-fab color="warn" (click)="delete(element.id,element.planName)">
+                        <mat-icon>delete</mat-icon>
+                    </button> 
+        
+                </td>
+            </ng-container> -->
+    
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> 
+        </table>
+    </nb-card>
+   <mat-paginator  [dir]='dir' [length]="totalRecords" [pageIndex]="(searchModel.PageNumber)-1" [pageSize]="searchModel.PageSize"
+    [pageSizeOptions]="pageSizeOptions" (page)="search($event)" showFirstLastButtons></mat-paginator>
+
+
+   <!--  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    aria-label="Select page of periodic elements">
+</mat-paginator> -->
+  </div>
+  

@@ -1,0 +1,143 @@
+<div class="content-container mt-5">
+  <h5>{{'Add' |translate}} {{'Services' |translate}}
+  </h5>
+  <hr/>
+  <form [formGroup]="serviceForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-sm-6">
+        <!--categoryName -->
+        <div class="form-group">
+          <label for="Service" class="label">
+            <h6>
+              {{ "Service" | translate }}
+            </h6>
+          </label>
+          <input
+            type="text"
+            formControlName="service"
+            nbInput
+            shape="round"
+            fullWidth
+            id="service"
+          />
+          <mat-error
+            *ngIf="fc.service.touched && fc.service.hasError('required')"
+          >
+            {{ "Service is required" | translate }}
+          </mat-error>
+          <mat-error
+            *ngIf="
+              fc.service.touched &&
+              fc.service.hasError('minlength') &&
+              !fc.service.hasError('required')
+            "
+          >
+            {{ "min length 3 Letters" | translate }}
+          </mat-error>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="Service Desc" class="label">
+            <h6>
+              {{ "Service Desc" | translate }}
+            </h6>
+          </label>
+          <input
+            type="text"
+            formControlName="serviceDesc"
+            nbInput
+            shape="round"
+            fullWidth
+            id="serviceDesc"
+          />
+
+          <!--  <mat-error
+                                *ngIf="fc.userName.touched && fc.fullName.hasError('minlength') && !fc.fullName.hasError('required')">
+                                {{'min length 3 Letters' | translate}}
+                            </mat-error> -->
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group mt-2">
+          <label for="Employee" class="label">
+            <h6>
+              {{ "Employee" | translate }}
+            </h6>
+          </label>
+          <nb-select
+            shape="round"
+            fullWidth
+            formControlName="empId"
+            id="empId"
+            (selectedChange)="selectChangeHandlerEmp($event)"
+          >
+            <!-- <nb-option value="">{{ "No data selected" | translate }}</nb-option> -->
+            <nb-option *ngFor="let e of emp" [value]="e.id">
+              {{ e.name }}</nb-option
+            >
+          </nb-select>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group mt-2">
+          <label for="Department" class="label">
+            <h6>
+              {{ "Department" | translate }}
+            </h6>
+          </label>
+          <nb-select
+            shape="round"
+            fullWidth
+            formControlName="deptId"
+            id="deptId"
+            (selectedChange)="selectChangeHandlerDept($event)"
+          >
+            <!-- <nb-option value="">{{ "No data selected" | translate }}</nb-option> -->
+            <nb-option *ngFor="let e of department" [value]="e.id">
+              {{ e.departmentName }}</nb-option
+            >
+          </nb-select>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group mt-2">
+          <label for="Goals" class="label">
+            <h6>
+              {{ "Goals" | translate }}
+            </h6>
+          </label>
+
+          <nb-select
+            class="mt-2"
+            shape="round"
+            fullWidth
+            multiple
+            formControlName="goalId"
+            id="goalId"
+            (selectedChange)="selectChangeHandlerGoals($event)"
+          >
+            <!-- <nb-option value="">{{ "No data selected" | translate }}</nb-option> -->
+            <nb-option *ngFor="let g of GoalsModel" [value]="g.id">
+              {{ g.directiveGoal }}</nb-option
+            >
+          </nb-select>
+        </div>
+      </div>
+
+      <!--Event Image -->
+    </div>
+    <div class="row mt-2">
+      <div class="col-md-2">
+        <button
+          class="special-button m-2 mt-4 w-100"
+          [disabled]="serviceForm.invalid || isSubmitted"
+          type="submit"
+        >
+          {{ "Save" | translate }}
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
