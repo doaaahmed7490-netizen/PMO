@@ -1,5 +1,5 @@
 <div class="content-container mt-3">
-  <h5>{{'Add' |translate}} {{'مشروع'}}
+  <h5>{{'إضافة مشروع' }}
   </h5>
   <hr/>
   <form [formGroup]="StrategicGoalsForm" (ngSubmit)="onSubmit()">
@@ -9,7 +9,7 @@
         <div class="form-group">
           <label for="StrategicGoal" class="label">
             <h6>
-              {{ "StrategicGoal" | translate }}
+              {{ "إسم المشروع"  }}
             </h6>
           </label>
           <input
@@ -95,7 +95,7 @@
           <div class="form-group">
           <label for="FromDate" class="label">
             <h6>
-              {{ "FromDate" | translate }}
+              {{ "من تاريخ"  }}
             </h6>
           </label>
           <input
@@ -117,7 +117,7 @@
           <div class="form-group">
           <label for="ToDate" class="label">
             <h6>
-              {{ "ToDate" | translate }}
+              {{ "إلى تاريخ" }}
             </h6>
           </label>
           <input
@@ -159,7 +159,7 @@
           class="special-button m-2 mt-4 w-100"
    type="submit"
        >
-          {{ "Save" | translate }}
+          {{ "حفظ"  }}
         </button>
       </div>
        <div class="col-md-2">
