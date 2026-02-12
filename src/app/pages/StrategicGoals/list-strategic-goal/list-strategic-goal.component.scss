@@ -1,5 +1,5 @@
 /* fixed-table.component.css */
-table {
+/*table {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
@@ -8,7 +8,7 @@ table {
 
 th, td {
   padding: 10px;
-    border: 2px solid #826026; /* border color */
+    border: 2px solid #826026; 
       text-align: center;
 
 
@@ -16,9 +16,9 @@ th, td {
 
 
 thead {
-  background-color: #826026; /* your theme color */
+  background-color: #826026;
   color: white;
-      border: 2px solid #826026; /* border color */
+      border: 2px solid #826026;
 
 }
 .actions {
@@ -27,4 +27,57 @@ thead {
 
 .actions button {
   margin: 0 4px;
+}
+
+*/
+
+.responsive-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.responsive-table th
+{
+       background-color: #826026;
+         color: white;
+         border: 2px solid #826026; 
+  padding: 10px;
+      text-align: center;
+
+
+}
+.responsive-table td {
+  padding: 10px;
+ // border: 1px solid #ddd;
+      border: 2px solid #826026; 
+      text-align: center;
+
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+
+  .responsive-table thead {
+    //display: none;
+     background-color: #826026;
+  color: white;
+      border: 2px solid #826026;
+  }
+
+  .responsive-table tr {
+    display: block;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+  }
+
+  .responsive-table td {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+  .responsive-table td::before {
+    content: attr(data-label);
+    font-weight: bold;
+  }
 }
