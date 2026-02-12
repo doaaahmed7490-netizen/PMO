@@ -549,6 +549,8 @@ LabelChart5:string;
     ]
       },
       options: {
+          responsive: true,
+
          devicePixelRatio: 2,
           indexAxis: 'y',
 
@@ -594,6 +596,7 @@ LabelChart5:string;
     ]
       },
       options: {
+          responsive: true,
          devicePixelRatio: 2,
           indexAxis: 'y',
 
@@ -642,6 +645,8 @@ labelChart9:string;
     ]
       },
       options: {
+         responsive:true,
+
          devicePixelRatio: 2,
           indexAxis: 'y',
 
@@ -689,6 +694,8 @@ labelChart9:string;
     ]
       },
       options: {
+         responsive:true,
+
          devicePixelRatio: 2,
           indexAxis: 'y',
 
@@ -766,6 +773,7 @@ isShow:false
     ]
       },
       options: {
+        responsive:true,
          devicePixelRatio: 2,
           indexAxis: 'y',
 
@@ -817,6 +825,7 @@ isShow:false
     ]
       },
       options: {
+        responsive:true,
          devicePixelRatio: 2,
           indexAxis: 'y',
 
@@ -861,6 +870,8 @@ else    {
     ]
       },
       options: {
+         responsive:true,
+
          devicePixelRatio: 2,
           indexAxis: 'y',
 
@@ -909,6 +920,8 @@ else    {
     ]
       },
       options: {
+         responsive:true,
+
          devicePixelRatio: 2,
           indexAxis: 'y',
 

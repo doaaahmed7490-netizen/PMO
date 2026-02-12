@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "nebular-downgrade-2:build:production"
+              "buildTarget": "nebular-downgrade-2:build:production"
             },
             "development": {
-              "browserTarget": "nebular-downgrade-2:build:production"
+              "buildTarget": "nebular-downgrade-2:build:production"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "nebular-downgrade-2:build"
+            "buildTarget": "nebular-downgrade-2:build"
           }
         },
         "test": {
