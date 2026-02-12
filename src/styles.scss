@@ -169,7 +169,7 @@ nb-layout .layout .layout-container .content nb-layout-footer nav {
 
  @font-face {
      font-family: "Maven Pro Regular";
-     src: url("./assets/fonts/MavenPro-Regular.ttf") format("truetype");
+     src: url(".//fonts/MavenPro-Regular.ttf") format("truetype");
      font-weight: normal;
      font-style: normal;
  }
@@ -292,7 +292,8 @@ nb-layout .layout .layout-container .content nb-layout-footer nav {
 
   .mat-form-field-label {
     color: #ffffff;
-  }
+  }  src: url("./assets/fonts/fonnts.com-Helvetica_Neue_LT_Arabic_75_Bold.ttf")
+
 } */
 
 @use "themes" as *;
@@ -305,7 +306,7 @@ nb-layout .layout .layout-container .content nb-layout-footer nav {
 
 @font-face {
   font-family: "Helvetica Neue LT Arabic";
-  src: url("./assets/fonts/fonnts.com-Helvetica_Neue_LT_Arabic_75_Bold.ttf")
+  src: url("assets/fonts/fonnts.com-Helvetica_Neue_LT_Arabic_75_Bold.ttf")
     format("truetype");
   font-weight: bold;
   font-style: normal;
@@ -313,42 +314,42 @@ nb-layout .layout .layout-container .content nb-layout-footer nav {
 
 @font-face {
   font-family: "Noto Kufi Arabic";
-  src: url("./assets/fonts/NotoKufiArabic-VariableFont_wght.ttf")
+  src: url("assets/fonts/NotoKufiArabic-VariableFont_wght.ttf")
     format("truetype");
   font-style: normal;
 }
 
 @font-face {
   font-family: "Helvetica Neue LT Arabic";
-  src: url("./assets/fonts/alfont_com_هلفيتيكا-عربي-.ttf") format("truetype");
+  src: url("assets/fonts/alfont_com_هلفيتيكا-عربي-.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Maven Pro Regular";
-  src: url("./assets/fonts/MavenPro-Regular.ttf") format("truetype");
+  src: url("assets/fonts/MavenPro-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Maven Pro Bold";
-  src: url("./assets/fonts/MavenPro-Bold.ttf") format("truetype");
+  src: url("assets/fonts/MavenPro-Bold.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Helvetica Neue Light";
-  src: url("./assets/fonts/HelveticaNeue\ Light.ttf") format("truetype");
+  src: url("assets/fonts/HelveticaNeue\ Light.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Helvetica Neue Bold";
-  src: url("./assets/fonts/HelveticaNeue\ Bold.ttf") format("truetype");
+  src: url("assets/fonts/HelveticaNeue\ Bold.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
 }
