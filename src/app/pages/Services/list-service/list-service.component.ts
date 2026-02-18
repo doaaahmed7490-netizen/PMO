@@ -23,9 +23,10 @@ import { EntityNames } from '../../../shared/Entity-Names';
 })
 export class ListServiceComponent implements OnInit {
    tableData = [
-      {  name: 'امانة جدة',clientType:'حكومة', mobil: '0564801300', email: '', contactPersomNm1: 'احمد محمد', ContactPerson1Mobil: '0554852666',ContactPerson1Email: 'a.ahmed@jeddah.gov.sa',contactPersomNm2: 'مالك محمد',ContactPerson1Mobi2: '0544812391',ContactPerson1Emai2:'m.mohamed@jeddah.gov.sa' },
-      {  name: 'شركة1111',clientType:'شركة', mobil: '0564801391', email: 'm.nnn@gmail.com', contactPersomNm1: 'محمد احمد سيد', ContactPerson1Mobil: '0504401891',ContactPerson1Email: '',contactPersomNm2: '',ContactPerson1Mobi2: '',ContactPerson1Emai2:'' },
-      {  name: 'دعاء احمد',clientType:'فرد', mobil: '0564801391', email: 'doaa.ahmed74@yahoo.com', contactPersomNm1: '', ContactPerson1Mobil: '',ContactPerson1Email: '',contactPersomNm2: '',ContactPerson1Mobi2: '',ContactPerson1Emai2:'' }
+    
+      {  name: 'امانة جدة',clientType:'حكومة', mobil: '0564801300', email: '', contactPersomNm1: 'احمد محمد', ContactPerson1Mobil: '0554852666',ContactPerson1Email: 'a.ahmed@jeddah.gov.sa' },
+      {  name: 'شركة1111',clientType:'شركة', mobil: '0564801391', email: 'm.nnn@gmail.com', contactPersomNm1: 'محمد احمد سيد', ContactPerson1Mobil: '0504401891',ContactPerson1Email: 'm.ahmed@yahoo.com' },
+      {  name: 'دعاء احمد',clientType:'فرد', mobil: '0564801391', email: 'doaa.ahmed74@yahoo.com', contactPersomNm1: '', ContactPerson1Mobil: '',ContactPerson1Email: '' }
 
   
     ];
@@ -89,9 +90,13 @@ export class ListServiceComponent implements OnInit {
     tableData1=[]
     ngOnInit(){
     this.tableData1 = [
-      {  name: 'امانة جدة',clientType:'حكومة', mobil: '0564801300', email: '', contactPersomNm1: 'احمد محمد', ContactPerson1Mobil: '0554852666',ContactPerson1Email: 'a.ahmed@jeddah.gov.sa',contactPersomNm2: 'مالك محمد',ContactPerson1Mobi2: '0544812391',ContactPerson1Emai2:'m.mohamed@jeddah.gov.sa' },
+  /*     {  name: 'امانة جدة',clientType:'حكومة', mobil: '0564801300', email: '', contactPersomNm1: 'احمد محمد', ContactPerson1Mobil: '0554852666',ContactPerson1Email: 'a.ahmed@jeddah.gov.sa',contactPersomNm2: 'مالك محمد',ContactPerson1Mobi2: '0544812391',ContactPerson1Emai2:'m.mohamed@jeddah.gov.sa' },
       {  name: 'شركة1111',clientType:'شركة', mobil: '0564801391', email: 'm.nnn@gmail.com', contactPersomNm1: 'محمد احمد سيد', ContactPerson1Mobil: '0504401891',ContactPerson1Email: 'm.ahmed@yahoo.com',contactPersomNm2: '',ContactPerson1Mobi2: '',ContactPerson1Emai2:'' },
       {  name: 'دعاء احمد',clientType:'فرد', mobil: '0564801391', email: 'doaa.ahmed74@yahoo.com', contactPersomNm1: '', ContactPerson1Mobil: '',ContactPerson1Email: '',contactPersomNm2: '',ContactPerson1Mobi2: '',ContactPerson1Emai2:'' }
+ */
+  {  name: 'امانة جدة',clientType:'حكومة', mobil: '0564801300', email: '', contactPersomNm1: 'احمد محمد', ContactPerson1Mobil: '0554852666',ContactPerson1Email: 'a.ahmed@jeddah.gov.sa' },
+      {  name: 'شركة1111',clientType:'شركة', mobil: '0564801391', email: 'm.nnn@gmail.com', contactPersomNm1: 'محمد احمد سيد', ContactPerson1Mobil: '0504401891',ContactPerson1Email: 'm.ahmed@yahoo.com' },
+      {  name: 'دعاء احمد',clientType:'فرد', mobil: '0564801391', email: 'doaa.ahmed74@yahoo.com', contactPersomNm1: '', ContactPerson1Mobil: '',ContactPerson1Email: '' }
 
   
     ];
