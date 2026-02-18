@@ -86,13 +86,12 @@ thead {
 */
 .responsive-table-wrapper {
   width: 100%;
-  max-width: 100%;
-  min-width: 100%;
+  //max-width: 100%;
   display: block;
 }
 .responsive-table {
- // width: 100%;
-    max-width: 100%;
+  width: 100%;
+ //   max-width: 100%;
 
   border-collapse: collapse;
 }
@@ -118,8 +117,6 @@ thead {
   .responsive-table {
     display: block;
     width: 100%;
-      min-width: 100%;
-
 
   }
 

@@ -1,278 +1,195 @@
-<div class="content-container mt-5">
-  <h5>{{'Add' |translate}} {{'Employee' |translate}}
+<div class="content-container mt-0.5">
+  <h5>{{'إضافة موظف' }}
   </h5>
   <hr/>
-  <form [formGroup]="empForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="StrategicGoalsForm" (ngSubmit)="onSubmit()">
     <div class="row">
       <div class="col-sm-6">
-        <!--categoryName -->
+        <!--Law number -->
         <div class="form-group">
-          <label for="Name" class="label">
+          <label for="CustName" class="label">
             <h6>
-              {{ "Name" | translate }}
+              {{ "إسم الموظف"  }}
             </h6>
           </label>
           <input
             type="text"
-            formControlName="name"
+           
+            formControlName="strategicGoal"
             nbInput
             shape="round"
             fullWidth
-            id="name"
+            id="strategicGoal"
           />
-          <mat-error *ngIf="fc.name.touched && fc.name.hasError('required')">
-            {{ "Name is required" | translate }}
-          </mat-error>
-          <mat-error
-            *ngIf="
-              fc.name.touched &&
-              fc.name.hasError('minlength') &&
-              !fc.name.hasError('required')
-            "
-          >
-            {{ "min length 3 Letters" | translate }}
-          </mat-error>
+          
         </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="form-group">
-          <label for="NationalId" class="label">
+           <div class="form-group">
+          <label for="StrategicGoal" class="label">
             <h6>
-              {{ "NationalId" | translate }}
+              {{ "الوظيفة"}}
             </h6>
           </label>
-          <input
-            type="text"
-            inputmode="numeric"
-            pattern="[-+]?[0-9]*[.,]?[0-9]+"
-            minlength="10"
-            maxlength="10"
-            formControlName="nationalId"
-            nbInput
-            shape="round"
-            fullWidth
-            id="nationalId"
-          />
-          <mat-error *ngIf="fc.nationalId.touched && fc.nationalId.hasError('pattern')">
-            {{ "NationalId pattern" | translate }}
-          </mat-error>
-          <mat-error
-            *ngIf="
-              fc.nationalId.touched &&
-              fc.nationalId.hasError('minlength') &&
-              !fc.nationalId.hasError('pattern')
-            "
-          >
-            {{ "NationalId min length" | translate }}
-          </mat-error>
-          <mat-error
-          *ngIf="
-            fc.nationalId.touched &&
-            fc.nationalId.hasError('maxlength') &&
-            !fc.nationalId.hasError('pattern')
-          "
-        >
-          {{ "NationalId max length" | translate }}
-        </mat-error>
-          <mat-error *ngIf="fc.nationalId.touched && fc.nationalId.hasError('min')">
-            {{ "NationalId not contain negative number" | translate }}
-          </mat-error>
-        
-        </div>
-      </div>
-
-      <div class="col-sm-6">
-        <div class="form-group mt-2">
-          <label for="Phone" class="label">
-            <h6>
-              {{ "Phone" | translate }}
-            </h6>
-          </label>
-          <input min="0"
-            type="text"
-            inputmode="numeric"
-            pattern="[-+]?[0-9]*[.,]?[0-9]+"
-            maxlength="10"
-            placeholder="Ex:1570572194"
-            formControlName="phone"
-            nbInput
-            shape="round"
-            fullWidth
-            id="phone"
-          />
-    
-          <!-- <mat-error *ngIf="fc.phone.touched && fc.phone.hasError('min')">
-            {{ "Phone not contain negative number" | translate }}
-          </mat-error> -->
-    
-          <mat-error *ngIf="fc.phone.touched && fc.phone.hasError('pattern')">
-            {{ "Phone pattern" | translate }}
-          </mat-error>
-          <mat-error
-            *ngIf="
-              fc.phone.touched &&
-              fc.phone.hasError('minlength') &&
-              !fc.phone.hasError('pattern')
-            "
-          >
-            {{ "Phone min length" | translate }}
-          </mat-error>
-          <mat-error
-          *ngIf="
-            fc.phone.touched &&
-            fc.phone.hasError('maxlength') &&
-            !fc.phone.hasError('pattern')
-          "
-        >
-          {{ "Phone max length" | translate }}
-        </mat-error>
-          <mat-error *ngIf="fc.phone.touched && fc.phone.hasError('min')">
-            {{ "Phone not contain negative number" | translate }}
-          </mat-error>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="form-group mt-2">
-          <label for="Mobil" class="label">
-            <h6>
-              {{ "Mobil" | translate }}
-            </h6>
-          </label>
-          <input min="0"
-            type="text"
-            inputmode="numeric"
-            pattern="[0-9]*[.,]?[0-9]+"
-            maxlength="12"
-            placeholder="Ex:9665657801391"
-            formControlName="mobil"
-            nbInput
-            shape="round"
-            fullWidth
-            id="mobil"
-          />
-          <mat-error *ngIf="fc.mobil.touched && fc.mobil.hasError('pattern')">
-            {{ "Mobil pattern" | translate }}
-          </mat-error>
-          <mat-error *ngIf="fc.mobil.touched && fc.mobil.hasError('min')">
-            {{ "Mobil not contain negative number" | translate }}
-          </mat-error>
-          <mat-error
-            *ngIf="
-              fc.mobil.touched &&
-              fc.mobil.hasError('minlength') &&
-              !fc.mobil.hasError('pattern')
-            "
-          >
-            {{ "Mobil min length" | translate }}
-          </mat-error> 
-          <mat-error
-          *ngIf="
-            fc.mobil.touched &&
-            fc.mobil.hasError('maxlength') &&
-            !fc.mobil.hasError('pattern')
-          "
-        >
-          {{ "Mobil max length" | translate }}
-        </mat-error>
-        </div>
-      </div>
-
-      <div class="col-sm-6">
-        <div class="form-group mt-2">
-          <label for="Email" class="label">
-            <h6>
-              {{ "Email" | translate }}
-            </h6>
-          </label>
-          <input
-            type="text"
-            placeholder="Ex: dmostafa@jeddah.gov.sa"
-            formControlName="email"
-            nbInput
-            shape="round"
-            fullWidth
-            id="email"
-          />
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="form-group mt-2">
-          <label for="Job" class="label">
-            <h6>
-              {{ "Job" | translate }}
-            </h6>
-          </label>
-    <!--       <select
-            class="form-control"
-            formControlName="jobId"
-            id="jobId"
-            style="font-size: 16px; height: 40px"
-            (change)="selectChangeHandlerJob($event)"
-          >
-            <option *ngFor="let job of Jobs" [value]="job.id">
-              {{ job.jobName }}
-            </option>
-          </select> -->
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="form-group mt-2">
-          <label for="Department" class="label">
-            <h6>
-              {{ "Department" | translate }}
-            </h6>
-          </label>
-          <!--      <select class="form-control"
-                            formControlName="deptId" id="deptId"
-                            style="font-size: 16px; height: 40px;"
-                             (change)="selectChangeHandlerDept($event)">
-                            <option value="">{{'No data selected' |translate}}</option>
-                            <option *ngFor="let dept of departments" [value]="dept.id">
-                                {{dept.departmentName}}</option>
-                        </select > -->
           <nb-select
-            class="mt-2"
             shape="round"
             fullWidth
-            multiple
-            formControlName="deptId"
-            id="deptId"
-            (selectedChange)="selectChangeHandlerDept($event)"
+            formControlName="custId"
+          
+          
           >
-            <!-- <nb-option value="">{{ "No data selected" | translate }}</nb-option> -->
-            <nb-option *ngFor="let dept of departments" [value]="dept.id">
-              {{ dept.departmentName }}</nb-option
+            <nb-option *ngFor="let e of this.options" [value]="e.id">
+              {{ e.label }}</nb-option
             >
           </nb-select>
+
         </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="form-group mt-2">
-          <label for="Notes" class="label">
+          <div class="form-group">
+          <label for="StrategicGoal" class="label">
             <h6>
-              {{ "Notes" | translate }}
+              {{ "رقم الجوال"  }}
             </h6>
           </label>
           <input
             type="text"
-            formControlName="notes"
+          
+            formControlName="Mobil"
             nbInput
             shape="round"
             fullWidth
-            id="notes"
+            id="Mobil"
           />
+         
+        </div>
+          <div class="form-group">
+          <label for="StrategicGoal" class="label">
+            <h6>
+              {{ "البريد الإلكترونى"  }}
+            </h6>
+          </label>
+          <input
+            type="text"
+          
+            formControlName="Email"
+            nbInput
+            shape="round"
+            fullWidth
+            id="Email"
+          />
+         
+        </div>
+        
+         <div class="form-group">
+          <label for="StrategicGoal" class="label">
+            <h6>
+              {{ "العنوان"}}
+            </h6>
+          </label>
+        <input
+            type="text"
+          
+            formControlName="Address"
+            nbInput
+            shape="round"
+            fullWidth
+            id="Address"
+          />
+
+        </div>
+       
+       
+        
+        
+      </div>
+
+      <div class="col-sm-6">
+          <div class="form-group">
+          <label for="StrategicGoal" class="label">
+            <h6>
+              {{ " المؤهل الدراسى" }}
+            </h6>
+          </label>
+          <input
+            type="text"
+        
+            formControlName="qualification"
+            nbInput
+            shape="round"
+            fullWidth
+            id="qualification"
+          />
+       
+        </div>
+          <div class="form-group">
+          <label for="StrategicGoal" class="label">
+            <h6>
+              {{ "تاريخ الميلا" }}
+            </h6>
+          </label>
+          <input
+            type="date"
+        
+            formControlName="ContactPersonMobil1"
+            nbInput
+            shape="round"
+            fullWidth
+            id="ContactPersonMobil1"
+          />
+       
+        </div>
+          <div class="form-group">
+          <label for="StrategicGoal" class="label">
+            <h6>
+              {{ "تاريخ التعيين" }}
+            </h6>
+          </label>
+          <input
+            type="date"
+        
+            formControlName="ContactPersonEmail1"
+            nbInput
+            shape="round"
+            fullWidth
+            id="ContactPersonEmail1"
+          />
+       
+        </div>
+        <!--Message arabic -->
+        
+
+      
+        <div class="form-group">
+          <label for="GoalDesc" class="label">
+            <h6>
+              {{ "ملاحظات"  }}
+            </h6>
+          </label>
+          <textarea
+            type="text"
+            formControlName="goalDesc"
+            nbInput
+            shape="round"
+            fullWidth
+            id="goalDesc"
+          >
+          </textarea>
         </div>
       </div>
-      <!--Event Image -->
     </div>
-    <div class="row mt-2">
+    <div class="row mt-2" >
       <div class="col-md-2">
         <button
           class="special-button m-2 mt-4 w-100"
-          [disabled]="empForm.invalid || isSubmitted"
-          type="submit"
-        >
-          {{ "Save" | translate }}
+   type="submit"
+       >
+          {{ "حفظ"  }}
+        </button>
+      </div>
+       <div class="col-md-2">
+        <button
+          class="special-button m-2 mt-4 w-100"
+   type="button"    (click)="Close()"
+
+       >
+          {{ "إلغاء"}}
         </button>
       </div>
     </div>

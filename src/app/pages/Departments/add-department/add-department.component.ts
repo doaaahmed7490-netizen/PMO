@@ -6,6 +6,8 @@ import { DepartmentModel } from '../../../models/Departments/Department.model';
 import { DepartmentService } from '../../../services/department.service';
 import { ToastrService } from '../../../services/toastr.service';
 import { EntityNames } from '../../../shared/Entity-Names';
+import { DistrictService } from '../../../services/district.service';
+import { DistrictModel } from '../../../models/District/District.model';
 
 @Component({
   selector: 'app-add-department',
@@ -15,88 +17,97 @@ import { EntityNames } from '../../../shared/Entity-Names';
 export class AddDepartmentComponent  implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
-    private departmentService: DepartmentService,
+    private districtService: DistrictService,
     private router: Router,
     private route: ActivatedRoute,
 
     private toastrService: ToastrService
-  ) {
-    if(localStorage.getItem("token")==null||localStorage.getItem("token")=='')
-    this.router.navigateByUrl('/auth');
-  }
-  DepartmentForm: FormGroup;
-  departmet: DepartmentModel[] = [];
+  //  private translate: TranslateService
+  ) {}
+  districtForm: FormGroup;
+  districts: DistrictModel[] = [];
   Types = ["Event", "Knowledge Center"];
   submitted = false;
   isSubmitted :boolean= false;
 
   ngOnInit() {
     this.initForm();
-    this.getDepartmenst();
+    //this.getDistricts();
   }
-  getDepartmenst() {
-    this.departmentService
-      .searchDepartments({
+  getDistricts() {
+    this.districtService
+      .searchDistrict({
         PageNumber: 1,
         PageSize: 1000,
       })
       .subscribe((res) => {
-        this.departmet = res.entity.entities.filter(x=>x.departmentName!='');
+        this.districts = res.entity.entities;
       });
   }
   initForm() {
-    this.DepartmentForm = this.formBuilder.group({
-      deparment: ["", [Validators.required, Validators.minLength(3)]],
-      notes: [""],
-      parentId: [""],
+    this.districtForm = this.formBuilder.group({
+      name: ["", [Validators.required, Validators.minLength(3)]],
+      notes: [""]
+   //   parentId: [""],
     });
   }
+  /*
   onSubmit() {
     this.submitted = true;
     this.isSubmitted = true;
-    if (this.DepartmentForm.invalid) {
+    if (this.districtForm.invalid) {
       return;
     }
-    const departmentModel = this.DepartmentForm.value;
+    const districtModel = this.districtForm.value;
     let model = {
-      departmentName: departmentModel.deparment,
-      desc: departmentModel.notes,
+      name: districtModel.name,
+      notes: districtModel.notes,
     
-      mainDeptId:
-      departmentModel.parentId.length < 1 ? null : departmentModel.parentId,
+      parentId:
+      districtModel.parentId.length < 1 ? null : districtModel.parentId,
     };
+  
 
-
-    const isWhitespaceString = str => !/\S/.test(str)
-    if( isWhitespaceString(model.departmentName)==true)
-    this.toastrService.danger("يجب إدخال بيانات الإدارة لإتمام عملية الحفظ","خطأ");
-else
-{
-    this.departmentService.addDepartment(model).subscribe( {
+    this.districtService.addDistrict(model).subscribe( {
       next: (res) => {
-        this.toastrService.Create(EntityNames.Department);
+        this.toastrService.Create(EntityNames.District);
 
-        const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/Departments';
+        const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/District';
 
         this.router.navigateByUrl(returnUrl);      
       },
-     // }
-     // else
+
      error: (err) => {
 
-    
-      this.toastrService.danger(err.error.error,"خطأ");
-    
-    
+
+
+      this.toastrService.danger("هذه البيانات تم إضافتها سابقاً","تكرار البيانات");
       this.submitted = false;
       this.isSubmitted = false;
      }
     
     });
   }
-}
+  */
+ 
+   onSubmit()
+ {
+   const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/Jobs';
+
+
+
+    this.router.navigateByUrl(returnUrl);
+ }
+ Close()
+ {
+   const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/Jobs';
+
+
+
+    this.router.navigateByUrl(returnUrl);
+ }
  
   get fc() {
-    return this.DepartmentForm.controls;
+    return this.districtForm.controls;
   }
 }

@@ -20,52 +20,60 @@ import { EntityNames } from '../../../shared/Entity-Names';
   styleUrls: ['./list-department.component.scss']
 })
 export class ListDepartmentComponent implements OnInit {
-  dir = "ltr";
+   tableData = [
+    {  job: 'مبرمج', notes: '  تطوير وانشاء تطبيقات وانظمة الشركة' },
+     {  job: 'مدير قواعد البيانات', notes: 'انشاء وادارة قواعد البيانات الخاصة بانظمة وتطبيقات الشركة'  },
+    {  job: 'مهندس مدنى', notes: 'تصميم وتنفيذ والإشراف على المشاريع الإنشائية والبنية التحتية'},
+    {  job: 'مهندس الميكانيكي', notes:'تصميم وتنفيذ والإشراف على الأنظمة الميكانيكية  داخل المباني والمشروعات' },
+
+  ];
+ // dir = "ltr";
+    dir = "rtl";
+
   constructor(
    // private dialogService: NbDialogService,
     private toastrService: ToastrService,
     private translate: TranslateService,
-    private departmentService: DepartmentService,
     private router: Router,
     private route: ActivatedRoute,
     private _detector: ChangeDetectorRef,
     private dialogService: NbDialogService,
-    private roleService:RoleService
+  //  private roleService:RoleService
+
 
 
 
   ) {
-    if(localStorage.getItem("token")==null||localStorage.getItem("token")=='')
-    this.router.navigateByUrl('/auth')
+    //if(localStorage.getItem("token")==null||localStorage.getItem("token")=='')
+    //this.router.navigateByUrl('/auth')
     if (translate.currentLang == "ar") this.dir = "rtl";
   }
    @ViewChild(MatSort) sort: MatSort;
    
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  @ViewChild('departmentFilter') departmentFilter!: ElementRef;
+  @ViewChild('strategicGoalFilter') strategicGoalFilter!: ElementRef;
 
-  @ViewChild('maindeptNameFilter') maindeptNameFilter!: ElementRef;
 
 
   totalRecords: number = 0;
   searchModel: PagnationRequest;
   pageSizeOptions = environment.DEFAULT_PAGE_SIZE_OPTIONS;
   displayedColumns: string[] = [
-    "Department",
-    "MainDepartment",
-    "Notes",
+    "strategicGoalName",
+    "GoalCode",
+    "GoalDesc",
 
   
- //   "actions",
+   // "actions",
     
     "actions1",
     "actions2"
   ];
 
   dataSource: MatTableDataSource<{
-    departmentName:string;
-    mainDeptName: string;
+    strategicGoalName:string;
+    goalCode: number;
   //  goalDesc: string;
 
     sortable: boolean;
@@ -75,37 +83,44 @@ export class ListDepartmentComponent implements OnInit {
   canEdit:boolean;
   canDelete:boolean;
   canView:boolean;
+  tableData1=[]
   ngOnInit(){
-  
+   this.tableData1 = [
+    {  job: 'مبرمج', notes: '  تطوير وانشاء تطبيقات وانظمة الشركة' },
+     {  job: 'مدير قواعد البيانات', notes: 'انشاء وادارة قواعد البيانات الخاصة بانظمة وتطبيقات الشركة'  },
+    {  job: 'مهندس مدنى', notes: 'تصميم وتنفيذ والإشراف على المشاريع الإنشائية والبنية التحتية'},
+    {  job: 'مهندس الميكانيكي', notes:'تصميم وتنفيذ والإشراف على الأنظمة الميكانيكية  داخل المباني والمشروعات' },
+
+  ];
 //console.log(this.data);
+/*
     this.searchModel = {
       PageNumber: 1,
       PageSize: environment.DEFAULT_PAGE_SIZE,
-    };
-  
+    };*/
+  /*
 
     this.search();
-    this._detector.markForCheck()
-
-    this.roleService.getActionByRoleId(localStorage.getItem("RoleId"),"Departments").subscribe((res) => {
+    //this._detector.markForCheck()
+    this.roleService.getActionByRoleId(localStorage.getItem("RoleId"),"Strategic-Goals").subscribe((res) => {
       this.canAdd = res.entity.add;
       this.canEdit = res.entity.update;
       this.canDelete = res.entity.delete;
   
     });
 
+*/
 
   }
   ngAfterViewInit() {
-    this.dataSource.sort = this.sort; // Connect sort after view initialization
+  //  this.dataSource.sort = this.sort; // Connect sort after view initialization
   }
 
   sortData(sort: MatSort): void {
     const data: Array<{
-      departmentName:string;
-      mainDeptName: string;
+      strategicGoalName:string;
+      goalCode: number;
     //  goalDesc: string;
-  
   
       sortable: boolean;
     }> = this.dataSource.data.slice();
@@ -121,16 +136,16 @@ export class ListDepartmentComponent implements OnInit {
       } else {
         let isAsc: boolean = sort.direction === 'asc';
         switch (sort.active) {
-          case 'Department':
+          case 'strategicGoalName':
             return this.compare(
-              a.departmentName.toLowerCase(),
-              b.departmentName.toLowerCase(),
+              a.strategicGoalName.toLowerCase(),
+              b.strategicGoalName.toLowerCase(),
               isAsc
             );
-          case 'MainDepartment':
+          case 'GoalCode':
             return this.compare(
-              a.mainDeptName.toString(),
-              b.mainDeptName.toString(),
+              a.goalCode.toString(),
+              b.goalCode.toString(),
               isAsc
             );
         
@@ -142,8 +157,8 @@ export class ListDepartmentComponent implements OnInit {
     });
 
     this.dataSource = new MatTableDataSource<{
-      departmentName:string;
-      mainDeptName: string;
+      strategicGoalName: string;
+      goalCode: number;
   
       sortable: boolean;
     }>(this.dataSource.data);
@@ -158,39 +173,33 @@ export class ListDepartmentComponent implements OnInit {
       return 0 * (isAsc ? 1 : -1);
     }
   }
-/*
-   removeWhitespaceUsingTrimMethod(SearchTxt:string) {
-     
-    var str = "    This is whitespace string for testing purpose     ";
-    var wsr = str.trim();
-    alert(wsr);
-}*/
+
+
   applyFilter(event: Event) {
     const filterValues = {
-      departmentName: this.departmentFilter.nativeElement.value.trim(),
+      strategicGoal: this.strategicGoalFilter.nativeElement.value.trim(),
 
-    //  mainDeptName: this.maindeptNameFilter.nativeElement.value,
       sortable: true
 
     };
 
     this.dataSource.filterPredicate = (
-      data: { departmentName: string ;sortable: boolean;},
+      data: { strategicGoalName: string ;sortable: boolean;},
       filter: string
     ) => {
       const searchText = JSON.parse(filter);
-    if (data.departmentName == ""
+    if (data.strategicGoalName == ""
      )
      // if ((data.officeName == ""&& data.contactName=="" && data.phone1=="")  )
       {
         return true; 
       }
       return (
-       ( data.departmentName
+       ( data.strategicGoalName
          .toLowerCase()
-          .includes(searchText.departmentName.toLowerCase())
+          .includes(searchText.strategicGoalName.toLowerCase())
       //     &&
-    //   data.mainDeptName.toLowerCase().includes(searchText.mainDeptName.toLowerCase())
+      //  data.planCode
          
       //     .includes(searchText.planCode) 
       //     &&
@@ -241,30 +250,7 @@ export class ListDepartmentComponent implements OnInit {
     }
   }
 
-async  search(page?: PageEvent) {
-    if (page) {
-      this.searchModel.PageNumber = page.pageIndex + 1;
-      this.searchModel.PageSize = page.pageSize;
 
-      //this.searchModel.PageNumber = 1;
-      //this.searchModel.PageSize = 10; 
-    }
-    else
-    {
-      this.searchModel.PageNumber = 1;
-      this.searchModel.PageSize = 10; 
-    }
-    this.departmentService.searchDepartments(this.searchModel).subscribe((res) => {
-      this.departmentModel = res.entity.entities;
-      this.totalRecords = res.entity.totalRecords;
-      this._detector.markForCheck()
-      this.dataSource = new MatTableDataSource(this.departmentModel);
-
-
-      
-    });
-  }
-  departmentModel: DepartmentModel[] = [];
  /* async delete(id: string) {
   {
           this.planService.deletePlan(id).subscribe((result) => {
@@ -277,29 +263,7 @@ async  search(page?: PageEvent) {
   }
 */
 
-  async delete(id: string, name: string) {
-    name = await this.translate.get(name).toPromise();
-    let title = await this.translate.get("DeleteTitle", { entity: name }).toPromise();
-    let body = await this.translate.get("DeleteMessage", { entity: name }).toPromise();
-    this.dialogService
-      .open(ConfirmDialogComponent, {
-        context: {
-          title: `${title}`,
-          body: `${body}?`,
-        },
-        closeOnBackdropClick: false,
-      })
-      .onClose.subscribe((res) => {
-        if (res) {
-          this.departmentService.deleteDepartment(id).subscribe((result) => {
-            this.departmentModel = this.departmentModel.filter((x) => x.id != id);
-            this.search()
-            this.toastrService.Delete(EntityNames.Department);
-          });
-      
-      }
-      });
-  }
+  
   ShowGrants(id:string)
   {
     const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/StrategicGoals/list/';
@@ -308,20 +272,31 @@ async  search(page?: PageEvent) {
 
     this.router.navigateByUrl(returnUrl);
   }
-  ShowAdd()
+  ShowAddGrant(id:string)
   {
-    const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/Departments/add';
+    const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/DocumentsTypes/add';
 
 
 
     this.router.navigateByUrl(returnUrl);
   }
 
- 
+  ShowAdd()
+  {
+    const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/Jobs/add';
 
+    this.router.navigateByUrl(returnUrl);
+  }
+ edit(row: any) {
+    console.log('Edit:', row);
+  }
+
+  delete1(row: any) {
+    console.log('Delete:', row);
+  }
   ShowEdit(id:string)
   {
-    const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/Departments/edit/'+id;
+    const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/DocumentsTypes/edit/'+id;
 
     this.router.navigateByUrl(returnUrl);
   }

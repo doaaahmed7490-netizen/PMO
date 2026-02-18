@@ -32,12 +32,13 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () =>
       import('./pages/auth/auth.module').then((mod) => mod.AuthModule),
-      canActivate: [AuthGuard],
+    //  canActivate: [AuthGuard],
 
   },
  
 
  
+
 
   {
     path: 'dashboard',
@@ -92,6 +93,20 @@ const routes: Routes = [
     path: 'DocumentsTypes',
     loadChildren: () =>
       import('./pages/District/district.module').then((mod) => mod.DistrictModule),
+    },   {
+    path: 'Customers',
+    loadChildren: () =>
+      import('./pages/Services/Service.module').then((mod) => mod.ServiceModule),
+    },
+    ,   {
+    path: 'Jobs',
+    loadChildren: () =>
+      import('./pages/Departments/department.module').then((mod) => mod.DepartmentModule),
+    },
+    {
+    path: 'Employees',
+    loadChildren: () =>
+      import('./pages/Employee/Emp.module').then((mod) => mod.EmpModule),
     },
  /* {
     path: 'DirectiveGoals',

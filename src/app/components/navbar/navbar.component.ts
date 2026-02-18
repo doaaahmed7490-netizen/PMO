@@ -146,6 +146,10 @@ this.lang=language;
               {
                 title: 'مرفقات المشاريع',
                 link: '/ProjectDocuments',
+              }, 
+              {
+                title: 'العملاء',
+                link: '/Customers',
               },
         
                  {
@@ -154,6 +158,33 @@ this.lang=language;
               {
                 title: 'انواع المرفقات',
                 link: '/DocumentsTypes',
+              },
+             
+            
+            
+            ],
+          },    
+            
+            
+            ],
+          },
+          {
+            title: 'الموارد البشرية',
+            children: [
+              {
+                title:'بيانات الموظفيين',
+                //link: '/StrategicGoals',
+                link: '/Employees',
+
+              },
+           
+        
+                 {
+            title:'البيانات الاساسية',
+            children: [
+              {
+                title: 'الوظائف',
+                link: '/Jobs',
               },
              
             

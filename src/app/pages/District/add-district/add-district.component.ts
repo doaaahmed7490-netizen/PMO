@@ -30,7 +30,7 @@ export class AddDistrictComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
-    this.getDistricts();
+    //this.getDistricts();
   }
   getDistricts() {
     this.districtService

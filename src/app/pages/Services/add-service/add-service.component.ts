@@ -18,169 +18,136 @@ import { EntityNames } from '../../../shared/Entity-Names';
   styleUrls: ['./add-service.component.scss']
 })
 export class AddServiceComponent implements OnInit {
-  constructor(
-    private formBuilder: FormBuilder,
-    private empService: EmployeeService,
-    private deptService: DepartmentService,
-    private service: ServicesService,
-private goals:DirectiveGoalService,
-    private router: Router,
-    private route: ActivatedRoute,
-
-    private toastrService: ToastrService,
-    private translate: TranslateService
-  ) {
-    if(localStorage.getItem("token")==null||localStorage.getItem("token")=='')
-    this.router.navigateByUrl('/auth');
-  }
-  serviceForm: FormGroup;
-
+ StrategicGoalsForm!: FormGroup;
+  loading = false;
   submitted = false;
-  isSubmitted :boolean= false;
-  showPass = false;
-  department: DepartmentModel[];
-emp:employee[];
+  isSubmitted= false;
+  constructor(
+      private formBuilder: FormBuilder,
+      private route: ActivatedRoute,
+      private router: Router,
+    //  private startegicGoalService: StartegicGoalService,
+      private toastrService: ToastrService
 
-  GoalsModel: DirectiveGoalModel[] = [];
-  ngOnInit() {
+  ) {
+    //if(localStorage.getItem("token")==null||localStorage.getItem("token")=='')
+  //this.router.navigateByUrl('/auth');
+
+   }
+   options=[];
+   selectedValue=''
+  ngOnInit(){
+     this.selectedValue = '';
+  this.options = [
+    { id: 1, label: 'فرد' },
+    { id: 2, label: 'شركة' },
+    { id: 3, label: 'حكومة' }
+  ];
     this.initForm();
-    this.getDepartmenst();
-this.getemployee();
-this.getGoals();
-  }
- 
-  getDepartmenst() {
-    this.deptService
-      .searchDepartments({
-        PageNumber: 1,
-        PageSize: 1000,
-      })
-      .subscribe((res) => {
-        this.department = res.entity.entities.filter(x=>x.departmentName!='');
-      });
-  }
-
-   
-  getemployee() {
-    this.empService
-      .searchEmployees({
-        PageNumber: 1,
-        PageSize: 1000,
-      })
-      .subscribe((res) => {
-        this.emp = res.entity.entities.filter(x=>x.name!='');
-      });
-  }
-  getGoals() {
-     this.goals.searchDirectiveGoals({
-        PageNumber: 1,
-        PageSize: 1000,
-      })
-      .subscribe((res) => {
-        this.GoalsModel = res.entity.entities.filter(x=>x.directiveGoal!='');
-      });
   }
   initForm() {
-    this.serviceForm = this.formBuilder.group({
-     
+      this.StrategicGoalsForm = this.formBuilder.group({
+        CustName: ['', Validators.required],
+          goalDesc: [''],
+          Mobil:[''],
+          custId:[''],
+          Email:[''],
+          Address:[''],
+          ContactPersonNm1:[''],
+          ContactPersonMobil1:[''],
+          ContactPersonEmail1:[''],
+          ContactPersonNm2:[''],
+          ContactPersonMobil2:[''],
+          ContactPersonEmail2:['']
 
-      service: ["",[Validators.required,Validators.minLength(3)]],
- 
-      serviceDesc: [null],
-   
+      });
+  }
 
-
-     
-      empId:[null,[Validators.required]],
-      deptId: [null, [Validators.required]],
-      goalId: [null, [Validators.required]]
-      //deptIds: this.formBuilder.array([]),
-
-
- 
   
-     
+  // convenience getter for easy access to form fields
+  get f() { return this.StrategicGoalsForm.controls; }
+
+
+
+/*
+  save() {
+    const model1 = this.StrategicGoalsForm.value;
+
+    const data = {
+      strategicGoal: "d",
+      goalDesc: "sd"
+    };
+    if (this.StrategicGoalsForm.invalid) {
+      return;
+    }
+    this.startegicGoalService.addStartegicGoal(model1).subscribe({
+      next: (res) => {
+        console.log(res);
+        this.submitted = true;
+         this.router.navigate(["./table"]);
+      },
+      error: (e) => console.error(e)
     });
   }
-  selectChangeHandlerGoals(value:any)
-  {
-  this.GoalIds=value;
-    console.log("Goals= "+value);
 
- 
-  }
-    GoalIds:string[]=[];
-    selectChangeHandlerEmp(value:any)
-    {
-      this.EmpId=value;
-      console.log("Emp= "+this.EmpId);
-
-    }
-    EmpId:string;
-    selectChangeHandlerDept(value:any)
-    {
-      this.deptId=value;
-      console.log("dept= "+this.deptId);
-
-    }
-    deptId:string;
   onSubmit() {
     this.submitted = true;
     this.isSubmitted = true;
-    if (this.serviceForm.invalid) {
+    if (this.StrategicGoalsForm.invalid) {
       return;
     }
-    const owModel = this.serviceForm.value;
+    this.loading=true;
+    const model1 = this.StrategicGoalsForm.value;
+ 
 
-  
-
-    
     let model = {
-      serviceName: owModel.service,
+      strategicGoalName: model1.strategicGoal,
+      strategicGoalDesc: model1.goalDesc
 
-      serviceDesc: owModel.serviceDesc,
-
-      employeeId:this.EmpId,
-      deptId:this.deptId,
-      directObjectivesIds:this.GoalIds
-
+      
     };
-
-   
-
-
-//model.deptIds=this.DeptIds;
-const isWhitespaceString = str => !/\S/.test(str)
-if( isWhitespaceString(model.serviceName)==true)
-this.toastrService.danger("يجب إدخال بيانات الخدمة لإتمام عملية الحفظ","خطأ");
-else
-{
-    this.service.addService(model).subscribe( {
+    const isWhitespaceString = str => !/\S/.test(str)
+   if( isWhitespaceString(model.strategicGoalName)==true)
+   this.toastrService.danger("يجب إدخال بيانات الهدف لإتمام عملية الحفظ","خطأ");
+   else
+   {
+    this.startegicGoalService.addStartegicGoal(model).subscribe( {
       next: (res) => {
-        this.toastrService.Create(EntityNames.Service);
-       // this.getDistricts();
+        this.toastrService.Create(EntityNames.StrategicGoal);
 
-        const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/Services';
+        const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/StrategicGoals';
 
-        this.router.navigateByUrl(returnUrl);      },
-        error: (err) => {
+        this.router.navigateByUrl(returnUrl);      
+      },
+     
+     error: (err) => {
 
 
-          this.toastrService.danger(err.error.error,"خطأ");
-          this.submitted=false;
-          this.isSubmitted=false;
-             
-          }
+      this.toastrService.danger(err.error.error,"خطأ");
+      this.submitted = false;
+      this.isSubmitted = false;
+     }
+    
     });
   }
-}
- 
-  get fc() {
-    return this.serviceForm.controls;
   }
+  */
+ onSubmit()
+ {
+   const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/Projects';
 
-  
-  get goalId() {
-    return this.goalId.controls["goalId"] as FormArray;
-  }
+
+
+    this.router.navigateByUrl(returnUrl);
+ }
+ Close()
+ {
+   const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/Projects';
+
+
+
+    this.router.navigateByUrl(returnUrl);
+ }
+  get fc() { return this.StrategicGoalsForm.controls; }
+
 }

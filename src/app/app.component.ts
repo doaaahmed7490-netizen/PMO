@@ -415,6 +415,10 @@ export class AppComponent implements OnInit, DoCheck {
                 title: 'مرفقات المشاريع',
                 link: '/ProjectDocuments',
               },
+               {
+                title: 'العملاء',
+                link: '/Customers',
+              },
         
            {
             title:'البيانات الاساسية',
