@@ -28,25 +28,77 @@ export class AddStrategicGoalComponent implements OnInit {
 
    }
    options=[];
+      options1=[];
+Country=[];
+Districts=[];
+State=[];
+custs=[];
+emps=[];
    selectedValue=''
   ngOnInit(){
      this.selectedValue = '';
   this.options = [
-    { id: 1, label: 'Pending' },
-    { id: 2, label: 'In Progress' },
-    { id: 3, label: 'Completed' }
+    { id: 1, label: 'مشاريع الإنشاءات' },
+    { id: 2, label: 'مشاريع تقنية المعلومات'},
+    { id: 3, label: 'مشاريع استشارية' },
+        { id: 4, label: 'مشاريع صيانة' }
+  ];
+   this.options1 = [
+    { id: 1, label:'تطوير مواقع' },
+    { id: 2, label:'تطوير أنظمة ERP أو CRM'},
+    { id: 3, label: 'إنشاء طرق' },
+        { id: 4, label:'إنشاء مباني سكنية' }
+  ];
+     this.Country = [
+    { id: 1, label: 'السعودية' },
+    { id: 2, label: 'مصر' },
+    { id: 3, label: 'الامارات العربية المتحدة' }
+  ];
+   this.State = [
+    { id: 1, label: 'الرياض' },
+    { id: 2, label: 'جدة' },
+    { id: 3, label: 'الطائف' }
+  ];
+    this.Districts = [
+    { id: 1, label: 'حى الحمراء' },
+    { id: 2, label: 'حى الصفاء' },
+        { id: 3, label: 'حى الروضة' },
+
+    { id: 3, label: 'ابحر الشمالية' }
+
+  ];
+  
+     this.custs = [
+    { id: 1, label: 'امانة جدة' },
+    { id: 2, label: 'جامعة دار الحكمة' },
+    { id: 3, label: 'شركة اسار' }
+  ];
+     this.emps = [
+    { id: 1, label: 'محمود احمد' },
+    { id: 2, label: 'محمد احمد' },
+    { id: 3, label: 'مالك محمد' }
   ];
     this.initForm();
   }
   initForm() {
       this.StrategicGoalsForm = this.formBuilder.group({
         strategicGoal: ['', Validators.required],
+        projectCode:['', Validators.required],
+        categId:['', Validators.required],
+        TypeId:['', Validators.required],
+        Desc:[''],
           goalDesc: [''],
           empId:[''],
           custId:[''],
           projectCost:[''],
+          estimatedCost:[''],
           fromDate:[null],
           toDate:[null],
+          name:[''],
+          state:[''],
+          district:['']
+
+
 
       });
   }

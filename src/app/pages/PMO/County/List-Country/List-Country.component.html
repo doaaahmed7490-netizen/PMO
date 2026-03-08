@@ -1,5 +1,5 @@
 <div class="content-container">
-  <h2> {{'المشاريع' }}
+  <h2> {{'قائمة الدول '}}
   </h2>
    <hr />
   <button
@@ -7,25 +7,15 @@
     type="button"
     (click)="ShowAdd()"
   >
-    {{ "إضافة مشروع"  }}
+    {{ "إضافة دولة"  }}
   </button>
-  <nb-card class="responsive-table-wrapper">
+  <nb-card>
 <table class="responsive-table">
   <thead>
     <tr>
-      <th>اسم المشروع</th>
-            <th>كود المشروع</th>
-      <th>نوع المشروع</th>
+      <th>إسم الدولة</th>
+      <th>كود الدولة</th>
 
-      <th>العميل</th>
-      <th>مدير المشروع</th>
-      <th>تاريخ البدء (م)</th>
-      <th>تاريخ الإنتهاء (م)</th>
-          <th>تاريخ البدء (ه)</th>
-      <th>تاريخ الإنتهاء (ه)</th>
-      <th>مدة المشروع</th>
-      <th>حالة المشروع</th>
-   
       <th>التعديل</th>
 
       <th>الحذف</th>
@@ -34,22 +24,9 @@
   </thead>
   <tbody>
     <tr *ngFor="let row of this.tableData1">
-      <td>{{ row.name }}</td>
-            <td>{{ row.code }}</td>
       <td>{{ row.type }}</td>
+      <td>{{ row.notes }}</td>
 
-      <td>{{ row.customer }}</td>
-      <td>{{ row.manager }}</td>
-   
-      <td>{{ row.startDate }}</td>
-      <td>{{ row.endDate }}</td>
- <td>{{ row.startDateH }}</td>
-      <td>{{ row.endDateH }}</td>
-            <td>{{ row.Periods }}</td>
-
-            <td>{{ row.status }}</td>
-
-     
         <td class="actions">
         <button mat-icon-button color="primary" (click)="edit(row)">
           <mat-icon>edit</mat-icon>

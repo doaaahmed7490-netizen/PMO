@@ -1,31 +1,26 @@
 import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NbDialogService } from '@nebular/theme';
 import { TranslateService } from '@ngx-translate/core';
-import { environment } from '../../../../environments/environment';
-import { PagnationRequest } from '../../../models/pagination.request';
-import { StartegicGoalsModel } from '../../../models/StrategicGoals/StrategicGoals.model';
-import { RoleService } from '../../../services/role.service';
-import { StartegicGoalService } from '../../../services/startegicGoals.service';
-import { ToastrService } from '../../../services/toastr.service';
-import { ConfirmDialogComponent } from '../../../shared/components/showcase-dialog/confirm-dialog.component';
-import { EntityNames } from '../../../shared/Entity-Names';
-
+import { environment } from '../../../../../environments/environment';
+import { LetterTypeModel } from '../../../../models/LetterTypes/LetterType.model';
+import { PagnationRequest } from '../../../../models/pagination.request';
+import { ToastrService } from '../../../../services/toastr.service';
+//import { ConfirmDialogComponent } from '../../../shared/components/confirm-dialog/confirm-dialog.component';
+import { EntityNames } from '../../../../shared/Entity-Names';
+import { MatPaginator, PageEvent } from "@angular/material/paginator";
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { ConfirmDialogComponent } from '../../../../shared/components/showcase-dialog/confirm-dialog.component';
 @Component({
-  selector: 'app-list-strategic-goal',
-  templateUrl: './list-strategic-goal.component.html',
-  styleUrls: ['./list-strategic-goal.component.scss']
+  selector: 'app-List-District',
+  templateUrl: './List-District.component.html',
+  styleUrls: ['./List-District.component.css']
 })
-export class ListStrategicGoalComponent implements OnInit {
+export class ListDistrictComponent  implements OnInit {
    tableData = [
-    {  name: 'المشروع الاول', customer: 'احمد محمد', manager: 'م/ محمود احمد', status: 'تم الانتهاء', progress: '100%',progressToTime: '100%',startDate: '2/2/2024',endDate: '2/2/2025',total:'20',complete:'20',delaytasks:'0' },
-     {  name: 'المشروع الاول', customer: 'احمد محمد', manager: 'م/ محمود احمد', status: 'تم الانتهاء', progress: '100%',progressToTime: '100%',startDate: '2/2/2024',endDate: '2/2/2025',total:'20',complete:'20',delaytasks:'0'  },
-    {  name: 'المشروع الاول', customer: 'احمد محمد', manager: 'م/ محمود احمد', status: 'تم الانتهاء', progress: '100%',progressToTime: '100%',startDate: '2/2/2024',endDate: '2/2/2025' ,total:'20',complete:'20',delaytasks:'0'},
-    {  name: 'المشروع الاول', customer: 'احمد محمد', manager: 'م/ محمود احمد', status: 'تم الانتهاء', progress: '100%',progressToTime: '100%',startDate: '2/2/2024',endDate: '2/2/2025' ,total:'20',complete:'20',delaytasks:'0' },
-    {  name: 'المشروع الاول', customer: 'احمد محمد', manager: 'م/ محمود احمد', status: 'تم الانتهاء', progress: '100%',progressToTime: '100%',startDate: '2/2/2024',endDate: '2/2/2025' ,total:'20',complete:'20',delaytasks:'0'}
+    {  type: 'السعودية', notes: 'الفرع الرئيسى' },
+     {  type: 'مصر', notes: 'اول فرع خارج السعودية'  }
 
   ];
  // dir = "ltr";
@@ -35,7 +30,6 @@ export class ListStrategicGoalComponent implements OnInit {
    // private dialogService: NbDialogService,
     private toastrService: ToastrService,
     private translate: TranslateService,
-    private startegicGoalService: StartegicGoalService,
     private router: Router,
     private route: ActivatedRoute,
     private _detector: ChangeDetectorRef,
@@ -87,11 +81,18 @@ export class ListStrategicGoalComponent implements OnInit {
   canView:boolean;
   tableData1=[]
   ngOnInit(){
-   this.tableData1 = [
-      {  name: 'نظام إلكترونى لإدارة شركة',code: 'IT_SA_1',type: 'تقنية المعلومات', customer: 'احمد محمد', manager: 'م/ محمود احمد' ,startDate: '2/2/2026',endDate: '2/2/2027',startDateH: '14/8/1447',endDateH: '25/8/1448',Periods:'12 شهر',status: 'جارى' },
-      {  name: 'بناء مجمع سكني',code: 'Con_SA_1',type: 'إنشاء مبانى سكنية', customer: 'جامعة دار الحكمة', manager: 'م/ محمود احمد' ,startDate: '1/1/2026',endDate: '2/2/2028',startDateH: '12/7/1447',endDateH: '06/9/1449',Periods:'24شهر',status: 'جارى' },
-      {  name: 'مشروع مستشفى الملك عبد الله',code: 'Con_SA_2',type: 'إنشاء مستشفيات', customer: 'شركة اسار', manager: 'م/ محمود احمد' ,startDate: '1/1/2027',endDate: '2/2/2028',startDateH: '23/7/1448',endDateH: '06/9/1449',Periods:'13 شهر',status: 'مخطط له' },
+   this.tableData1  = [
+    {  type: 'السعودية', notes: 'جدة', district: 'حى الحمراء' },
+    {  type: 'السعودية', notes: 'جدة', district: 'حى الشاطئ' },
+        {  type: 'السعودية', notes: 'جدة', district: 'حى الروضة' },
 
+        {  type: 'السعودية', notes: 'جدة', district: 'حى الصفا' },
+                {  type: 'السعودية', notes: 'جدة', district: 'حى المروة' },
+
+     {  type: 'مصر', notes: 'القاهرة' , district: 'المعادى' },
+
+     {  type: 'مصر', notes: 'القاهرة' , district: 'الزمالك' },
+     {  type: 'مصر', notes: 'القاهرة' , district: 'المهندسين' },
   ];
 //console.log(this.data);
 /*
@@ -251,29 +252,7 @@ export class ListStrategicGoalComponent implements OnInit {
     }
   }
 
-async  search(page?: PageEvent) {
-    if (page) {
-      this.searchModel.PageNumber = page.pageIndex + 1;
-      this.searchModel.PageSize = page.pageSize;
 
-  
-    }
-    else
-    {
-      this.searchModel.PageNumber = 1;
-      this.searchModel.PageSize = 10; 
-    }
-    this.startegicGoalService.searchStartegicGoals(this.searchModel).subscribe((res) => {
-      this.startegicGoalsModel = res.entity.entities;
-      this.totalRecords = res.entity.totalRecords;
-      this._detector.markForCheck()
-      this.dataSource = new MatTableDataSource(this.startegicGoalsModel);
-
-
-      
-    });
-  }
-  startegicGoalsModel: StartegicGoalsModel[] = [];
  /* async delete(id: string) {
   {
           this.planService.deletePlan(id).subscribe((result) => {
@@ -286,32 +265,10 @@ async  search(page?: PageEvent) {
   }
 */
 
-  async delete(id: string, name: string) {
-    name = await this.translate.get(name).toPromise();
-    let title = await this.translate.get("DeleteTitle", { entity: name }).toPromise();
-    let body = await this.translate.get("DeleteMessage", { entity: name }).toPromise();
-    this.dialogService
-      .open(ConfirmDialogComponent, {
-        context: {
-          title: `${title}`,
-          body: `${body}?`,
-        },
-        closeOnBackdropClick: false,
-      })
-      .onClose.subscribe((res) => {
-        if (res) {
-          this.startegicGoalService.deleteStartegicGoal(id).subscribe((result) => {
-            this.startegicGoalsModel = this.startegicGoalsModel.filter((x) => x.id != id);
-            this.search()
-            this.toastrService.Delete(EntityNames.StrategicGoals);
-          });
-      
-      }
-      });
-  }
+  
   ShowGrants(id:string)
   {
-    const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/StrategicGoals/list/';
+    const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/District/list/';
 
 
 
@@ -319,7 +276,7 @@ async  search(page?: PageEvent) {
   }
   ShowAddGrant(id:string)
   {
-    const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/Projects/add';
+    const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/District/add';
 
 
 
@@ -328,7 +285,7 @@ async  search(page?: PageEvent) {
 
   ShowAdd()
   {
-    const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/Projects/add';
+    const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/District/add';
 
     this.router.navigateByUrl(returnUrl);
   }
@@ -341,7 +298,7 @@ async  search(page?: PageEvent) {
   }
   ShowEdit(id:string)
   {
-    const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/StrategicGoals/edit/'+id;
+    const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/District/edit/'+id;
 
     this.router.navigateByUrl(returnUrl);
   }

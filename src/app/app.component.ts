@@ -423,6 +423,10 @@ export class AppComponent implements OnInit, DoCheck {
            {
             title:'البيانات الاساسية',
             children: [
+               {
+                title: 'الدول',
+                link: '/Country',
+              },
               {
                 title: 'انواع المرفقات',
                 link: '/DocumentsTypes',

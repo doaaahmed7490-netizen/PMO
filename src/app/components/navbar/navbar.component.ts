@@ -143,37 +143,38 @@ this.lang=language;
                 link: '/Projects',
 
               },
-              {
+            /*   {
                 title: 'مرفقات المشاريع',
                 link: '/ProjectDocuments',
               }, 
               {
                 title: 'العملاء',
                 link: '/Customers',
-              },
+              }, */
         
                  {
             title:'البيانات الاساسية',
             children: [
-              {
-                title: 'انواع المرفقات',
-                link: '/DocumentsTypes',
-              },
              
-            
-            
+             {
+                title: 'تصنيفات المشاريع',
+                link: '/ProjectCategory',
+              },
+                {
+                title: 'انواع المشاريع',
+                link: '/ProjectType',
+              },
             ],
           },    
             
             
             ],
           },
-          {
+        /*   {
             title: 'الموارد البشرية',
             children: [
               {
                 title:'بيانات الموظفيين',
-                //link: '/StrategicGoals',
                 link: '/Employees',
 
               },
@@ -191,6 +192,37 @@ this.lang=language;
             
             ],
           },    
+            
+            
+            ],
+          }, */
+           {
+            title: 'إعدادات النظام',
+            children: [
+              {
+                title:'إدارة المواقع',
+                //link: '/StrategicGoals',
+                 
+            children: [
+              {
+                title: 'الدول',
+                link: '/Country',
+              },
+             {
+                title: 'المحافظة/المدينة',
+                link: '/State',
+              },
+               {
+                title: 'المناطق/الاحياء',
+                link: '/District',
+              }
+            ],
+          },    
+            
+            
+           
+        
+          
             
             
             ],

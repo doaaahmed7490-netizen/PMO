@@ -4,7 +4,7 @@
   <hr/>
   <form [formGroup]="StrategicGoalsForm" (ngSubmit)="onSubmit()">
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-4">
         <!--Law number -->
         <div class="form-group">
           <label for="StrategicGoal" class="label">
@@ -14,35 +14,42 @@
           </label>
           <input
             type="text"
-            [status]="
-              fc.strategicGoal.touched && fc.strategicGoal.errors
-                ? 'danger'
-                : 'basic'
-            "
+           
             formControlName="strategicGoal"
             nbInput
             shape="round"
             fullWidth
             id="strategicGoal"
           />
-          <mat-error
-            *ngIf="
-              fc.strategicGoal.touched && fc.strategicGoal.hasError('required')
-            "
-          >
-            {{ "Strategic Goal is Required" | translate }}
-          </mat-error>
+       
+        </div>
+          <div class="form-group">
+          <label for="StrategicGoal" class="label">
+            <h6>
+              {{ "كود المشروع"  }}
+            </h6>
+          </label>
+          <input
+            type="text"
+           
+            formControlName="projectCode"
+            nbInput
+            shape="round"
+            fullWidth
+            id="projectCode"
+          />
+       
         </div>
          <div class="form-group">
           <label for="StrategicGoal" class="label">
             <h6>
-              {{ "مدير المشروع"}}
+              {{ "تصنيف المشروع"}}
             </h6>
           </label>
           <nb-select
             shape="round"
             fullWidth
-            formControlName="empId"
+            formControlName="categId"
           
           
           >
@@ -52,7 +59,47 @@
           </nb-select>
 
         </div>
-          <div class="form-group">
+         <div class="form-group">
+          <label for="StrategicGoal" class="label">
+            <h6>
+              {{ "نوع المشروع"}}
+            </h6>
+          </label>
+          <nb-select
+            shape="round"
+            fullWidth
+            formControlName="TypeId"
+          
+          
+          >
+            <nb-option *ngFor="let e of this.options1" [value]="e.id">
+              {{ e.label }}</nb-option
+            >
+          </nb-select>
+
+        </div>
+         <div class="form-group">
+          <label for="StrategicGoal" class="label">
+            <h6>
+              {{ "وصف المشروع"  }}
+            </h6>
+          </label>
+          <textarea
+            type="text"
+           
+            formControlName="Desc"
+            nbInput
+            shape="round"
+            fullWidth
+            id="Desc"
+          ></textarea>
+       
+        </div>
+     
+      </div>
+
+      <div class="col-sm-4">
+             <div class="form-group">
           <label for="StrategicGoal" class="label">
             <h6>
               {{ "العميل"}}
@@ -65,37 +112,54 @@
           
           
           >
-            <nb-option *ngFor="let e of this.options" [value]="e.id">
+            <nb-option *ngFor="let e of this.custs" [value]="e.id">
               {{ e.label }}</nb-option
             >
           </nb-select>
 
         </div>
-           <div class="form-group">
+          <div class="form-group">
           <label for="StrategicGoal" class="label">
             <h6>
-              {{ "قيمة المشروع" }}
+              {{ "مدير المشروع"}}
             </h6>
           </label>
-          <input
-            type="number"
-        
-            formControlName="projectCost"
-            nbInput
+         <nb-select
             shape="round"
             fullWidth
-            id="projectCost"
-          />
-       
-        </div>
-      </div>
+            formControlName="empId"
+          
+          
+          >
+            <nb-option *ngFor="let e of this.emps" [value]="e.id">
+              {{ e.label }}</nb-option
+            >
+          </nb-select>
 
-      <div class="col-sm-6">
+        </div>
+          
         <!--Message arabic -->
+         <div class="form-group">
+          <label for="ToDate" class="label">
+            <h6>
+              {{ "نوع التاريخ" }}
+            </h6>
+          </label>
+          <br/>
+        <input type="radio" name="DateType" value="Hijri" checked> هجري
+<input type="radio" name="DateType" value="Miladi"> ميلادي
+
+          <!-- <mat-error
+            *ngIf="fc.toDate.touched && fc.toDate.hasError('required')"
+          >
+            {{ "End Date is Required" | translate }}
+          </mat-error> -->
+        </div>
+        <br/>
           <div class="form-group">
           <label for="FromDate" class="label">
             <h6>
-              {{ "من تاريخ"  }}
+              {{ "تاريخ البدء"  }}
             </h6>
           </label>
           <input
@@ -113,11 +177,16 @@
           </mat-error> -->
         </div>
       
-        <!--categoryName -->
+        <!--categoryName    <label>نوع التاريخ</label><br>
+
+<input type="radio" name="DateType" value="Hijri" checked> هجري
+<input type="radio" name="DateType" value="Miladi"> ميلادي
+-->
+
           <div class="form-group">
           <label for="ToDate" class="label">
             <h6>
-              {{ "إلى تاريخ" }}
+              {{ "تاريخ الإنتهاء" }}
             </h6>
           </label>
           <input
@@ -128,12 +197,100 @@
             fullWidth
             id="toDate"
           />
+
           <!-- <mat-error
             *ngIf="fc.toDate.touched && fc.toDate.hasError('required')"
           >
             {{ "End Date is Required" | translate }}
           </mat-error> -->
         </div>
+       <div class="form-group">
+          <label for="StrategicGoal" class="label">
+            <h6>
+              {{ "ميزانية المشروع" }}
+            </h6>
+          </label>
+          <input
+            type="number"
+        
+            formControlName="projectCost"
+            nbInput
+            shape="round"
+            fullWidth
+            id="projectCost"
+          />
+       
+        </div>
+        
+      </div>
+        <div class="col-sm-4">
+             <div class="form-group">
+          <label for="StrategicGoal" class="label">
+            <h6>
+              {{ "التكلفة التقديرية" }}
+            </h6>
+          </label>
+          <input
+            type="number"
+        
+            formControlName="estimatedCost"
+            nbInput
+            shape="round"
+            fullWidth
+            id="estimatedCost"
+          />
+       
+        </div> 
+        <!--Message arabic -->
+        <div class="form-group">
+                        <label for="DistrictName" class="label">
+                            <h6>    {{'إسم الدولة'}}</h6>
+                        </label>
+                           <nb-select
+            shape="round"
+            fullWidth
+            formControlName="name"
+          
+          
+          >
+            <nb-option *ngFor="let e of this.Country" [value]="e.id">
+              {{ e.label }}</nb-option
+            >
+          </nb-select>
+                    </div>
+                       <div class="form-group">
+                        <label for="DistrictName" class="label">
+                            <h6>    {{'المحافظة/المدينة'}}</h6>
+                        </label>
+                           <nb-select
+            shape="round"
+            fullWidth
+            formControlName="state"
+          
+          
+          >
+            <nb-option *ngFor="let e of this.State" [value]="e.id">
+              {{ e.label }}</nb-option
+            >
+          </nb-select>
+                    </div>
+                         <div class="form-group">
+                        <label for="DistrictName" class="label">
+                            <h6>    {{'المنطقة/الحى'}}</h6>
+                        </label>
+                           <nb-select
+            shape="round"
+            fullWidth
+            formControlName="district"
+          
+          
+          >
+            <nb-option *ngFor="let e of this.Districts" [value]="e.id">
+              {{ e.label }}</nb-option
+            >
+          </nb-select>
+                    </div>
+     
       
         <div class="form-group">
           <label for="GoalDesc" class="label">

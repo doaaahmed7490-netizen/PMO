@@ -108,6 +108,31 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/Employee/Emp.module').then((mod) => mod.EmpModule),
     },
+      {
+    path: 'Country',
+    loadChildren: () =>
+      import('./pages/PMO/County/country.module').then((mod) => mod.CountryModule),
+    },
+     {
+    path: 'State',
+    loadChildren: () =>
+      import('./pages/PMO/State/state.module').then((mod) => mod.StateModule),
+    },
+      {
+    path: 'District',
+    loadChildren: () =>
+      import('./pages/PMO/District/district.module').then((mod) => mod.DistrictModule),
+    },
+        {
+    path: 'ProjectCategory',
+    loadChildren: () =>
+      import('./pages/PMO/ProjectCategory/projectcategory.module').then((mod) => mod.ProjectCategoryModule),
+    },
+            {
+    path: 'ProjectType',
+    loadChildren: () =>
+      import('./pages/PMO/ProjectType/projecttype.module').then((mod) => mod.ProjectTypeModule),
+    },
  /* {
     path: 'DirectiveGoals',
     loadChildren: () =>
