@@ -96,7 +96,8 @@ emps=[];
           toDate:[null],
           name:[''],
           state:[''],
-          district:['']
+          district:[''],
+          address:['']
 
 
 

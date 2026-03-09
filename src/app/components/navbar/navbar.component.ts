@@ -25,6 +25,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   MenuLst: MenuModel[] = [];
   mmLst: MenuClassModel[] = [];
   lang:string;
+    isMenuOpen = false;
+
   public menuSubject: Subject<NbMenuItem[]> = new Subject<NbMenuItem[]>();
 
   constructor(
@@ -39,6 +41,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    //this.isMenuOpen=false;
     this.lang=this.languageService.currentLanguage;
 console.log("Current Language="+this.languageService.currentLanguage);
 /*
@@ -106,8 +109,16 @@ this.lang=language;
   }
 
   toggleMenu() {
-   // this.menu=[];
-   // this.sidebarService.toggleMenu();
+  this.isMenuOpen = !this.isMenuOpen;
+
+  if (this.menu.length === 0) {
+    this.loadmenu1();
+  }
+}
+  /*toggleMenu() {
+        this.isMenuOpen = !this.isMenuOpen;
+
+  
 
     if (this.menu.length === 0) {
       this.loadmenu1();
@@ -117,6 +128,10 @@ this.lang=language;
     this.menuSubject.next(this.menu.slice());
     this.sidebarService.toggleSidebar();
 
+  }
+  */
+    closeMenu(): void {
+    this.isMenuOpen = false;
   }
   loadmenu1(){
     /*

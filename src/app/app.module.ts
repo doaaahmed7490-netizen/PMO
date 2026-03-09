@@ -50,6 +50,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // import { EditGrantComponent } from './pages/Grant/edit-grant/edit-grant.component';
 // import { AddGrantlandComponent } from './pages/GrantLands/add-grantland/add-grantland.component';
 import { AuthComponent } from './pages/auth/auth.component';
+import { ClickOutsideDirective } from './shared/click-outside.directive';
 // import { GISComponent } from './pages/gis/gis.component';
 // import { AddStrategicGoalComponent } from './pages/StrategicGoals/add-strategic-goal/add-strategic-goal.component';
 // import { EditStrategicGoalComponent } from './pages/StrategicGoals/edit-strategic-goal/edit-strategic-goal.component';
@@ -111,6 +112,7 @@ export function HttpLoaderFactore(http: HttpClient) {
     
   ],
   imports: [
+    ClickOutsideDirective,
     BrowserModule,
     HttpClientModule,
     TranslateModule.forRoot({
