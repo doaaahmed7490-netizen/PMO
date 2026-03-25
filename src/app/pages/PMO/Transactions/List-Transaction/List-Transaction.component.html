@@ -1,0 +1,67 @@
+<div class="content-container">
+  <h2> {{'قائمة بيانات المعاملات '}}
+  </h2>
+   <hr />
+  <button
+    class="special-button mb-3"
+    type="button"
+    (click)="ShowAdd()"
+  >
+    {{ "إضافة بيانات معاملة"  }}
+  </button>
+  <nb-card>
+<table class="responsive-table">
+  <thead>
+    <tr>
+      <th>رقم المعاملة</th>
+      <th>وصف المعاملة</th>
+
+      <th>تصنيف المعاملة</th>
+      <th>نوع الجهة</th>
+       <th>الجهة</th>
+        <th>تاريخ البدء</th>
+ <th>تاريخ الإنتهاء</th>
+
+ <th>حالة المعاملة</th>
+      <th>التعديل</th>
+
+      <th>الحذف</th>
+    </tr>
+    
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of this.tableData1">
+      <td>{{ row.code }}</td>
+      <td>{{ row.Desc }}</td>
+     <td>{{ row.Categ }}</td>
+      <td>{{ row.AgencyType }}</td>
+    <td>{{ row.Agency }}</td>
+      <td>{{ row.StartDate }}</td>
+     <td>{{ row.EndDate }}</td>
+      <td>{{ row.Status }}</td>
+        <td class="actions">
+        <button mat-icon-button color="primary" (click)="edit(row)">
+          <mat-icon>edit</mat-icon>
+        </button>
+</td>
+        <td class="actions">
+
+        <button mat-icon-button color="warn" (click)="delete1(row)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        </td>
+    </tr>
+  </tbody>
+</table>
+    
+  </nb-card>
+<!--   <mat-paginator
+    [dir]="dir"
+    [length]="totalRecords"
+    [pageIndex]="searchModel.PageNumber - 1"
+    [pageSize]="searchModel.PageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="search($event)"
+    showFirstLastButtons
+  ></mat-paginator> -->
+</div>

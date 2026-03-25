@@ -152,17 +152,30 @@ this.lang=language;
           {
             title: 'المشاريع',
             children: [
-              {
+             /* {
                 title:'بيانات المشاريع',
-                //link: '/StrategicGoals',
                 link: '/Projects',
 
-              },
-            /*   {
-                title: 'مرفقات المشاريع',
-                link: '/ProjectDocuments',
+              },ProjectTasks*/
+
+               {
+                title: 'المعاملات المستقلة',
+                link: '/IndependentTasks',
               }, 
-              {
+               {
+                title: 'مراحل المشاريع',
+                link: '/ProjectMilestones',
+              }, 
+               {
+                title: 'المهام',
+   children: [
+         
+                {
+                title: 'إدارة المهام',
+                link: '/ProjectTasks',
+              },
+            ],              }, 
+            /*  {
                 title: 'العملاء',
                 link: '/Customers',
               }, */
@@ -171,13 +184,17 @@ this.lang=language;
             title:'البيانات الاساسية',
             children: [
              
-             {
+             /*{
                 title: 'تصنيفات المشاريع',
                 link: '/ProjectCategory',
               },
                 {
                 title: 'انواع المشاريع',
                 link: '/ProjectType',
+              },*/
+                {
+                title: 'المراحل الرئسية',
+                link: '/Milestones',
               },
             ],
           },    
@@ -185,6 +202,7 @@ this.lang=language;
             
             ],
           },
+          
         /*   {
             title: 'الموارد البشرية',
             children: [
@@ -211,12 +229,12 @@ this.lang=language;
             
             ],
           }, */
+          /*
            {
             title: 'إعدادات النظام',
             children: [
               {
                 title:'إدارة المواقع',
-                //link: '/StrategicGoals',
                  
             children: [
               {
@@ -234,14 +252,32 @@ this.lang=language;
             ],
           },    
             
-            
+             {
+                title:'إدارة العملات',
+                //link: '/StrategicGoals',
+                 
+            children: [
+              {
+                title: 'العملات',
+                link: '/Currency',
+              },
+             {
+                title: 'أسعار العملات',
+                link: '/CurrencyPricing',
+              }
+            ],
+          },    
            
         
           
             
             
             ],
+            
+            
           }
+
+          */
         /*
           {
             title: 'الادارات',

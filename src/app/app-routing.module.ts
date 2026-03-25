@@ -133,6 +133,36 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/PMO/ProjectType/projecttype.module').then((mod) => mod.ProjectTypeModule),
     },
+            {
+    path: 'Currency',
+    loadChildren: () =>
+      import('./pages/PMO/Currency/currency.module').then((mod) => mod.CurrencyModule),
+    },
+         {
+    path: 'CurrencyPricing',
+    loadChildren: () =>
+      import('./pages/PMO/CurrencyPricing/CurrencyPricing.module').then((mod) => mod.CurrencyPricingModule),
+    },
+       {
+    path: 'IndependentTasks',
+    loadChildren: () =>
+      import('./pages/PMO/Transactions/Transaction.module').then((mod) => mod.TransactionModule),
+    },
+         {
+    path: 'Milestones',
+    loadChildren: () =>
+      import('./pages/PMO/Milestones/Milestones.module').then((mod) => mod.MilestonesModule),
+    },
+      {
+    path: 'ProjectMilestones',
+    loadChildren: () =>
+      import('./pages/PMO/ProjectMilestones/ProjectMilestone.module').then((mod) => mod.ProjectMilestonesModule),
+    },
+       {
+    path: 'ProjectTasks',
+    loadChildren: () =>
+      import('./pages/PMO/Tasks/Tasks.module').then((mod) => mod.TasksModule),
+    },
  /* {
     path: 'DirectiveGoals',
     loadChildren: () =>
