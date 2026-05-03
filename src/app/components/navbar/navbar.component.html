@@ -18,8 +18,8 @@
             <div class="third-bar"></div>
           </div>
           <div class="caret" *ngIf="menu.length > 0"></div>
-          <div class="menu-div"  *ngIf="menu.length > 0 && isMenuOpen" appClickOutside (appClickOutside)="closeMenu()">
-            <nb-menu [items]="menu"> </nb-menu>
+          <div class="menu-div"  *ngIf="menu.length > 0&&isMenuOpen" appClickOutside (appClickOutside)="closeMenu()">
+            <nb-menu [items]="menu" autoCollapse="true"> </nb-menu>
           </div>
         </div>
         <!-- <img

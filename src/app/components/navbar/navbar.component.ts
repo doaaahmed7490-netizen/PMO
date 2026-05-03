@@ -41,6 +41,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+     /*this.nbMenuService.onItemClick().subscribe((event) => {
+    const clickedItem = event.item;
+
+    this.closeOtherSubmenus(this.menu,clickedItem);
+  });*/
+
     //this.isMenuOpen=false;
     this.lang=this.languageService.currentLanguage;
 console.log("Current Language="+this.languageService.currentLanguage);
@@ -68,17 +74,98 @@ console.log("Current Language="+this.languageService.currentLanguage);
       }
     );
 
-    this.menuClickSubscription = this.nbMenuService
+   /* this.menuClickSubscription = this.nbMenuService
       .onItemClick()
-      .subscribe(() => {
-        this.toggleMenu();
-      });
+      .subscribe((event) => {
+          const clickedItem = event.item;
+
+    this.closeOtherSubmenus(this.menu, clickedItem);
+      });*/
+/*this.menuClickSubscription = this.nbMenuService
+  .onItemClick()
+  .subscribe((event) => {
+    const clickedItem = event.item;
+
+    setTimeout(() => {
+      this.closeOtherSubmenus(this.menu, clickedItem);
+    });
+  });
+  */
   }
 
   setTheme() {
     this.currentTheme = this.currentTheme === 'default' ? 'dark' : 'default';
     this.themeModeService.setThemeMode(this.currentTheme);
   }
+/*closeOtherSubmenus(selectedItem: any) {
+  this.menu.forEach(item => {
+    if (item !== selectedItem && item.children) {
+      item.expanded = false; 
+    }
+  });
+}
+closeOtherSubmenus(selectedItem: any) {
+  this.menu.forEach(item => {
+    if (item.children) {
+      item.expanded = (item === selectedItem);
+    }
+  });
+}
+closeOtherSubmenus(menu: NbMenuItem[], selectedItem: NbMenuItem) {
+  menu.forEach(item => {
+
+    if (!this.isParentOrSelf(item, selectedItem)) {
+      item.expanded = false;
+    }
+
+    if (item.children) {
+      this.closeOtherSubmenus(item.children, selectedItem);
+    }
+  });
+}
+isParentOrSelf(parent: NbMenuItem, child: NbMenuItem): boolean {
+  if (parent === child) return true;
+
+  if (!parent.children) return false;
+
+  return parent.children.some(c => this.isParentOrSelf(c, child));
+}*/
+closeOtherSubmenus(menu: NbMenuItem[], selectedItem: NbMenuItem) {
+  // Step 1: close all
+  this.collapseAll(menu);
+
+  // Step 2: open selected path
+  this.expandPath(menu, selectedItem);
+    // 🔥 IMPORTANT: trigger change detection
+  this.menu = [...this.menu];
+}
+
+
+collapseAll(menu: NbMenuItem[]) {
+  menu.forEach(item => {
+    item.expanded = false;
+    if (item.children) {
+      this.collapseAll(item.children);
+    }
+  });
+}
+expandPath(menu: NbMenuItem[], selectedItem: NbMenuItem): boolean {
+  for (let item of menu) {
+    if (item === selectedItem) {
+      item.expanded = true;
+      return true;
+    }
+
+    if (item.children) {
+      const found = this.expandPath(item.children, selectedItem);
+      if (found) {
+        item.expanded = true;
+        return true;
+      }
+    }
+  }
+  return false;
+}
 
   setLanguage(language: string) {
 this.lang=language;
@@ -203,12 +290,12 @@ this.lang=language;
             ],
           },
           
-        /*   {
-            title: 'الموارد البشرية',
+          {
+            title: 'المرفقات',
             children: [
               {
-                title:'بيانات الموظفيين',
-                link: '/Employees',
+                title:'المرفقات',
+                link: '/ProjectDocuments',
 
               },
            
@@ -217,8 +304,8 @@ this.lang=language;
             title:'البيانات الاساسية',
             children: [
               {
-                title: 'الوظائف',
-                link: '/Jobs',
+                title: 'انواع المرفقات',
+                link: '/DocumentsTypes',
               },
              
             
@@ -228,8 +315,8 @@ this.lang=language;
             
             
             ],
-          }, */
-          /*
+          }, 
+          
            {
             title: 'إعدادات النظام',
             children: [
@@ -277,7 +364,7 @@ this.lang=language;
             
           }
 
-          */
+          
         /*
           {
             title: 'الادارات',

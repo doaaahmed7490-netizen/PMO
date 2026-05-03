@@ -27,8 +27,13 @@ export class AddDistrictComponent implements OnInit {
   Types = ["Event", "Knowledge Center"];
   submitted = false;
   isSubmitted :boolean= false;
-
+projects=[];
   ngOnInit() {
+      this.projects = [
+ { id: 1, label: 'المشاريع' },
+    { id: 2, label: 'المعاملات' },
+    { id: 3, label: 'الموارد البشرية' }
+  ];
     this.initForm();
     //this.getDistricts();
   }
@@ -44,6 +49,7 @@ export class AddDistrictComponent implements OnInit {
   }
   initForm() {
     this.districtForm = this.formBuilder.group({
+      Categ:[''],
       name: ["", [Validators.required, Validators.minLength(3)]],
       notes: [""]
    //   parentId: [""],

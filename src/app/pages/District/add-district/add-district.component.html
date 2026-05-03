@@ -4,6 +4,25 @@
         <form  [formGroup]="districtForm" (ngSubmit)="onSubmit()">
             <div class="row">
                 <div class="col-sm-6">
+                     <div class="form-group">
+          <label for="StrategicGoal" class="label">
+            <h6>
+              {{ "التصنيف"  }}
+            </h6>
+          </label>
+           <nb-select
+            shape="round"
+            fullWidth
+            formControlName="Categ"
+          
+          
+          >
+            <nb-option *ngFor="let e of this.projects" [value]="e.id">
+              {{ e.label }}</nb-option
+            >
+          </nb-select>
+      
+        </div>
                     <div class="form-group">
                         <label for="DistrictName" class="label">
                             <h6>    {{'نوع المرفق'}}</h6>

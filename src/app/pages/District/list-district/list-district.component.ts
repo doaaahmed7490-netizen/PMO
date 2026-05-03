@@ -24,11 +24,13 @@ import { ConfirmDialogComponent } from '../../../shared/components/showcase-dial
 })
 export class ListDistrictComponent implements OnInit {
    tableData = [
-    {  type: 'عقد المشروع', notes: 'يرفق العقد مع بداية المشروع' },
-     {  type: 'جدول الكميات', notes: ''  },
-    {  type: 'مستندات الانجاز', notes: 'يرفق بعد انتهاء كل مرحلة'},
-    {  type: 'خطاب الترسية ', notes: 'يرفق خطاب الترسية عند الموافقة على العرض الفنى للمشروع' },
-    {  type: 'مرفقات اخرى', notes: ''}
+    {  categ:'المشاريع',type: 'اخطار الترسية', notes: 'اخطار الترسية' },
+    {  categ:'المشاريع',type: 'محضر الترسية', notes: 'محضر الترسية' },
+    {  categ:'المشاريع',type: 'الضمان البنكى', notes: 'الضمان البنكى' },
+    {  categ:'المشاريع',type: 'العقد', notes: 'العقد' },
+    {  categ:'المعاملات',type: 'رخصة البناء', notes: 'رخصة البناء' },
+        {  categ:'المعاملات',type: 'قرار مساحى', notes: 'قرار مساحى' },
+
 
   ];
  // dir = "ltr";
@@ -90,11 +92,12 @@ export class ListDistrictComponent implements OnInit {
   tableData1=[]
   ngOnInit(){
    this.tableData1 = [
-    {  type: 'عقد المشروع', notes: 'يرفق العقد مع بداية المشروع' },
-     {  type: 'جدول الكميات', notes: ''  },
-    {  type: 'مستندات الانجاز', notes: 'يرفق بعد انتهاء كل مرحلة'},
-    {  type: 'خطاب الترسية ', notes: 'يرفق خطاب الترسية عند الموافقة على العرض الفنى للمشروع' },
-    {  type: 'مرفقات اخرى', notes: ''}
+      {  categ:'المشاريع',type: 'اخطار الترسية', notes: 'اخطار الترسية' },
+    {  categ:'المشاريع',type: 'محضر الترسية', notes: 'محضر الترسية' },
+    {  categ:'المشاريع',type: 'الضمان البنكى', notes: 'الضمان البنكى' },
+    {  categ:'المشاريع',type: 'العقد', notes: 'العقد' },
+    {  categ:'المعاملات',type: 'رخصة البناء', notes: 'رخصة البناء' },
+        {  categ:'المعاملات',type: 'قرار مساحى', notes: 'قرار مساحى' },
 
   ];
 //console.log(this.data);

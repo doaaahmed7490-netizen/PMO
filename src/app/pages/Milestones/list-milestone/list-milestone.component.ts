@@ -21,10 +21,10 @@ import { EntityNames } from '../../../shared/Entity-Names';
 })
 export class ListMilestoneComponent implements OnInit {
    tableData = [
-     {  name: 'المشروع الاول', customer: 'احمد محمد', task: 'المهمة الاولى', DocType: 'عقد المشروع', Version: '1',Date: '11/1/2025'  },
-     {  name: 'المشروع الاول', customer: 'احمد محمد', task: 'المهمة الاولى', DocType: 'تقرير عن انجاز المشروع', Version: '1',Date: '11/1/2025'  },
+     {  name: 'المشاريع', customer: 'مشروع امانة جدة', task: ' Pro_1', DocType: 'عقد المشروع', Version: '1',Date: '11/1/2025'  },
+     {  name: 'المشاريع', customer: 'مشروع امانة مكة', task: 'Proj_2', DocType: 'الضمان البنكى', Version: '1',Date: '11/1/2025'  },
 
-     {  name: 'المشروع الثانى', customer: 'محمود احمد', task: '', DocType: 'خطاب ترسية ', Version: '1',Date: '1/1/2026'  }
+     {  name: 'المعاملات', customer: 'معاملة رخصة بناء', task: '26_1_2_1', DocType: 'رخصة بناءء ', Version: '1',Date: '1/1/2026'  }
 
   ];
  // dir = "ltr";
@@ -86,10 +86,10 @@ export class ListMilestoneComponent implements OnInit {
   tableData1=[]
   ngOnInit(){
    this.tableData1 = [
-     {  name: 'المشروع الاول', customer: 'احمد محمد', task: 'المهمة الاولى', DocType: 'عقد المشروع', Version: '1',Date: '11/1/2025'  },
-        {  name: 'المشروع الاول', customer: 'احمد محمد', task: 'المهمة الاولى', DocType: 'تقرير عن انجاز المشروع', Version: '1',Date: '11/1/2025'  },
+      {  name: 'المشاريع', customer: 'مشروع امانة جدة', task: ' Pro_1', DocType: 'عقد المشروع', Version: '1',Date: '11/1/2025'  },
+     {  name: 'المشاريع', customer: 'مشروع امانة مكة', task: 'Proj_2', DocType: 'الضمان البنكى', Version: '1',Date: '11/1/2025'  },
 
-     {  name: 'المشروع الثانى', customer: 'محمود احمد', task: '', DocType: 'خطاب ترسية ', Version: '1',Date: '1/1/2026'  }
+     {  name: 'المعاملات', customer: 'معاملة رخصة بناء', task: '26_1_2_1', DocType: 'رخصة بناءء ', Version: '1',Date: '1/1/2026'  }
 
 
   ];

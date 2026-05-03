@@ -38,13 +38,20 @@ export class AddMilestoneComponent implements OnInit {
       tasks=[];
 DocTypes=[];
 DocVersion=[];
+Categ=[];
   ngOnInit(){
+     this.Categ = [
+ { id: 1, label: 'المشاريع' },
+    { id: 2, label: 'المعاملات' },
+    { id: 3, label: 'الموارد البشرية' }
+
+  ];   
      this.projects = [
  { id: 1, label: 'المشروع الاول' },
     { id: 2, label: 'المشروع الثانى' },
     { id: 3, label: 'المشروع الثالث' },
-    { id: 4, label: 'المشروع الرابع' },
-    { id: 5, label: 'المشروع الخامس' }
+    { id: 4, label: 'المعاملة الاولى' },
+    { id: 5, label: 'المعاملة الثانية' }
   ];
      this.tasks = [
  { id: 1, label: 'المهمة الاولى' },
@@ -58,7 +65,9 @@ DocVersion=[];
     { id: 2, label: 'جدول الكميات' },
     { id: 3, label: 'مستندات الانجاز' },
     { id: 4, label: 'خطاب الترسية ' },
-    { id: 5, label: 'مرفقات اخرى' }
+    { id: 5, label: 'رخصة بناء' },
+        { id: 5, label: 'قرار مساحى' }
+
   ];
      this.DocVersion = [
  { id: 1, label: '1' },
@@ -82,10 +91,11 @@ DocVersion=[];
   }
   initForm() {
       this.MileStoneForm = this.formBuilder.group({
+        Categ:[null],
         strategicGoalId: [null, [Validators.required]],
         
         //milestone: [null, Validators.required],
-        taskId:[null],
+     //   taskId:[null],
         DocType:[null],
         DocVersion:[null],
         toDate:[null],
