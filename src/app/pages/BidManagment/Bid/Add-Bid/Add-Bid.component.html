@@ -1,0 +1,317 @@
+<nb-card>
+    <nb-card-header><h5>{{'Add' |translate}} {{'منافسة'}}</h5></nb-card-header>
+    <nb-card-body>
+        <form  [formGroup]="districtForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="DistrictName" class="label">
+                            <h6>    {{'إسم المشروع'}}</h6>
+                        </label>
+                        <input  type="text"
+                            formControlName="BidName" nbInput shape="round" fullWidth id="BidName">
+                
+                    </div>
+                     <div class="form-group">
+                        <label for="DistrictName" class="label">
+                            <h6>    {{'الرقم المرجعى للمنافسة'}}</h6>
+                        </label>
+                        <input  type="text"
+                            formControlName="ReferenceNo" nbInput shape="round" fullWidth id="ReferenceNo">
+                
+                    </div>
+                       <div class="form-group">
+                        <label for="DistrictName" class="label">
+                            <h6>    {{'الجهة الطارحة للمنافسة'}}</h6>
+                        </label>
+                       <!--  <input  type="text"
+                            formControlName="EntityName" nbInput shape="round" fullWidth id="EntityName"> -->
+
+                                           <nb-select
+            shape="round"
+            fullWidth
+            formControlName="EntityName"
+          
+          
+          >
+            <nb-option *ngFor="let e of this.Entities" [value]="e.id">
+              {{ e.label }}</nb-option
+            >
+          </nb-select>
+                
+                    </div>
+                   
+                    <!-- radioButton -->
+                      <div class="form-group">
+                        <label for="DistrictName" class="label">
+                            <h6>    {{'نوع اعلان المنافسة'}}</h6>
+                        </label>
+                        <br/>
+                           <label>
+    <input type="radio" value="Public" formControlName="BidAnnouncementType">
+                                {{'عامة'}}
+
+  </label>
+
+  <label>
+    <input type="radio" value="Private" formControlName="BidAnnouncementType">
+                                    {{'خاصة' |translate}}
+
+
+  </label>
+                        <!-- <input  type="radio"
+                            formControlName="BidAnnouncementType"> -->
+                
+                    </div>
+                       <br/>
+                    <!-- dropdownlist -->
+                       <div class="form-group">
+                        <label for="DistrictName" class="label">
+                            <h6>    {{' طريقة معرفة المنافسة'}}</h6>
+                        </label>
+                        <!-- <input  type="text"
+                            formControlName="BidSource" nbInput shape="round" fullWidth id="BidSource"> -->
+               <nb-select
+            shape="round"
+            fullWidth
+            formControlName="BidSource"
+          
+          
+          >
+            <nb-option *ngFor="let e of this.BidSources" [value]="e.id">
+              {{ e.label }}</nb-option
+            >
+          </nb-select>
+                    </div>
+                      
+                </div>
+          
+              
+                <div class="col-sm-3"> 
+                   <div class="form-group">
+                        <label for="DistrictName" class="label">
+                            <h6>    {{'الغرض من المنافسة'}}</h6>
+                        </label>
+                        <textarea  type="text"
+                            formControlName="BidTarget" nbInput shape="round" fullWidth id="BidTarget">
+                            </textarea>
+                
+                    </div>
+                    <div class="form-group">
+                        <label for="notes" class="label">
+                            <h6>    {{'تاريخ النشر او الدعوة' }}</h6>
+                        </label>
+                        <input   type="date"
+                            formControlName="PublishDate" nbInput shape="round" fullWidth id="notes"/>
+                    
+                    </div>
+                         <div class="form-group">
+                        <label for="notes" class="label">
+                            <h6>    {{'موقع تنفيذ المشروع' }}</h6>
+                        </label>
+                           <nb-select
+            shape="round"
+            fullWidth
+            formControlName="Country"
+          
+          placeholder="الدولة"
+          >
+            <nb-option *ngFor="let e of this.Country" [value]="e.id">
+              {{ e.label }}</nb-option
+            >
+          </nb-select>
+                     <nb-select
+            shape="round"
+            fullWidth
+            formControlName="City"
+          
+          placeholder="المحافظة/المدينة"
+          >
+            <nb-option *ngFor="let e of this.City" [value]="e.id">
+              {{ e.label }}</nb-option
+            >
+          </nb-select>
+                              <nb-select
+            shape="round"
+            fullWidth
+            formControlName="District"
+          
+          placeholder="المنطقة/الحى"
+          >
+            <nb-option *ngFor="let e of this.Region" [value]="e.id">
+              {{ e.label }}</nb-option
+            >
+          </nb-select>
+                    </div>
+                      <div class="form-group">
+                        <label for="notes" class="label">
+                            <h6>    {{'الموقع التفصيلى' }}</h6>
+                        </label>
+                        <input   type="text"
+                            formControlName="Address" nbInput shape="round" fullWidth id="Address"/>
+                     
+                    </div>
+                 
+                   
+                </div>   
+                           <div class="col-sm-3"> 
+                                <div class="form-group">
+                        <label for="notes" class="label">
+                            <h6>    {{'اخر موعد لإستلام الاستفسارات' }}</h6>
+                        </label>
+                        <input       type="datetime-local"
+
+                            formControlName="InquiryDate" nbInput shape="round" fullWidth id="InquiryDate"/>
+                     
+                    </div>
+                       <div class="form-group">
+                        <label for="notes" class="label">
+                            <h6>    {{'اخر موعد لتقديم العروض' }}</h6>
+                        </label>
+                        <input       type="datetime-local"
+
+                            formControlName="DeadlineSubmittingDate" nbInput shape="round" fullWidth id="DeadlineSubmittingDate"/>
+                     
+                    </div>
+                    <div class="form-group">
+                        <label for="notes" class="label">
+                            <h6>    {{'التصنيف المطلوب' }}</h6>
+                        </label>
+                        <input   type="text"
+                            formControlName="CategRequired" nbInput shape="round" fullWidth id="CategRequired"/>
+                    
+                    </div>
+                         <div class="form-group">
+                        <label for="notes" class="label">
+                            <h6>    {{'قيمة وثائق المنافسة' }}</h6>
+                        </label>
+                        <input   type="number"
+                            formControlName="BidDocValue" nbInput shape="round" fullWidth id="BidDocValue"/>
+                  
+                        </div>
+                      <div class="form-group">
+                        <label for="notes" class="label">
+                            <h6>    {{'الضمان الابتدائى' }}</h6>
+                        </label>
+                        <!-- <input   type="text"
+                            formControlName="InitialGuaranteeType" nbInput shape="round" fullWidth id="InitialGuaranteeType"/>
+                      -->
+                           <label>
+    <input type="radio" value="Value" formControlName="InitialGuaranteeType">
+                                {{'مبلغ '}}
+
+  </label>
+
+  <label>
+    <input type="radio" value="Letter" formControlName="InitialGuaranteeType">
+                                    {{'خطاب ضمان' |translate}}
+
+
+  </label>
+                    </div>
+              
+                   <div class="form-group">
+                        <label for="notes" class="label">
+                            <h6>    {{'قيمة الضمان الابتدائى' }}</h6>
+                        </label>
+                        <input       type="number"
+
+                            formControlName="InitialGuaranteeVal" nbInput shape="round" fullWidth id="InitialGuaranteeVal"/>
+                     
+                    </div>
+                </div>   
+
+
+                  <div class="col-sm-3"> 
+                           
+                       <div class="form-group">
+                        <label for="notes" class="label">
+                            <h6>    {{'طريقة تقديم العروض' }}</h6>
+                        </label>
+<!--                         <input       type="text"  formControlName="OfferMethod" nbInput shape="round" fullWidth id="OfferMethod"/>
+ -->                     
+<nb-select
+            shape="round"
+            fullWidth
+            formControlName="OfferMethod"
+          
+          >
+            <nb-option *ngFor="let e of this.OfferMethods" [value]="e.id">
+              {{ e.label }}</nb-option
+            >
+          </nb-select>
+                    </div>
+                    <div class="form-group">
+                        <label for="notes" class="label">
+                            <h6>    {{'مدة العقد' }}</h6>
+                        </label>
+                        <input   type="text"
+                            formControlName="ContractPeriod" nbInput shape="round" fullWidth id="ContractPeriod"/>
+                    
+                    </div>
+                      <div class="form-group">
+                        <label for="notes" class="label">
+                            <h6>    {{'رقم التواصل' }}</h6>
+                        </label>
+                        <input   type="text"
+                            formControlName="ContactPhone" nbInput shape="round" fullWidth id="ContactPhone"/>
+                    
+                    </div>
+                        <div class="form-group">
+                        <label for="notes" class="label">
+                            <h6>    {{'البريد الإلكترونى للتواصل' }}</h6>
+                        </label>
+                        <input   type="text"
+                            formControlName="ContactEmail" nbInput shape="round" fullWidth id="ContactEmail"/>
+                    
+                    </div>
+                      <div class="form-group">
+                        <label for="notes" class="label">
+                            <h6>    {{'المدير ' }}</h6>
+                        </label>
+<!--                         <input       type="text"  formControlName="OfferMethod" nbInput shape="round" fullWidth id="OfferMethod"/>
+ -->                     
+<nb-select
+            shape="round"
+            fullWidth
+            formControlName="Manager"
+          
+          >
+            <nb-option *ngFor="let e of this.Managers" [value]="e.id">
+              {{ e.label }}</nb-option
+            >
+          </nb-select>
+                    </div>
+                    </div>
+                <!--Event Image -->
+            </div>
+            <!-- <div class="mt-2 d-flex align-items-center justify-content-center mt-3"> -->
+                <div class="row mt-2">
+     <div class="col-md-2">
+        <button
+          class="special-button m-2 mt-4 w-100"
+   type="submit"
+       >
+          {{ "حفظ"  }}
+        </button>
+      </div>
+       <div class="col-md-2">
+     <!--    <button
+          class="special-button m-2 mt-4 w-100"
+   type="button"    (click)="Close()"
+
+       >
+          {{ "إلغاء"}}
+        </button> -->
+      </div>
+            <!--     <button class="btn" [disabled]="districtForm.invalid ||isSubmitted"   type="submit"  status="primary"
+                 nbButton>{{'Save' |translate}}</button> -->
+       
+            </div>
+        </form>
+    </nb-card-body>
+</nb-card>
+
+
+
+

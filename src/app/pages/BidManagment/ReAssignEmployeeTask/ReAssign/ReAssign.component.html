@@ -1,0 +1,151 @@
+<nb-card>
+    <nb-card-header><h5>{{'إضافة بيانات سير عمل المهام '}}</h5></nb-card-header>
+    <nb-card-body>
+        <form  [formGroup]="districtForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="DistrictName" class="label">
+                            <h6>    {{'المنافسة'}}</h6>
+                        </label>
+                                         <nb-select
+            shape="round"
+            fullWidth
+            formControlName="BidName"
+          
+          
+          >
+            <nb-option *ngFor="let e of this.Projects" [value]="e.id">
+              {{ e.label }}</nb-option
+            >
+          </nb-select>
+                
+                    </div>
+                 
+                   
+                   
+   <div class="form-group">
+       
+       
+       
+
+     <label for="FromDate" class="label">
+           
+                            <h6>{{'المهمة' }}<span class="text-danger">*</span></h6>
+         
+          </label>
+                <nb-select
+            shape="round"
+            fullWidth
+            formControlName="Task"
+          
+
+          >
+            <nb-option *ngFor="let e of this.TasksStandard" [value]="e.id">
+              {{ e.label }}</nb-option
+            >
+          </nb-select>
+
+
+
+
+
+  </div>   
+    
+            <div class="form-group">
+          <label for="ProjectName" class="label">
+         
+                            <h6>{{'المسؤل الحالى' }}</h6>
+           
+          </label>
+     <input   type="text"
+                            formControlName="Manager" nbInput shape="round" fullWidth id="Manager"/>
+        </div>
+                    <!-- dropdownlist -->
+                    <div class="form-group">
+                        <label for="notes" class="label">
+                            <h6>    {{'الحالة الحالية' }}</h6>
+                        </label>
+                        <input   type="text"
+                            formControlName="CurrentStatus" nbInput shape="round" fullWidth id="CurrentStatus"/>
+                    
+                    </div>   
+                      
+                </div>
+          
+              
+                <div class="col-sm-6"> 
+                 
+                 
+                         <div class="form-group">
+                        <label for="notes" class="label">
+                            <h6>    {{'المسؤل الجديدة' }}</h6>
+                        </label>
+                   <nb-select
+            shape="round"
+            fullWidth
+            formControlName="NewStatus"
+          
+
+          >
+            <nb-option *ngFor="let e of this.Managers" [value]="e.id">
+              {{ e.label }}</nb-option
+            >
+          </nb-select>
+                         
+                    </div>
+                     <div class="form-group">
+                        <label for="notes" class="label">
+                            <h6>    {{'تاريخ البدء' }}</h6>
+                        </label>
+                        <input   type="date"
+                            formControlName="ChangeStatusDate" nbInput shape="round" fullWidth id="ChangeStatusDate"/>
+                    
+                    </div>
+                 
+                      <div class="form-group">
+                        <label for="notes" class="label">
+                            <h6>    {{'ملاحظات' }}</h6>
+                        </label>
+                        <textarea   type="text"
+                            formControlName="Notes" nbInput shape="round" fullWidth id="Notes">
+                            </textarea>
+                     
+                    </div>
+                 
+                   
+                </div>   
+                    
+
+                <!--Event Image -->
+            </div>
+            <!-- <div class="mt-2 d-flex align-items-center justify-content-center mt-3"> -->
+                <div class="row mt-2">
+     <div class="col-md-2">
+        <button
+          class="special-button m-2 mt-4 w-100"
+   type="submit"
+       >
+          {{ "حفظ"  }}
+        </button>
+      </div>
+       <div class="col-md-2">
+     <!--    <button
+          class="special-button m-2 mt-4 w-100"
+   type="button"    (click)="Close()"
+
+       >
+          {{ "إلغاء"}}
+        </button> -->
+      </div>
+            <!--     <button class="btn" [disabled]="districtForm.invalid ||isSubmitted"   type="submit"  status="primary"
+                 nbButton>{{'Save' |translate}}</button> -->
+       
+            </div>
+        </form>
+    </nb-card-body>
+</nb-card>
+
+
+
+

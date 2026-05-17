@@ -163,6 +163,31 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/PMO/Tasks/Tasks.module').then((mod) => mod.TasksModule),
     },
+      {
+    path: 'Bids',
+    loadChildren: () =>
+      import('./pages/BidManagment/Bid/bid.module').then((mod) => mod.BidModule),
+    },
+     {
+    path: 'BidTasks',
+    loadChildren: () =>
+      import('./pages/BidManagment/BidTasks/bidTasks.module').then((mod) => mod.BidTasksModule),
+    },
+    {
+    path: 'BidTasksWorkflow',
+    loadChildren: () =>
+      import('./pages/BidManagment/BidTasksWorkFlow/bidTasksWorkFlow.module').then((mod) => mod.BidTasksWorkFlowModule),
+    },
+     {
+    path: 'ReAssign',
+    loadChildren: () =>
+      import('./pages/BidManagment/ReAssignEmployeeTask/ReAssignEmployeeTask.module').then((mod) => mod.ReAssignEmployeeTaskModule),
+    },
+    {
+    path: 'BidChangeStatus',
+    loadChildren: () =>
+      import('./pages/BidManagment/BidChangeStatus/BidChangeStatus.module').then((mod) => mod.BidChangeStatusModule),
+    },
  /* {
     path: 'DirectiveGoals',
     loadChildren: () =>

@@ -1,0 +1,187 @@
+<nb-card>
+    <nb-card-header><h5>{{'إضافة بيانات مهام المنافسة'}}</h5></nb-card-header>
+    <nb-card-body>
+        <form  [formGroup]="districtForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="DistrictName" class="label">
+                            <h6>    {{'إسم المشروع'}}</h6>
+                        </label>
+                                         <nb-select
+            shape="round"
+            fullWidth
+            formControlName="BidName"
+          
+          
+          >
+            <nb-option *ngFor="let e of this.Projects" [value]="e.id">
+              {{ e.label }}</nb-option
+            >
+          </nb-select>
+                
+                    </div>
+                 
+                   
+                    <!-- radioButton -->
+                      <div class="form-group">
+                        <label for="DistrictName" class="label">
+                            <h6>    {{'نوع المهمة'}}</h6>
+                        </label>
+                        <br/>
+                           <label>
+    <input type="radio" value="Basic" formControlName="TaskType">
+                                {{'اساسية'}}
+
+  </label>
+
+  <label>
+    <input type="radio" value="Private" formControlName="TaskType">
+                                    {{'مخصصة للمنافسة' |translate}}
+
+
+  </label>
+                        <!-- <input  type="radio"
+                            formControlName="BidAnnouncementType"> -->
+                
+                    </div>
+   <div class="form-group">
+       
+          <!-- <input
+            type="date"
+            formControlName="fromDate"
+            nbInput
+            shape="round"
+            fullWidth
+            id="fromDate"
+          /> -->
+         <div *ngIf="districtForm.get('TaskType')?.value === 'Private'">
+            <label for="FromDate" class="label">
+           
+                            <h6>{{'المهمة' }}<span class="text-danger">*</span></h6>
+         
+          </label>
+    <input type="text" formControlName="TaskTitle" nbInput shape="round" fullWidth>
+    <!--         <mat-error *ngIf="fc.AgencyName.touched && fc.AgencyName.hasError('required')"
+                               class="text-danger">
+                            
+                                {{'CitizenNameIsRequired' | translate}}
+                            </mat-error>  --> 
+                    <!--           <label for="FromDate" class="label">
+           
+                            <h6>{{'MilestoneRequired' |translate}}<span class="text-danger">*</span></h6>
+         
+          </label> -->
+    
+     </div>
+
+<div *ngIf="districtForm.get('TaskType')?.value === 'Basic'">
+     <label for="FromDate" class="label">
+           
+                            <h6>{{'المهمة' }}<span class="text-danger">*</span></h6>
+         
+          </label>
+                <nb-select
+            shape="round"
+            fullWidth
+            formControlName="Task"
+          
+
+          >
+            <nb-option *ngFor="let e of this.TasksStandard" [value]="e.id">
+              {{ e.label }}</nb-option
+            >
+          </nb-select>
+
+
+</div>
+
+
+  </div>   
+    
+            <div class="form-group">
+          <label for="ProjectName" class="label">
+         
+                            <h6>{{'المسؤل' }}</h6>
+           
+          </label>
+         <nb-select
+            shape="round"
+            fullWidth
+            formControlName="Manager" multiple>
+            <nb-option *ngFor="let e of this.Managers" [value]="e.id">
+              {{ e.label }}</nb-option
+            >
+          </nb-select>
+      
+        </div>
+                    <!-- dropdownlist -->
+                    
+                      
+                </div>
+          
+              
+                <div class="col-sm-6"> 
+                 
+                    <div class="form-group">
+                        <label for="notes" class="label">
+                            <h6>    {{'تاريخ البدء' }}</h6>
+                        </label>
+                        <input   type="date"
+                            formControlName="StartDate" nbInput shape="round" fullWidth id="StartDate"/>
+                    
+                    </div>
+                         <div class="form-group">
+                        <label for="notes" class="label">
+                            <h6>    {{'تاريخ الإنتهاء' }}</h6>
+                        </label>
+                          <input   type="date"
+                            formControlName="EndDate" nbInput shape="round" fullWidth id="EndDate"/>
+                         
+                    </div>
+                      <div class="form-group">
+                        <label for="notes" class="label">
+                            <h6>    {{'ملاحظات' }}</h6>
+                        </label>
+                        <textarea   type="text"
+                            formControlName="Notes" nbInput shape="round" fullWidth id="Notes">
+                            </textarea>
+                     
+                    </div>
+                 
+                   
+                </div>   
+                    
+
+                <!--Event Image -->
+            </div>
+            <!-- <div class="mt-2 d-flex align-items-center justify-content-center mt-3"> -->
+                <div class="row mt-2">
+     <div class="col-md-2">
+        <button
+          class="special-button m-2 mt-4 w-100"
+   type="submit"
+       >
+          {{ "حفظ"  }}
+        </button>
+      </div>
+       <div class="col-md-2">
+     <!--    <button
+          class="special-button m-2 mt-4 w-100"
+   type="button"    (click)="Close()"
+
+       >
+          {{ "إلغاء"}}
+        </button> -->
+      </div>
+            <!--     <button class="btn" [disabled]="districtForm.invalid ||isSubmitted"   type="submit"  status="primary"
+                 nbButton>{{'Save' |translate}}</button> -->
+       
+            </div>
+        </form>
+    </nb-card-body>
+</nb-card>
+
+
+
+

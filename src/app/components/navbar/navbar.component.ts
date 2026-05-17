@@ -236,14 +236,10 @@ this.lang=language;
             title: 'لوحة التحكم',
             link: '/dashboard',
           },
-          {
+          /*{
             title: 'المشاريع',
             children: [
-             /* {
-                title:'بيانات المشاريع',
-                link: '/Projects',
-
-              },ProjectTasks*/
+         
 
                {
                 title: 'المعاملات المستقلة',
@@ -262,23 +258,13 @@ this.lang=language;
                 link: '/ProjectTasks',
               },
             ],              }, 
-            /*  {
-                title: 'العملاء',
-                link: '/Customers',
-              }, */
+         
         
                  {
             title:'البيانات الاساسية',
             children: [
              
-             /*{
-                title: 'تصنيفات المشاريع',
-                link: '/ProjectCategory',
-              },
-                {
-                title: 'انواع المشاريع',
-                link: '/ProjectType',
-              },*/
+            
                 {
                 title: 'المراحل الرئسية',
                 link: '/Milestones',
@@ -288,8 +274,36 @@ this.lang=language;
             
             
             ],
-          },
-          
+          },*/
+          /* {
+            title: 'المنافسات',
+            link: '/Bids',
+          },*/
+            {
+            title: 'إدارة المنافسات',
+            children: [
+              {
+             title: 'المنافسات',
+            link: '/Bids',
+              },
+            {
+             title: 'مهام المنافسات',
+            link: '/BidTasks',
+              },
+             {
+             title: 'سير عمل المهام',
+            link: '/BidTasksWorkflow',
+              },
+               {
+             title: 'إعادة تعيين مسؤل عن مهمة',
+            link: '/ReAssign',
+              },
+               {
+             title: 'تغيير حالة المنافسة',
+            link: '/BidChangeStatus',
+              }
+            ]},
+            /*BidChangeStatus
           {
             title: 'المرفقات',
             children: [
@@ -363,6 +377,8 @@ this.lang=language;
             
             
           }
+
+          */
 
           
         /*
