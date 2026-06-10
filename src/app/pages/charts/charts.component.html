@@ -7,7 +7,7 @@
       </h2>
       <hr />
     </div>
-    <div class="col-md-6 pb-3">
+    <div class="col-md-12 pb-3">
       <form>
         <div class="form-group">
   
@@ -16,12 +16,15 @@
 
           class="pt-3 form-group row row-cols-1 px-3 d-flex align-items-center justify-content-start flex-row"
         >
-          <div class="col d-flex">
+<!--           <div class="col d-flex">
+ -->                <div class="col-md-6 d-flex">
+
               <nb-select
             shape="round"
             fullWidth
            [placeholder]="'إختار المشروع' " 
         (selectedChange)="onSelect($event)"
+        multiple
           >
             <nb-option *ngFor="let e of this.options1" [value]="e.id">
               {{ e.label }}</nb-option
@@ -31,31 +34,100 @@
           </div>
         </div>
         <br/>
-<!--          <div class="col-sm-12">
+
+<!--       <div class="col-sm-12">
               
               <p></p>
         </div>
             <div class="col-sm-12">
               
-              <p>{{ "عدد المهام المنتهية"}}: {{"20"}}</p>
+              <p>{{ "إجمالى عدد المشاريع"}}: {{"20"}}</p>
         </div>
       <div class="col-sm-12">
               
-              <p>{{ "عدد المهام الجارية"}}: {{"20"}}</p>
+              <p>{{ "عدد المشاريع الجارية"}}: {{"20"}}</p>
         </div>
           <div class="col-sm-12">
               
-              <p>{{ "عدد المهام المتاخرة"}}: {{"20"}}</p>
+              <p>{{ "عدد المشاريع المنتهية"}}: {{"20"}}</p>
         </div>
-<div class="col-sm-12">
+         <div class="col-sm-12">
+              
+              <p>{{ "عدد المشاريع المتاخرة"}}: {{"20"}}</p>
+        </div>
+         <div class="col-sm-12">
 
               
               <p>{{ "عدد المهام التى ستبدء قريبا"}}: {{"20"}}</p>
-        </div>
-        -->
+        </div>  -->
+        
           
           </div>
         </div>
+        <br/>
+                <div class="row stats-row">
+
+  <div class="col-md-2 col-sm-6 mb-3">
+    <nb-card class="stat-card">
+      <nb-card-body>
+        <h3>{{CountProjects}}</h3>
+        <p>إجمالى عدد المشاريع</p>
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+  <div class="col-md-2 col-sm-6 mb-3">
+    <nb-card class="stat-card">
+      <nb-card-body>
+        <h3>20</h3>
+        <p *ngIf="NotSelectPorject">عدد المشاريع الجارية</p>
+                <p *ngIf="NotSelectPorject==false">عدد المهام الجارية</p>
+
+        <br/>
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+  <div class="col-md-2 col-sm-6 mb-3">
+    <nb-card class="stat-card">
+      <nb-card-body>
+        <h3>20</h3>
+        <p *ngIf="NotSelectPorject">عدد المشاريع المكتملة</p>
+       <p *ngIf="NotSelectPorject==false">عدد المهام المكتملة</p>
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+  <div class="col-md-2 col-sm-6 mb-3">
+    <nb-card class="stat-card">
+      <nb-card-body>
+        <h3>20</h3>
+         <p *ngIf="NotSelectPorject">عدد المشاريع المتاخرة</p>
+       <p *ngIf="NotSelectPorject==false">عدد المهام المتاخرة</p>
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+ <div class="col-md-2 col-sm-6 mb-3">
+    <nb-card class="stat-card">
+      <nb-card-body>
+        <h3>20</h3>
+  <p *ngIf="NotSelectPorject">عدد المشاريع التى ستبدا</p>
+       <p *ngIf="NotSelectPorject==false">عدد المهام التى ستبدا</p>      
+      </nb-card-body>
+    </nb-card>
+  </div> 
+ <div class="col-md-2 col-sm-6 mb-3" *ngIf="NotSelectPorject">
+    <nb-card class="stat-card">
+      <nb-card-body>
+        <h3>20</h3>
+  <p *ngIf="NotSelectPorject">عدد العاملين بالمشاريع </p>
+    
+            </nb-card-body>
+    </nb-card>
+  </div> 
+</div>
       </form>
       <form #form="ngForm">
       
@@ -106,33 +178,7 @@
       </form>
     </div>
     <!-- <div id="printTable"> -->
-    <div class="col-md-6" >
-          
-      <div class="row">
-         <div class="col-sm-12">
-          <p></p>
-        </div>
-        <div class="col-sm-12">
-          <p></p>
-        </div>
-         <div class="col-sm-12">
-          <p></p>
-        </div>
-   <!--      <div class="col-sm-12">
-          <p>{{ "عدد المشاريع المنتهية" }}: {{ "10" }}</p>
-        </div>
-        <div class="col-sm-12">
-          <p>{{ "عدد المشاريع الجارية" }}: {{ "25" }}</p>
-        </div>
-        <div class="col-sm-12">
-          <p>{{ "عدد المشاريع المتاخرة" }}: {{ "10" }}</p>
-        </div>
-         <div class="col-sm-12">
-          <p>{{ "عدد المشاريع التى ستبد قريباً" }}: {{ "10" }}</p>
-        </div> -->
- 
-      </div>
-    </div>
+   
   </div>
 
   <!--   <div class="row">
@@ -166,7 +212,7 @@
             class="d-flex align-items-center justify-content-evenly flex-column"
 
         >
-          <h5 class="text-center"> {{ "نسبة الانجاز"}}</h5>
+          <h5 class="text-center"> {{ Label1}}</h5>
           <div *ngIf="renderGauge">
             <ngx-gauge
               [min]="0"
@@ -186,8 +232,8 @@
     </div>
     
 <!--     dddddd
- -->    <div class="col-md-4">
-      <nb-card class="rounding-card" size="small">
+ -->    <div class="col-md-4" *ngIf="NotSelectPorject==false">
+      <nb-card class="rounding-card" size="small" >
         <nb-card-body
           class="d-flex align-items-center justify-content-evenly flex-column"
         >
@@ -209,7 +255,23 @@
       </nb-card>
     </div>
 
+   <div class="col-md-4"*ngIf="NotSelectPorject">
+      <nb-card class="rounding-card" size="small">
+        <nb-card-body
+          class="d-flex align-items-center justify-content-evenly flex-column"
+        >
+          <h5 class="text-center">  {{ this.LabelChart33 }}</h5>
+                  <div class="chart-container">
 
+  <canvas id="pieChart4">
+  </canvas>
+
+</div>
+
+   
+        </nb-card-body>
+      </nb-card>
+    </div>
     <div class="col-md-4">
       <nb-card class="rounding-card" size="small">
         <nb-card-body
@@ -228,7 +290,7 @@
         </nb-card-body>
       </nb-card>
     </div>
-    <div class="col-md-4">
+  <!--   <div class="col-md-4">
       <nb-card class="rounding-card" size="small">
         <nb-card-body
           class="d-flex align-items-center justify-content-evenly flex-column"
@@ -242,7 +304,22 @@
    
         </nb-card-body>
       </nb-card>
-    </div>   
+    </div> -->   
+       <div class="col-md-4">
+      <nb-card class="rounding-card" size="small">
+        <nb-card-body
+          class="d-flex align-items-center justify-content-evenly flex-column"
+        >
+          <h5 class="text-center">  {{ this.labelChart10  }}</h5>
+          <div>
+  <canvas id="barChart7" style="width: 400px;">
+  </canvas>
+</div>
+ 
+   
+        </nb-card-body>
+      </nb-card>
+    </div>
      <div class="col-md-4">
       <nb-card class="rounding-card" size="small">
         <nb-card-body
@@ -272,7 +349,7 @@
         </nb-card-body>
       </nb-card>
     </div>
-         <div class="col-md-4">
+         <div class="col-md-4" *ngIf="NotSelectPorject">
       <nb-card class="rounding-card" size="small">
         <nb-card-body
           class="d-flex align-items-center justify-content-evenly flex-column"

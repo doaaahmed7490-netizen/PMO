@@ -70,7 +70,9 @@ destroyChart(id: string) {
       }
     }
   };
+LabelChart33:string;
 LabelChart3:string;
+
   renderChart(id: string, chartType: keyof ChartTypeRegistry) {
   if(this.SelectID1>0)
   {
@@ -81,7 +83,7 @@ LabelChart3:string;
       data: {
         labels: [
           
-          ' المهام المنتهية',
+          ' المهام المكتملة',
           ' المهام الجارية',
           ' المهام المتاخرة',
           ' المهام التى ستبداء قريبا'
@@ -132,10 +134,11 @@ LabelChart3:string;
       data: {
         labels: [
           
-          ' المشاريع المنتهية',
+          ' المشاريع المكتملة',
           ' المشاريع الجارية',
           ' المشاريع المتاخرة',
-          ' المشاريع التى ستبداء قريبا'
+          ' المشاريع التى ستبداء قريبا',
+          'المشاريع الملغاة'
        
         ],
         datasets: [
@@ -145,7 +148,8 @@ LabelChart3:string;
               30,
               10,
               7,
-              15
+              15,
+              4
           
             ],
   
@@ -162,7 +166,8 @@ LabelChart3:string;
              "#D9A85B",
               //"#322682",
               "#322682",
-              "#9E9E9E"
+              "#9E9E9E",
+              "#E0DDD5"
              // 'rgba(54, 162, 235, 0.8)',
               //'rgba(153, 102, 255, 0.8)',
            //   'rgba(201, 203, 207, 0.8)'
@@ -186,6 +191,72 @@ LabelChart3:string;
     this.chartInstances.push(chart);
     }
   }
+  renderChart9(id: string, chartType: keyof ChartTypeRegistry) {
+ 
+
+          this.LabelChart33='اعداد المهام طبقاً للحالة فى المشاريع الجارية'
+
+    const chart = new Chart(id, {
+      type: chartType,
+      data: {
+        labels: [
+          
+          ' المهام المكتملة',
+          ' المهام الجارية',
+          ' المهام المتاخرة',
+          ' المشاريع التى ستبداء',
+          'المهام الملغاة'
+       
+        ],
+        datasets: [
+          {
+            label: 'Number',
+            data: [
+              30,
+              10,
+              7,
+              15,
+              4
+          
+            ],
+  
+            backgroundColor: [
+             //'#A2782F',
+              '#826026',
+              //  'rgba(255, 99, 132, 0.8)',
+              //'rgba(255, 159, 64, 0.8)',
+              //  'rgba(255, 205, 86, 0.8)',
+            //  'rgba(0, 170,184)',
+
+              // 'rgba(75, 192, 192, 0.8)',
+             // "#D0A65D",
+             "#D9A85B",
+              //"#322682",
+              "#322682",
+              "#9E9E9E",
+              "#E0DDD5"
+             // 'rgba(54, 162, 235, 0.8)',
+              //'rgba(153, 102, 255, 0.8)',
+           //   'rgba(201, 203, 207, 0.8)'
+           /*    'rgba(51, 51, 255)',
+              'rgba(153, 153, 255)' */
+            ],
+            borderWidth: id === 'lineChart' ? 2 : 1,
+            borderRadius: 6,
+            borderColor: id === 'lineChart' ? this.labelColor : 'white',
+            tension: id === 'lineChart' && 0.1,
+          },
+        ],
+      },
+        options: {
+  responsive: true,
+  maintainAspectRatio: false,
+  devicePixelRatio: 2, 
+        }
+    });
+      
+    this.chartInstances.push(chart);
+      }
   renderChart3(id: string, chartType: keyof ChartTypeRegistry) {
   
       console.log("welcome dddd")
@@ -381,6 +452,10 @@ LabelChart3:string;
   options1=[];
    selectedValue=''
   ngOnInit(): void {
+     this.CountProjects=20;
+    this.IsAll=true;
+        this.Label1="نسبة المشاريع المتاخرة من اجمالى المشاريع الجارية";
+
    this.NotSelectPorject=true
      // Pie Chart Type
 //  this.renderChart('pieChart', 'pie')
@@ -400,8 +475,13 @@ LabelChart3:string;
             this.renderChart1('barChart', 'bar');
 
    this.renderChart2('barChart2', 'bar');
-  this.renderChart3('pieChart2', 'pie');;
+  //this.renderChart3('pieChart2', 'pie');;
 this.renderChart4('barChart4', 'bar');
+//this.renderChart4('pieChart3', 'pie');
+
+  this.renderChart9('pieChart4', 'pie');;
+       this.renderChart7('barChart7', 'bar');  
+
                         });
 
         this.selectedValue = '';
@@ -518,12 +598,17 @@ ngAfterViewInit() {
    this.renderChart1('barChart', 'bar');
 
    this.renderChart2('barChart2', 'bar');
-  this.renderChart3('pieChart2', 'pie');;
+ // this.renderChart3('pieChart2', 'pie');;
      this.renderChart6('barChart6', 'bar');
+console.log("This Error Here")
+     this.renderChart7('barChart7', 'bar');  
 
     if (this.NotSelectPorject && !this.chartInstances['barChart4']) {
 this.renderChart4('barChart4', 'bar');
 this.renderChart5('barChart5', 'bar');
+
+     this.renderChart9('pieChart4', 'pie');;
+
   }
 }
 LabelChart5:string;
@@ -541,7 +626,9 @@ LabelChart5:string;
         label: '%نسبة الانجاز',
         data: [100, 80, 40, 30,10],
        // backgroundColor: '#4CAF50',
-       backgroundColor:'#264882'
+//       backgroundColor:'#264882'
+       backgroundColor:'#05CDED'
+
       //  stack: 'total'
 
       }
@@ -566,6 +653,9 @@ LabelChart5:string;
           x: {
             ticks: {
               color: this.labelColor,
+               callback: function(value) {
+      return value + '%';
+    }
             },
             //stacked: true
           },
@@ -588,8 +678,9 @@ LabelChart5:string;
         label: '%نسبة الانجاز',
         data: [100, 90, 60, 17,5],
        // backgroundColor: '#4CAF50',
-       backgroundColor:'#264882'
-      //  stack: 'total'
+       backgroundColor:'#05CDED',
+  categoryPercentage: 0.8,
+  barPercentage: 0.9
 
       }
       
@@ -604,7 +695,7 @@ LabelChart5:string;
           y: {
             ticks: {
               color: this.labelColor,
-              
+       
             
             },
            // stacked: true
@@ -612,6 +703,10 @@ LabelChart5:string;
           x: {
             ticks: {
               color: this.labelColor,
+               callback: function(value) {
+      return value + '%';
+    }
+
             },
             //stacked: true
           },
@@ -674,7 +769,7 @@ labelChart9:string;
     
     else
     {
-    this.labelChart9="المدة الزمنية للمشاريع"
+    this.labelChart9="المدة الزمنية للمشاريع الجارية"
     const chart = new Chart(id, {
       type: chartType,
       data: {
@@ -739,7 +834,7 @@ isShow:false
        labels: ['Project A', 'Project B', 'Project C', 'Project D', 'Project E'],
         datasets: [
       {
-        label: 'عدد المهام المنتهية',
+        label: 'عدد المهام المكتملة',
         data: [10, 15, 8, 12,7],
        // backgroundColor: '#4CAF50',
        backgroundColor:'#826026',
@@ -805,7 +900,7 @@ isShow:false
   LabelChart6:string;
    renderChart2(id: string, chartType: keyof ChartTypeRegistry) {
     console.log(id);
-    if(this.SelectID1>0)
+  /*   if(this.SelectID1>0)
     {
       this.LabelChart6="اعداد العاملين بكل مهمة"
     const chart = new Chart(id, {
@@ -850,19 +945,19 @@ isShow:false
 
     this.chartInstances.push(chart);
   }
-else    {
-        this.LabelChart6="اعداد العاملين بكل مشروع"
+else    { */
+        this.LabelChart6="اعداد المشاريع الجارية طبقاً للتصنيف"
 
     const chart = new Chart(id, {
       type: chartType,
       data: {
-       labels: ['Project A', 'Project B', 'Project C', 'Project D', 'Project E'],
+       labels: ['مشاريع الاستشارات الهندسية', 'التحول الرقمى'],
         datasets: [
       {
-        label: 'عدد العناصر البشرية',
-        data: [10, 15, 8, 12,7],
+        label: 'عدد المشاريع',
+        data: [10, 15,],
        // backgroundColor: '#4CAF50',
-       backgroundColor:'#488226'
+       backgroundColor:'#04662d'
       //  stack: 'total'
 
       }
@@ -895,7 +990,7 @@ else    {
     });
 
     this.chartInstances.push(chart);
-  }
+ // }
 }
   LabelChart8:string;
    renderChart5(id: string, chartType: keyof ChartTypeRegistry) {
@@ -1094,6 +1189,108 @@ hiddenpdf:boolean=false;
   //});
 
 
+
+
+}
+
+labelChart10:string;
+  renderChart7(id: string, chartType: keyof ChartTypeRegistry) {
+  
+         if(this.SelectID1>0)
+    {
+      this.labelChart10="الوقت المتبقي على تسليم المهام الجارية"
+    const chart = new Chart(id, {
+      type: chartType,
+      data: {
+       labels: ['Task A', 'Task B', 'Task C', 'Task D', 'Task E'],
+        datasets: [
+      {
+        label: 'المدة الزمنية (عدد الايام)',
+        data: [30, 20, 18, 6,1],
+       // backgroundColor: '#4CAF50',
+              backgroundColor:'#267682'
+      //  stack: 'total'
+
+      }
+      
+    ]
+      },
+      options: {
+         responsive:true,
+
+         devicePixelRatio: 2,
+          indexAxis: 'y',
+
+        scales: {
+          y: {
+            ticks: {
+              color: this.labelColor,
+              
+            
+            },
+           // stacked: true
+          },
+          x: {
+            ticks: {
+              color: this.labelColor,
+            },
+            //stacked: true
+          },
+        },
+      },
+    });
+
+    this.chartInstances.push(chart);
+  }
+    
+    else
+    {
+    this.labelChart10="الوقت المتبقي على تسليم المشاريع الجارية"
+    const chart = new Chart(id, {
+      type: chartType,
+      data: {
+       labels: ['Project A', 'Project B', 'Project C', 'Project D', 'Project E'],
+        datasets: [
+      {
+        label: 'المدة الزمنية (عدد الشهور)',
+        data: [12, 15, 24, 2,10],
+       // backgroundColor: '#4CAF50',
+      // backgroundColor:'#264882'
+              backgroundColor:'#267682'
+
+      //  stack: 'total'
+
+      }
+      
+    ]
+      },
+      options: {
+         responsive:true,
+
+         devicePixelRatio: 2,
+          indexAxis: 'y',
+
+        scales: {
+          y: {
+            ticks: {
+              color: this.labelColor,
+              
+            
+            },
+           // stacked: true
+          },
+          x: {
+            ticks: {
+              color: this.labelColor,
+            },
+            //stacked: true
+          },
+        },
+      },
+    });
+
+    this.chartInstances.push(chart);
+  }
 }
  Print()
 {
@@ -1130,11 +1327,20 @@ hiddenpdf:boolean=false;
 }
 selectedId1: any;
 SelectID1:number
+Label1:string;
+IsAll:boolean=true;
+CountProjects:number;
 onSelect(id: any) {
-  this.selectedId1 = id;
-  this.SelectID1=id;
+  
+  this.selectedId1 = id.length;
+  this.SelectID1=id.length;
+  console.log("Select Prpjects Count="+this.SelectID1+" "+this.selectedId1);
   if(id==0)
   {
+    this.CountProjects=20;
+this.IsAll=true;
+    this.Label1="نسبة المشاريع المتاخرة من اجمالى المشاريع الجارية";
+    this.surveyPrec=25;
        this.NotSelectPorject=true
     this.NotSelectPorject = true;   // or your condition
 
@@ -1145,13 +1351,25 @@ onSelect(id: any) {
   setTimeout(() => {
     this.renderChart4('barChart4', 'bar');
     this.renderChart5('barChart5', 'bar');
+         this.renderChart9('pieChart4', 'pie');;
+   this.renderChart2('barChart2', 'bar');
+            this.renderChart('pieChart', 'pie')
+
+      //  this.renderChart7('barChart7', 'bar');
+
 
   });
         
   }
   else
-       this.NotSelectPorject=false;
+  {
+    this.CountProjects=id.length;
 
+    this.IsAll=false;
+    this.Label1="نسبة الانجاز";
+    this.surveyPrec=80;
+       this.NotSelectPorject=false;
+  }
   console.log('Selected ID:', this.selectedId1);
     console.log('Selected ID11:', this.SelectID1);
   /*    this.renderChart('pieChart', 'pie');;
@@ -1176,9 +1394,11 @@ onSelect(id: any) {
             this.renderChart1('barChart', 'bar');
 
    this.renderChart2('barChart2', 'bar');
-  this.renderChart3('pieChart2', 'pie');;
+ // this.renderChart3('pieChart2', 'pie');;
     this.renderChart6('barChart6', 'bar');;
+console.log("This Error Here")
 
+    this.renderChart7('barChart7', 'bar');;
   //this.renderChart4('barChart4', 'bar');
 
            // this.statisticsService.GetTopPlans(5).subscribe((res) => {
@@ -1188,6 +1408,8 @@ onSelect(id: any) {
         );
 
 }
+
+
 ShowReport()
 {
   const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboardRpt';
