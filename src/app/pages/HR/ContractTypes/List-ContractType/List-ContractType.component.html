@@ -1,0 +1,57 @@
+<div class="content-container">
+  <h2> {{'قائمة بيانات انواع العقود '}}
+  </h2>
+   <hr />
+  <button
+    class="special-button mb-3"
+    type="button"
+    (click)="ShowAdd()"
+  >
+    {{ "إضافة نوع عقد جديد"  }}
+  </button>
+  <nb-card>
+<table class="responsive-table">
+  <thead>
+    <tr>
+      <th>نوع العقد </th>
+
+      <th>الوصف</th>
+
+      <th>التعديل</th>
+
+      <th>الحذف</th>
+    </tr>
+    
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of this.tableData1">
+      <td>{{ row.type }}</td>
+
+      <td>{{ row.notes }}</td>
+
+        <td class="actions">
+        <button mat-icon-button color="primary" (click)="edit(row)">
+          <mat-icon>edit</mat-icon>
+        </button>
+</td>
+        <td class="actions">
+
+        <button mat-icon-button color="warn" (click)="delete1(row)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        </td>
+    </tr>
+  </tbody>
+</table>
+    
+  </nb-card>
+<!--   <mat-paginator
+    [dir]="dir"
+    [length]="totalRecords"
+    [pageIndex]="searchModel.PageNumber - 1"
+    [pageSize]="searchModel.PageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="search($event)"
+    showFirstLastButtons
+  ></mat-paginator> -->
+</div>

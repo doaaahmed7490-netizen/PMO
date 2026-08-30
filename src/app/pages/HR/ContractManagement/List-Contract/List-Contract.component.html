@@ -1,0 +1,79 @@
+<div class="content-container">
+  <h2> {{'قائمة بيانات عقود الموظفيين '}}
+  </h2>
+   <hr />
+  <button
+    class="special-button mb-3"
+    type="button"
+    (click)="ShowAdd()"
+  >
+    {{ "إضافة بيانات عقد جديد"  }}
+  </button>
+  <nb-card>
+<table class="responsive-table">
+  <thead>
+    <tr>
+      <th>الموظف</th>
+
+      <th>رقم العقد</th>
+      <th>نوع العقد</th>
+
+      <th>من تاريخ</th>
+
+      <th>إلى تاريخ</th>
+
+      <th>الراتب الاساسى</th>
+       <th>بدل السكن</th>
+      <th>بدل الإنتقالات</th>
+
+      <th>بدالات اخرى</th>
+            <th>فترة التجربة</th>
+      <th>فترة الاشعار</th>
+      <th></th>
+      <th></th>
+
+    </tr>
+    
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of this.tableData1">
+      <td>{{ row.Employee }}</td>
+      <td>{{ row.ContractNo }}</td>
+      <td>{{ row.ContractType }}</td>
+
+      <td>{{ row.FromDate }}</td>
+      <td>{{ row.ToDate }}</td>
+      <td>{{ row.BasicSalary }}</td>
+
+       <td>{{ row.HousingAllowance }}</td>
+      <td>{{ row.TransportationAllowance }}</td>
+      <td>{{ row.OtherAllowance }}</td>
+ <td>{{ row.ProbationPeriod }}</td>
+      <td>{{ row.NoticePeriod }}</td>
+
+        <td class="actions">
+        <button mat-icon-button color="primary" (click)="edit(row)">
+          <mat-icon>edit</mat-icon>
+        </button>
+</td>
+        <td class="actions">
+
+        <button mat-icon-button color="warn" (click)="delete1(row)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        </td>
+    </tr>
+  </tbody>
+</table>
+    
+  </nb-card>
+<!--   <mat-paginator
+    [dir]="dir"
+    [length]="totalRecords"
+    [pageIndex]="searchModel.PageNumber - 1"
+    [pageSize]="searchModel.PageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="search($event)"
+    showFirstLastButtons
+  ></mat-paginator> -->
+</div>

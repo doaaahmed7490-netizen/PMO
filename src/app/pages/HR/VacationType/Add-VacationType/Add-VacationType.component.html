@@ -1,0 +1,133 @@
+<nb-card>
+    <nb-card-header><h5>{{'Add' |translate}} {{'بيانات نوع اجازة'}}</h5></nb-card-header>
+    <nb-card-body>
+        <form  [formGroup]="districtForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="DistrictName" class="label">
+                            <h6>    {{'نوع الإجازة'}}</h6>
+                        </label>
+                        <input  type="text" 
+                            formControlName="VacationType" nbInput shape="round" fullWidth id="VacationType">
+                      
+                    </div>
+                </div>
+                 <div class="col-sm-4"> 
+                    <div class="form-group">
+                        <label for="notes" class="label">
+                            <h6>    {{'الوصف' }}</h6>
+                        </label>
+                        <textarea   type="text"
+                            formControlName="notes" nbInput shape="round" fullWidth id="notes"></textarea>
+                    
+                    </div>
+                </div>
+                 <div class="col-sm-4">
+                    <div class="form-group">
+          <label for="ToDate" class="label">
+            
+                            <h6>مدفوعة</h6>
+          
+          </label>
+          <br/>
+  
+ <label>
+    <input type="radio" value="Yes" formControlName="IsPaid">
+                            {{'نعم'}}
+  </label>
+
+  <label>
+    <input type="radio" value="No" formControlName="IsPaid">
+                                {{'لا'}}
+
+  </label>
+
+        </div>
+                </div>
+                
+                    
+                  <div class="col-sm-4">
+                    <div class="form-group">
+          <label for="ToDate" class="label">
+            
+                            <h6> النوع</h6>
+          
+          </label>
+          <br/>
+  
+ <label>
+    <input type="radio" value="All" formControlName="Gender">
+                            {{'الكل'}}
+  </label>
+
+  <label>
+    <input type="radio" value="Male" formControlName="Gender">
+                                {{'ذكر'}}
+
+  </label>
+  
+  <label>
+    <input type="radio" value="Female" formControlName="Gender">
+                                {{'انثى'}}
+
+  </label>
+
+        </div>
+                </div>
+  
+               <div class="col-sm-4">
+                    <div class="form-group">
+          <label for="ToDate" class="label">
+            
+                            <h6>تحتاج مرفقات</h6>
+          
+          </label>
+          <br/>
+  
+ <label>
+    <input type="radio" value="Yes" formControlName="RequireAttachment">
+                            {{'نعم'}}
+  </label>
+
+  <label>
+    <input type="radio" value="No" formControlName="RequireAttachment">
+                                {{'لا'}}
+
+  </label>
+
+        </div>
+                </div>
+              
+                <!--Event Image -->
+            </div>
+            <!-- <div class="mt-2 d-flex align-items-center justify-content-center mt-3"> -->
+                <div class="row mt-2">
+     <div class="col-md-2">
+        <button
+          class="special-button m-2 mt-4 w-100"
+   type="submit"
+       >
+          {{ "حفظ"  }}
+        </button>
+      </div>
+       <div class="col-md-2">
+        <button
+          class="special-button m-2 mt-4 w-100"
+   type="button"    (click)="Close()"
+
+       >
+          {{ "إلغاء"}}
+        </button>
+      </div>
+            <!--     <button class="btn" [disabled]="districtForm.invalid ||isSubmitted"   type="submit"  status="primary"
+                 nbButton>{{'Save' |translate}}</button> -->
+       
+            </div>
+        </form>
+    </nb-card-body>
+</nb-card>
+
+
+
+

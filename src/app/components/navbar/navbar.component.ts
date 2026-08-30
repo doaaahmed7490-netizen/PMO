@@ -232,10 +232,10 @@ this.lang=language;
   });
   */
   this.menu = [
-           {
+           /*{
             title: 'لوحة التحكم',
             link: '/dashboard',
-          },
+          },*/
           /*{
             title: 'المشاريع',
             children: [
@@ -280,6 +280,44 @@ this.lang=language;
             link: '/Bids',
           },*/
             {
+            title: 'إدارة الموارد البشرية',
+            children: [
+              {
+             title: 'العقود الوظيفية',
+            link: '/Contract',
+              },
+              {
+            title:'الاجازات',
+            children: [
+              {
+                title: 'سياسية الاجازات',
+                link: '/LeavePolicy',
+              },
+              
+            ]},
+               {
+            title:'البيانات الاساسية',
+            children: [
+              {
+                title: 'الإدارات',
+                link: '/Department',
+              },
+                {
+                title: 'المناصب الوظيفية',
+                link: '/Position',
+              },
+               {
+                title: 'انواع العقود',
+                link: '/ContractType',
+              },
+               {
+                title: 'انواع الاجازات',
+                link: '/VacationType',
+              },
+            ]}
+            ]},
+            /*
+            {
             title: 'إدارة المنافسات',
             children: [
               {
@@ -303,6 +341,8 @@ this.lang=language;
             link: '/BidChangeStatus',
               }
             ]},
+
+            */
             /*BidChangeStatus
           {
             title: 'المرفقات',

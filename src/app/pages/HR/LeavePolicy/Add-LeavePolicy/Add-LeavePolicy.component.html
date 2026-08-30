@@ -1,0 +1,171 @@
+<nb-card>
+    <nb-card-header><h5>{{'Add' |translate}} {{'بيانات سياسة الاجازات'}}</h5></nb-card-header>
+    <nb-card-body>
+        <form  [formGroup]="districtForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="DistrictName" class="label">
+                            <h6>    {{'نوع الاجازة'}}</h6>
+                        </label>
+                           <nb-select
+            shape="round"
+            fullWidth
+            formControlName="VacationType"
+          
+          
+          >
+            <nb-option *ngFor="let e of this.VacationTypes" [value]="e.id">
+              {{ e.label }}</nb-option
+            >
+          </nb-select>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="DistrictName" class="label">
+                            <h6>    {{'الإسم'}}</h6>
+                        </label>
+                        <input  type="text" 
+                            formControlName="Policy" nbInput shape="round" fullWidth id="Policy">
+                      
+                    </div>
+                </div>
+
+
+               
+                 <div class="col-sm-4">
+                    <div class="form-group">
+          <label for="ToDate" class="label">
+            
+                            <h6>{{'طريقة الإستحقاق'}}</h6>
+          
+          </label>
+          <br/>
+  
+ <label>
+    <input type="radio" value="Yes" formControlName="AccrualMethod">
+                            {{'سنوى'}}
+  </label>
+
+  <label>
+    <input type="radio" value="No" formControlName="AccrualMethod">
+                                {{'عند الإحتياج'}}
+
+  </label>
+
+        </div>
+                </div>
+                
+                    
+                  <div class="col-sm-4">
+                    <div class="form-group">
+          <label for="ToDate" class="label">
+            
+                            <h6> السماح بترحيل الإجازات</h6>
+          
+          </label>
+          <br/>
+  
+ <label>
+    <input type="radio" value="All" formControlName="AllowCarryForward">
+                            {{'نعم'}}
+  </label>
+
+  <label>
+    <input type="radio" value="Male" formControlName="AllowCarryForward">
+                                {{'لا'}}
+
+  </label>
+  
+ 
+
+        </div>
+                </div>
+  
+               <div class="col-sm-4">
+                    <div class="form-group">
+          <label for="ToDate" class="label">
+            
+                            <h6>تحتاج موافقة المدير</h6>
+          
+          </label>
+          <br/>
+  
+ <label>
+    <input type="radio" value="Yes" formControlName="RequiresManagerApproval">
+                            {{'نعم'}}
+  </label>
+
+  <label>
+    <input type="radio" value="No" formControlName="RequiresManagerApproval">
+                                {{'لا'}}
+
+  </label>
+
+        </div>
+                </div>
+               <div class="col-sm-4">
+                    <div class="form-group">
+          <label for="ToDate" class="label">
+            
+                            <h6>تحتاج موافقة مدير الموارد البشرية</h6>
+          
+          </label>
+          <br/>
+  
+ <label>
+    <input type="radio" value="Yes" formControlName="RequiresHRManagerApproval">
+                            {{'نعم'}}
+  </label>
+
+  <label>
+    <input type="radio" value="No" formControlName="RequiresHRManagerApproval">
+                                {{'لا'}}
+
+  </label>
+
+        </div>
+                </div>
+                  <div class="col-sm-4"> 
+                    <div class="form-group">
+                        <label for="notes" class="label">
+                            <h6>    {{'الوصف' }}</h6>
+                        </label>
+                        <textarea   type="text"
+                            formControlName="notes" nbInput shape="round" fullWidth id="notes"></textarea>
+                    
+                    </div>
+                </div>
+                <!--Event Image -->
+            </div>
+            <!-- <div class="mt-2 d-flex align-items-center justify-content-center mt-3"> -->
+                <div class="row mt-2">
+     <div class="col-md-2">
+        <button
+          class="special-button m-2 mt-4 w-100"
+   type="submit"
+       >
+          {{ "حفظ"  }}
+        </button>
+      </div>
+       <div class="col-md-2">
+        <button
+          class="special-button m-2 mt-4 w-100"
+   type="button"    (click)="Close()"
+
+       >
+          {{ "إلغاء"}}
+        </button>
+      </div>
+            <!--     <button class="btn" [disabled]="districtForm.invalid ||isSubmitted"   type="submit"  status="primary"
+                 nbButton>{{'Save' |translate}}</button> -->
+       
+            </div>
+        </form>
+    </nb-card-body>
+</nb-card>
+
+
+
+

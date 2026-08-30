@@ -1,0 +1,229 @@
+<nb-card>
+    <nb-card-header><h5>{{'Add' |translate}} {{'إضافة بيانات عقد وظيفى'}}</h5></nb-card-header>
+    <nb-card-body>
+        <form  [formGroup]="districtForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="DistrictName" class="label">
+                            <h6>    {{'الموظف'}}</h6>
+                        </label>
+                           <nb-select
+            shape="round"
+            fullWidth
+            formControlName="name"
+          
+          
+          >
+            <nb-option *ngFor="let e of this.options" [value]="e.id">
+              {{ e.label }}</nb-option
+            >
+          </nb-select>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="DistrictName" class="label">
+                            <h6>    {{'رقم العقد'}}</h6>
+                        </label>
+                        <input  type="text" 
+                            formControlName="ContractNo" nbInput shape="round" fullWidth id="ContractNo">
+                            <!-- <mat-error *ngIf="fc.name.touched && fc.name.hasError('required')">
+                            
+                                {{'District is required' | translate}}
+                            </mat-error> -->
+                    </div>
+                </div>
+          
+                        <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="DistrictName" class="label">
+                            <h6>    {{'نوع العقد'}}</h6>
+                        </label>
+                           <nb-select
+            shape="round"
+            fullWidth
+            formControlName="ContractType"
+          
+          
+          >
+            <nb-option *ngFor="let e of this.ContractType" [value]="e.id">
+              {{ e.type }}</nb-option
+            >
+          </nb-select>
+                    </div>
+                </div>
+                 <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="DistrictName" class="label">
+                            <h6>    {{'من تاريخ'}}</h6>
+                        </label>
+                        <input  type="Date" 
+                            formControlName="FromDate" nbInput shape="round" fullWidth id="FromDate">
+                            <!-- <mat-error *ngIf="fc.name.touched && fc.name.hasError('required')">
+                            
+                                {{'District is required' | translate}}
+                            </mat-error> -->
+                    </div>
+                </div>
+                 <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="DistrictName" class="label">
+                            <h6>    {{'إلى تاريخ'}}</h6>
+                        </label>
+                        <input  type="Date" 
+                            formControlName="ToDate" nbInput shape="round" fullWidth id="ToDate">
+                            <!-- <mat-error *ngIf="fc.name.touched && fc.name.hasError('required')">
+                            
+                                {{'District is required' | translate}}
+                            </mat-error> -->
+                    </div>
+                </div>
+                 <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="DistrictName" class="label">
+                            <h6>    {{'الراتب الاساسى'}}</h6>
+                        </label>
+                        <input  type="number" 
+                            formControlName="BasicSalary" nbInput shape="round" fullWidth id="BasicSalary">
+                            <!-- <mat-error *ngIf="fc.name.touched && fc.name.hasError('required')">
+                            
+                                {{'District is required' | translate}}
+                            </mat-error> -->
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="DistrictName" class="label">
+                            <h6>    {{'بدل السكن'}}</h6>
+                        </label>
+                        <input  type="number" 
+                            formControlName="HousingAllowance" nbInput shape="round" fullWidth id="HousingAllowance">
+                            <!-- <mat-error *ngIf="fc.name.touched && fc.name.hasError('required')">
+                            
+                                {{'District is required' | translate}}
+                            </mat-error> -->
+                    </div>
+                </div>
+                   <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="DistrictName" class="label">
+                            <h6>    {{'بدل الانتقالات'}}</h6>
+                        </label>
+                        <input  type="number" 
+                            formControlName="TransportationAllowance" nbInput shape="round" fullWidth id="TransportationAllowance">
+                            <!-- <mat-error *ngIf="fc.name.touched && fc.name.hasError('required')">
+                            
+                                {{'District is required' | translate}}
+                            </mat-error> -->
+                    </div>
+                </div>
+                 <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="DistrictName" class="label">
+                            <h6>    {{'بدالات اخرى'}}</h6>
+                        </label>
+                        <input  type="number" 
+                            formControlName="OtherAllowance" nbInput shape="round" fullWidth id="OtherAllowance">
+                            <!-- <mat-error *ngIf="fc.name.touched && fc.name.hasError('required')">
+                            
+                                {{'District is required' | translate}}
+                            </mat-error> -->
+                    </div>
+                </div>
+                   <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="DistrictName" class="label">
+                            <h6>    {{' فترة التجربة'}}</h6>
+                        </label>
+                        <input  type="number" 
+                            formControlName="ProbationPeriod" nbInput shape="round" fullWidth id="ProbationPeriod">
+                            <!-- <mat-error *ngIf="fc.name.touched && fc.name.hasError('required')">
+                            
+                                {{'District is required' | translate}}
+                            </mat-error> -->
+                    </div>
+                </div>
+                   <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="DistrictName" class="label">
+                            <h6>    {{' فترة الاشعار'}}</h6>
+                        </label>
+                        <input  type="number" 
+                            formControlName="NoticePeriod" nbInput shape="round" fullWidth id="NoticePeriod">
+                            <!-- <mat-error *ngIf="fc.name.touched && fc.name.hasError('required')">
+                            
+                                {{'District is required' | translate}}
+                            </mat-error> -->
+                    </div>
+                </div>
+
+                <div class="col-sm-4"> 
+                    <div class="form-group">
+                        <label for="notes" class="label">
+                            <h6>    {{'الوصف' }}</h6>
+                        </label>
+                        <textarea   type="text"
+                            formControlName="notes" nbInput shape="round" fullWidth id="notes">
+                            </textarea>
+                    
+                    </div>
+                </div> 
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="DistrictName" class="label">
+                            <h6>    {{'مرفق العقد'}}</h6>
+                        </label>
+                        <input  type="file" 
+                            formControlName="ContractDoc" nbInput shape="round" fullWidth id="ContractDoc">
+                            <!-- <mat-error *ngIf="fc.name.touched && fc.name.hasError('required')">
+                            
+                                {{'District is required' | translate}}
+                            </mat-error> -->
+                    </div>
+                </div>  
+                 <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="DistrictName" class="label">
+                            <h6>    {{'مرفقات اخرى'}}</h6>
+                        </label>
+                        <input  type="file" 
+                            formControlName="OtherDoc" nbInput shape="round" fullWidth id="OtherDoc">
+                            <!-- <mat-error *ngIf="fc.name.touched && fc.name.hasError('required')">
+                            
+                                {{'District is required' | translate}}
+                            </mat-error> -->
+                    </div>
+                </div>  
+                <!--Event Image -->
+            </div>
+            <!-- <div class="mt-2 d-flex align-items-center justify-content-center mt-3"> -->
+                <div class="row mt-2">
+     <div class="col-md-2">
+        <button
+          class="special-button m-2 mt-4 w-100"
+   type="submit"
+       >
+          {{ "حفظ"  }}
+        </button>
+      </div>
+       <div class="col-md-2">
+        <button
+          class="special-button m-2 mt-4 w-100"
+   type="button"    (click)="Close()"
+
+       >
+          {{ "إلغاء"}}
+        </button>
+      </div>
+            <!--     <button class="btn" [disabled]="districtForm.invalid ||isSubmitted"   type="submit"  status="primary"
+                 nbButton>{{'Save' |translate}}</button> -->
+       
+            </div>
+        </form>
+    </nb-card-body>
+</nb-card>
+
+
+
+

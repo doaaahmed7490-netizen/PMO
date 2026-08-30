@@ -188,7 +188,39 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/BidManagment/BidChangeStatus/BidChangeStatus.module').then((mod) => mod.BidChangeStatusModule),
     },
+     {
+    path: 'Department',
+    loadChildren: () =>
+      import('./pages/HR/Department/Department.module').then((mod) => mod.DepartmentModule),
+    },
+      {
+    path: 'Position',
+    loadChildren: () =>
+      import('./pages/HR/Position/Position.module').then((mod) => mod.PositionModule),
+    },
+      {
+    path: 'ContractType',
+    loadChildren: () =>
+      import('./pages/HR/ContractTypes/ContractType.module').then((mod) => mod.ContractTypeModule),
+    },
+    {
+    path: 'Contract',
+    loadChildren: () =>
+      import('./pages/HR/ContractManagement/Contract.module').then((mod) => mod.ContractModule),
+    },
+
+       {
+    path: 'VacationType',
+    loadChildren: () =>
+      import('./pages/HR/VacationType/VacationType.module').then((mod) => mod.VacationTypeModule),
+    },
+      {
+    path: 'LeavePolicy',
+    loadChildren: () =>
+      import('./pages/HR/LeavePolicy/LeavePolicy.module').then((mod) => mod.LeavePolicyModule),
+    },
  /* {
+
     path: 'DirectiveGoals',
     loadChildren: () =>
       import('./pages/DirectiveGoals/directiveGoal.module').then((mod) => mod.DirectiveGoalModule),

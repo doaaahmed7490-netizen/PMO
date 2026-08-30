@@ -1,0 +1,72 @@
+<div class="content-container">
+  <h2> {{'قائمة بيانات سياسة الاجازات'}}
+  </h2>
+   <hr />
+  <button
+    class="special-button mb-3"
+    type="button"
+    (click)="ShowAdd()"
+  >
+    {{ "إضافة بيانات سياسة الاجازات"  }}
+  </button>
+  <nb-card>
+<table class="responsive-table">
+  <thead>
+    <tr>
+      <th>نوع الإجازة</th>
+
+      <th>الإسم</th>
+
+      <th>طريقة الإستحقاق</th>
+
+      <th>السماح بالترحيل</th>
+
+         <th>يتطلب موافقة المدير</th>
+
+         <th>يتطلب موافقة مدير قسم الموارد البشرية</th>
+
+ 
+      <th></th>
+      <th></th>
+
+    </tr>
+    
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of this.tableData1">
+      <td>{{ row.VacationType }}</td>
+      <td>{{ row.Name }}</td>
+
+      <td>{{ row.AccrualMethod }}</td>
+            <td>{{ row.AllowCarryForward }}</td>
+
+      <td>{{ row.RequiresManagerApproval }}</td>
+  
+      <td>{{ row.RequiresHRApproval }}</td>
+
+        <td class="actions">
+        <button mat-icon-button color="primary" (click)="edit(row)">
+          <mat-icon>edit</mat-icon>
+        </button>
+</td>
+        <td class="actions">
+
+        <button mat-icon-button color="warn" (click)="delete1(row)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        </td>
+    </tr>
+  </tbody>
+</table>
+    
+  </nb-card>
+<!--   <mat-paginator
+    [dir]="dir"
+    [length]="totalRecords"
+    [pageIndex]="searchModel.PageNumber - 1"
+    [pageSize]="searchModel.PageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="search($event)"
+    showFirstLastButtons
+  ></mat-paginator> -->
+</div>
